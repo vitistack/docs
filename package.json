@@ -10,14 +10,19 @@
     "test:htmlcs": "htmlcs http://localhost:8080"
   },
   "devDependencies": {
-    "@axe-core/cli": "^4.8.3",
-    "@lhci/cli": "^0.12.0",
-    "pa11y": "^7.0.0",
+    "@axe-core/cli": "^4.10.1",
+    "@lhci/cli": "^0.14.0",
+    "pa11y": "^8.0.0",
     "html_codesniffer": "^2.5.1",
-    "puppeteer": "^21.0.0"
+    "puppeteer": "^22.15.0"
+  },
+  "overrides": {
+    "glob": "^10.3.10",
+    "rimraf": "^5.0.5",
+    "inflight": "npm:@isaacs/inflight@^1.0.6"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "repository": {
     "type": "git",
