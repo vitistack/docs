@@ -1,0 +1,48 @@
+site_name: vitistack docs
+repo_url: https://github.com/vitistack/docs
+repo_name: vitistack/docs
+edit_uri: edit/main/docs/
+theme:
+  name: material
+  language: "nb"
+  logo: images/viti.png
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - content.action.edit
+  icon:
+    edit: material/pencil 
+    view: material/eye
+extra_css:
+  - css/viti.css
+plugins:
+    - search
+    - mermaid2
+    - glightbox
+markdown_extensions:
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+  - admonition
+  - pymdownx.magiclink
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - footnotes
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/vitistack
+      name: vitistack
+  generator: false
+nav:
+  - viti:
+    - index.md
