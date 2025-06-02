@@ -61,7 +61,7 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
         id: setup-chrome
         with:  
-          chrome-version: 127
+          chrome-version: latest
           install-chromedriver: true
           
       - name: Build documentation
