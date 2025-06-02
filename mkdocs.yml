@@ -6,14 +6,39 @@ theme:
   name: material
   language: "nb"
   logo: images/viti.png
+  favicon: images/viti.png
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: blue
+      accent: green
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: blue
+      accent: green
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
     - content.action.edit
+    - content.code.copy
+    - content.code.annotate
   icon:
     edit: material/pencil 
     view: material/eye
+    repo: fontawesome/brands/github
 extra_css:
   - css/viti.css
 plugins:

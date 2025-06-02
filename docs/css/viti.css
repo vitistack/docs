@@ -1,8 +1,339 @@
+/* Viti Custom Color Palette */
+:root {
+  /* Primary brand colors inspired by Viti logo */
+  --viti-primary: #2563eb;        /* Vibrant blue */
+  --viti-primary-dark: #1d4ed8;   /* Darker blue */
+  --viti-primary-light: #3b82f6;  /* Lighter blue */
+  
+  /* Secondary colors */
+  --viti-secondary: #10b981;      /* Emerald green for vitality */
+  --viti-secondary-dark: #059669; /* Darker green */
+  --viti-secondary-light: #34d399; /* Lighter green */
+  
+  /* Accent colors */
+  --viti-accent: #f59e0b;         /* Amber/orange for energy */
+  --viti-accent-dark: #d97706;    /* Darker amber */
+  --viti-accent-light: #fbbf24;   /* Lighter amber */
+  
+  /* Neutral colors */
+  --viti-gray-50: #f8fafc;
+  --viti-gray-100: #f1f5f9;
+  --viti-gray-200: #e2e8f0;
+  --viti-gray-300: #cbd5e1;
+  --viti-gray-400: #94a3b8;
+  --viti-gray-500: #64748b;
+  --viti-gray-600: #475569;
+  --viti-gray-700: #334155;
+  --viti-gray-800: #1e293b;
+  --viti-gray-900: #0f172a;
+}
+
+/* Header customization */
+.md-header {
+  background: linear-gradient(135deg, var(--viti-primary) 0%, var(--viti-primary-dark) 100%);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
 
 .md-header__button.md-logo img, .md-header__button.md-logo svg {
-height: 2rem;
+  height: 2rem;
+  filter: brightness(1.1);
 }
-.md-header__title{
+
+.md-header__title {
   font-size: 20px;
   height: 2rem;
+  font-weight: 600;
+  color: white;
+}
+
+/* Navigation tabs */
+.md-tabs {
+  background: var(--viti-primary-dark);
+  border-bottom: 2px solid var(--viti-secondary);
+}
+
+.md-tabs__link {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.md-tabs__link:hover {
+  color: var(--viti-accent-light);
+  transform: translateY(-1px);
+}
+
+.md-tabs__link--active {
+  color: var(--viti-accent);
+  border-bottom: 2px solid var(--viti-accent);
+}
+
+/* Primary colors override */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--viti-primary);
+  --md-primary-fg-color--light: var(--viti-primary-light);
+  --md-primary-fg-color--dark: var(--viti-primary-dark);
+  --md-accent-fg-color: var(--viti-secondary);
+  --md-accent-fg-color--transparent: rgba(16, 185, 129, 0.1);
+}
+
+/* Dark mode color scheme */
+[data-md-color-scheme="slate"] {
+  --viti-primary: #60a5fa;        /* Lighter blue for dark mode */
+  --viti-primary-dark: #3b82f6;   /* Blue */
+  --viti-primary-light: #93c5fd;  /* Even lighter blue */
+  
+  --viti-secondary: #34d399;      /* Lighter green for dark mode */
+  --viti-secondary-dark: #10b981; /* Green */
+  --viti-secondary-light: #6ee7b7; /* Even lighter green */
+  
+  --viti-accent: #fbbf24;         /* Lighter amber for dark mode */
+  --viti-accent-dark: #f59e0b;    /* Amber */
+  --viti-accent-light: #fde047;   /* Even lighter amber */
+  
+  /* Override Material Design colors for dark mode */
+  --md-primary-fg-color: var(--viti-primary);
+  --md-primary-fg-color--light: var(--viti-primary-light);
+  --md-primary-fg-color--dark: var(--viti-primary-dark);
+  --md-accent-fg-color: var(--viti-secondary);
+  --md-accent-fg-color--transparent: rgba(52, 211, 153, 0.1);
+}
+
+/* Dark mode specific adjustments */
+[data-md-color-scheme="slate"] .md-header {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+[data-md-color-scheme="slate"] .md-tabs {
+  background: #0f172a;
+  border-bottom: 2px solid var(--viti-secondary);
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  color: var(--viti-primary-light);
+  border-bottom-color: var(--viti-secondary);
+}
+
+[data-md-color-scheme="slate"] .md-typeset h2 {
+  color: var(--viti-primary);
+  border-left-color: var(--viti-secondary);
+}
+
+[data-md-color-scheme="slate"] .md-typeset h3::before {
+  background: var(--viti-accent);
+}
+
+[data-md-color-scheme="slate"] .md-typeset code {
+  background: #374151;
+  color: var(--viti-primary-light);
+}
+
+/* Sidebar navigation */
+.md-nav__title {
+  color: var(--viti-primary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--viti-gray-200);
+  padding-bottom: 0.5rem;
+}
+
+.md-nav__link {
+  transition: all 0.2s ease;
+}
+
+.md-nav__link:hover {
+  color: var(--viti-primary);
+  background: linear-gradient(90deg, transparent 0%, var(--viti-gray-50) 100%);
+  border-left: 3px solid var(--viti-secondary);
+  padding-left: 1rem;
+}
+
+.md-nav__link--active {
+  color: var(--viti-primary);
+  background: linear-gradient(90deg, var(--viti-gray-50) 0%, transparent 100%);
+  border-left: 3px solid var(--viti-secondary);
+  font-weight: 600;
+}
+
+/* Content styling */
+.md-content__inner {
+  padding-top: 2rem;
+}
+
+/* Headings */
+.md-typeset h1 {
+  color: var(--viti-primary);
+  border-bottom: 3px solid var(--viti-secondary);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.md-typeset h2 {
+  color: var(--viti-primary-dark);
+  border-left: 4px solid var(--viti-secondary);
+  padding-left: 1rem;
+  margin-left: -1rem;
+}
+
+.md-typeset h3 {
+  color: var(--viti-gray-700);
+  position: relative;
+}
+
+.md-typeset h3::before {
+  content: "";
+  position: absolute;
+  left: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: var(--viti-accent);
+  border-radius: 2px;
+}
+
+/* Links */
+.md-typeset a {
+  color: var(--viti-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.md-typeset a:hover {
+  color: var(--viti-primary-dark);
+  border-bottom-color: var(--viti-secondary);
+}
+
+/* Code blocks */
+.md-typeset pre {
+  background: var(--viti-gray-900);
+  border: 1px solid var(--viti-gray-700);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.md-typeset code {
+  background: var(--viti-gray-100);
+  color: var(--viti-primary-dark);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Admonitions */
+.md-typeset .admonition {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+}
+
+.md-typeset .admonition.note {
+  border-left: 4px solid var(--viti-primary);
+}
+
+.md-typeset .admonition.tip {
+  border-left: 4px solid var(--viti-secondary);
+}
+
+.md-typeset .admonition.warning {
+  border-left: 4px solid var(--viti-accent);
+}
+
+/* Buttons and interactive elements */
+.md-button {
+  background: linear-gradient(135deg, var(--viti-primary) 0%, var(--viti-primary-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.md-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, var(--viti-primary-light) 0%, var(--viti-primary) 100%);
+}
+
+/* Search */
+.md-search__input {
+  border-radius: 6px;
+  border: 2px solid var(--viti-gray-200);
+  transition: all 0.2s ease;
+}
+
+.md-search__input:focus {
+  border-color: var(--viti-secondary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Tables */
+.md-typeset table {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.md-typeset table th {
+  background: linear-gradient(135deg, var(--viti-primary) 0%, var(--viti-primary-dark) 100%);
+  color: white;
+  font-weight: 600;
+}
+
+.md-typeset table tr:nth-child(even) {
+  background: var(--viti-gray-50);
+}
+
+/* Footer */
+.md-footer {
+  background: var(--viti-gray-900);
+  color: var(--viti-gray-300);
+}
+
+.md-footer-meta {
+  background: var(--viti-gray-800);
+}
+
+/* Scroll indicators */
+.md-sidebar__scrollwrap::-webkit-scrollbar {
+  width: 4px;
+}
+
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background: var(--viti-secondary);
+  border-radius: 2px;
+}
+
+.md-sidebar__scrollwrap::-webkit-scrollbar-track {
+  background: var(--viti-gray-100);
+}
+
+/* Animation for page transitions */
+.md-content {
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 76.1875em) {
+  .md-nav__title {
+    background: var(--viti-primary);
+    color: white;
+  }
+  
+  .md-nav__title::before {
+    color: white;
+  }
 }
