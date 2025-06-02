@@ -41,6 +41,8 @@ theme:
     repo: fontawesome/brands/github
 extra_css:
   - css/viti.css
+extra_javascript:
+  - js/accessibility.js
 plugins:
     - search
     - mermaid2

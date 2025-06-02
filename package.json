@@ -1,0 +1,25 @@
+{
+  "name": "vitistack-docs-accessibility",
+  "version": "1.0.0",
+  "description": "Accessibility testing configuration for Vitistack documentation",
+  "scripts": {
+    "test:a11y": "npm run test:axe && npm run test:pa11y && npm run test:lighthouse",
+    "test:axe": "axe http://localhost:8080 --exit --verbose",
+    "test:pa11y": "pa11y http://localhost:8080",
+    "test:lighthouse": "lhci autorun",
+    "test:htmlcs": "htmlcs http://localhost:8080"
+  },
+  "devDependencies": {
+    "@axe-core/cli": "^4.8.3",
+    "@lhci/cli": "^0.12.0",
+    "pa11y": "^7.0.0",
+    "html_codesniffer": "^2.5.1"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vitistack/docs"
+  }
+}

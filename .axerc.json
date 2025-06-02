@@ -1,0 +1,19 @@
+{
+  "rules": {
+    "color-contrast": { "enabled": true },
+    "keyboard-navigation": { "enabled": true },
+    "focus-order": { "enabled": true },
+    "aria-labels": { "enabled": true },
+    "heading-structure": { "enabled": true },
+    "link-purpose": { "enabled": true },
+    "image-alt": { "enabled": true }
+  },
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21aa",
+    "best-practice"
+  ],
+  "locale": "en",
+  "reporter": "v2"
+}

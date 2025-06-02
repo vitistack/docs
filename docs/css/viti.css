@@ -271,9 +271,18 @@
 
 /* Tables */
 .md-typeset table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.md-typeset table th,
+.md-typeset table td {
+  border: 1px solid var(--viti-gray-300);
+  padding: 0.75rem;
+  text-align: left;
 }
 
 .md-typeset table th {
@@ -283,7 +292,11 @@
 }
 
 .md-typeset table tr:nth-child(even) {
-  background: var(--viti-gray-50);
+  background: #f8fafc;
+}
+
+.md-typeset table tr:hover {
+  background: #f1f5f9;
 }
 
 /* Footer */
@@ -336,4 +349,200 @@
   .md-nav__title::before {
     color: white;
   }
+}
+
+/* Accessibility improvements */
+
+/* Enhanced focus indicators */
+*:focus {
+  outline: 2px solid var(--viti-secondary);
+  outline-offset: 2px;
+}
+
+/* High contrast focus for interactive elements */
+.md-nav__link:focus,
+.md-tabs__link:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid var(--viti-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.3);
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--viti-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Improved contrast ratios */
+.md-typeset {
+  --md-default-fg-color: #0f172a;
+  --md-default-fg-color--light: #334155;
+  --md-default-fg-color--lighter: #64748b;
+}
+
+/* Better color contrast for links */
+.md-typeset a {
+  color: #1d4ed8; /* Higher contrast blue */
+  font-weight: 500;
+}
+
+.md-typeset a:hover {
+  color: #1e40af;
+  text-decoration: underline;
+}
+
+/* Ensure sufficient contrast for code elements */
+.md-typeset code {
+  background: #f1f5f9;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+}
+
+/* Enhanced table accessibility */
+.md-typeset table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.md-typeset table th,
+.md-typeset table td {
+  border: 1px solid var(--viti-gray-300);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.md-typeset table th {
+  background: var(--viti-primary);
+  color: white;
+  font-weight: 600;
+}
+
+.md-typeset table tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.md-typeset table tr:hover {
+  background: #f1f5f9;
+}
+
+/* Improved button accessibility */
+button,
+.md-button,
+[role="button"] {
+  min-height: 44px; /* WCAG touch target size */
+  min-width: 44px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+button:disabled,
+.md-button:disabled,
+[role="button"][aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--viti-gray-400);
+}
+
+/* Enhanced form control accessibility */
+input,
+textarea,
+select {
+  min-height: 44px;
+  padding: 0.75rem;
+  border: 2px solid var(--viti-gray-300);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--viti-secondary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Screen reader only class for accessibility */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --md-primary-fg-color: #000000;
+    --md-primary-bg-color: #ffffff;
+    --md-accent-fg-color: #0000ff;
+    --md-default-fg-color: #000000;
+    --md-default-bg-color: #ffffff;
+  }
+  
+  .md-nav__link:hover,
+  .md-nav__link:focus {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+  
+  .md-typeset code {
+    background-color: #f0f0f0 !important;
+    color: #000000 !important;
+    border: 1px solid #000000 !important;
+  }
+}
+
+/* Dark mode accessibility improvements */
+[data-md-color-scheme="slate"] {
+  --md-default-fg-color: #e2e8f0;
+  --md-default-fg-color--light: #cbd5e1;
+  --md-default-fg-color--lighter: #94a3b8;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a {
+  color: #60a5fa;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a:hover {
+  color: #93c5fd;
+}
+
+/* Screen reader only class for accessibility */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }

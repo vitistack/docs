@@ -4,13 +4,175 @@ on:
     branches:
       - master 
       - main
+  pull_request:
+    branches:
+      - master
+      - main
 permissions:
   contents: write
+  pull-requests: write
 env:
   cache_id: 'vitidocs'
 jobs:
-  deploy:
+  accessibility-test:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Cache Python dependencies
+        uses: actions/cache@v4
+        with:
+          key: python-deps-${{ hashFiles('mkdocs-requirements.txt') }}
+          path: |
+            ~/.cache/pip
+            venv
+          
+      - name: Cache Node dependencies
+        uses: actions/cache@v4
+        with:
+          key: node-deps-${{ hashFiles('package.json') }}
+          path: ~/.npm
+          
+      - name: Setup Python virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          echo "VIRTUAL_ENV=$VIRTUAL_ENV" >> $GITHUB_ENV
+          echo "$VIRTUAL_ENV/bin" >> $GITHUB_PATH
+          
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install mkdocs-material
+          pip install -r mkdocs-requirements.txt
+          
+      - name: Install accessibility testing tools
+        run: |
+          npm install -g @axe-core/cli @lhci/cli pa11y
+          
+      - name: Build documentation
+        run: mkdocs build
+        
+      - name: Start local server for testing
+        run: |
+          cd site
+          # Find available port
+          PORT=8080
+          while netstat -an | grep -q ":$PORT "; do
+            PORT=$((PORT + 1))
+          done
+          echo "Using port: $PORT"
+          echo "PORT=$PORT" >> $GITHUB_ENV
+          python -m http.server $PORT &
+          echo $! > server.pid
+          sleep 5
+          
+      - name: Run Axe accessibility tests
+        run: |
+          echo "Running Axe accessibility tests..."
+          axe http://localhost:$PORT --exit --verbose --reporter json --output-file axe-results.json
+          
+      - name: Run Pa11y accessibility tests
+        run: |
+          echo "Running Pa11y accessibility tests..."
+          pa11y http://localhost:$PORT --reporter json > pa11y-results.json || true
+          
+      - name: Run Lighthouse accessibility audit
+        run: |
+          echo "Running Lighthouse accessibility audit..."
+          lhci collect --url=http://localhost:$PORT --numberOfRuns=1 || true
+          lhci assert --preset=lighthouse:recommended || true
+          
+      - name: Stop local server
+        run: |
+          if [ -f site/server.pid ]; then
+            kill $(cat site/server.pid) || true
+            rm site/server.pid
+          fi
+          
+      - name: Upload accessibility test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: accessibility-results
+          path: |
+            axe-results.json
+            pa11y-results.json
+            .lighthouseci/
+            
+      - name: Comment PR with accessibility results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let comment = '## 🔍 Accessibility Test Results\n\n';
+            
+            // Check Axe results
+            try {
+              const axeResults = JSON.parse(fs.readFileSync('axe-results.json', 'utf8'));
+              const violations = axeResults.violations || [];
+              comment += `### Axe Core Results\n`;
+              comment += `- **Violations:** ${violations.length}\n`;
+              if (violations.length > 0) {
+                comment += `\n**Issues found:**\n`;
+                violations.slice(0, 5).forEach(v => {
+                  comment += `- ${v.impact}: ${v.description}\n`;
+                });
+                if (violations.length > 5) {
+                  comment += `- ... and ${violations.length - 5} more issues\n`;
+                }
+              } else {
+                comment += `✅ No accessibility violations found!\n`;
+              }
+            } catch (e) {
+              comment += `### Axe Core Results\n❌ Test failed to run\n`;
+            }
+            
+            comment += '\n';
+            
+            // Check Pa11y results
+            try {
+              const pa11yResults = JSON.parse(fs.readFileSync('pa11y-results.json', 'utf8'));
+              const issues = pa11yResults.issues || [];
+              comment += `### Pa11y Results\n`;
+              comment += `- **Issues:** ${issues.length}\n`;
+              if (issues.length > 0) {
+                comment += `\n**Issues found:**\n`;
+                issues.slice(0, 5).forEach(issue => {
+                  comment += `- ${issue.type}: ${issue.message}\n`;
+                });
+                if (issues.length > 5) {
+                  comment += `- ... and ${issues.length - 5} more issues\n`;
+                }
+              } else {
+                comment += `✅ No issues found!\n`;
+              }
+            } catch (e) {
+              comment += `### Pa11y Results\n❌ Test failed to run\n`;
+            }
+            
+            comment += '\n📊 Full results are available in the workflow artifacts.';
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  deploy:
+    needs: accessibility-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v4
       - name: Configure Git Credentials
@@ -27,6 +189,15 @@ jobs:
           path: .cache 
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material 
-      - run: pip install -r mkdocs-requirements.txt
+      - name: Setup Python virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          echo "VIRTUAL_ENV=$VIRTUAL_ENV" >> $GITHUB_ENV
+          echo "$VIRTUAL_ENV/bin" >> $GITHUB_PATH
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install mkdocs-material 
+          pip install -r mkdocs-requirements.txt
       - run: mkdocs gh-deploy --force
