@@ -60,7 +60,21 @@ jobs:
           
       - name: Setup Chrome and ChromeDriver
         run: |
-          npx browser-driver-manager install chrome --user
+          # Update Chrome to latest version
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+          
+          # Install matching ChromeDriver
+          CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+          CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+          curl -Lo chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+          sudo unzip -o chromedriver.zip -d /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver
+          rm chromedriver.zip
+          
+          # Verify installation
+          google-chrome --version
+          chromedriver --version
           
       - name: Build documentation
         run: mkdocs build
