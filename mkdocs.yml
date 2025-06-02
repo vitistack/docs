@@ -44,5 +44,5 @@ extra:
       name: vitistack
   generator: false
 nav:
-  - viti:
+  - intro:
     - index.md
