@@ -84,7 +84,7 @@ jobs:
       - name: Run Axe accessibility tests
         run: |
           echo "Running Axe accessibility tests..."
-          npx axe http://localhost:$PORT --exit --verbose --save axe-results.json --chromedriver-path ${{ steps.setup-chrome.outputs.chromedriver-path }} || echo "Axe found accessibility issues"
+          npx axe http://localhost:$PORT --exit --verbose --save axe-results.json --chrome-path ${{ steps.setup-chrome.outputs.chrome-path }} --chromedriver-path ${{ steps.setup-chrome.outputs.chromedriver-path }} || echo "Axe found accessibility issues"
           
       - name: Run Pa11y accessibility tests
         run: |
