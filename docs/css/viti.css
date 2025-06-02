@@ -546,3 +546,63 @@ select:focus {
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+/* Improved syntax highlighting contrast for accessibility */
+/* These rules fix the specific color contrast violations found by Axe */
+
+/* Keywords (class .k) - improve contrast */
+.md-typeset .highlight .k {
+  color: #0d47a1 !important; /* Darker blue for better contrast */
+  font-weight: 600;
+}
+
+/* Function names (class .nf) - improve contrast */
+.md-typeset .highlight .nf {
+  color: #b71c1c !important; /* Darker red for better contrast */
+  font-weight: 600;
+}
+
+/* String docstrings (class .sd) - improve contrast */
+.md-typeset .highlight .sd {
+  color: #2e7d32 !important; /* Darker green for better contrast */
+  font-style: italic;
+}
+
+/* String literals (class .s2) - improve contrast */
+.md-typeset .highlight .s2 {
+  color: #bf360c !important; /* Even darker orange/red for better contrast */
+  font-weight: 500;
+}
+
+/* Additional string and literal improvements for maximum contrast */
+.md-typeset .highlight .s,    /* String */
+.md-typeset .highlight .s1,   /* String single quote */
+.md-typeset .highlight .s2,   /* String double quote */ 
+.md-typeset .highlight .sb,   /* String backtick */
+.md-typeset .highlight .sc {   /* String char */
+  color: #bf360c !important; /* Dark orange/red for maximum contrast */
+  font-weight: 500 !important;
+}
+
+/* Dark mode versions for string classes */
+[data-md-color-scheme="slate"] .md-typeset .highlight .s,
+[data-md-color-scheme="slate"] .md-typeset .highlight .s1,
+[data-md-color-scheme="slate"] .md-typeset .highlight .s2,
+[data-md-color-scheme="slate"] .md-typeset .highlight .sb,
+[data-md-color-scheme="slate"] .md-typeset .highlight .sc {
+  color: #ffab91 !important; /* Light orange for dark mode */
+}
+
+/* Dark mode versions */
+[data-md_color-scheme="slate"] .md-typeset .highlight .c1,
+[data-md_color-scheme="slate"] .md-typeset .highlight .c {
+  color: #bdbdbd !important; /* Light gray for dark mode */
+}
+
+[data-md_color-scheme="slate"] .md-typeset .highlight .n {
+  color: #e0e0e0 !important; /* Light gray for dark mode */
+}
+
+[data-md_color-scheme="slate"] .md-typeset .highlight .o {
+  color: #f48fb1 !important; /* Light pink for dark mode */
+}
