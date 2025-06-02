@@ -105,31 +105,15 @@ if [ ! -d "node_modules" ]; then
     npm install
 fi
 
-# Install browser-driver-manager and sync Chrome/ChromeDriver versions
+# Setup Chrome and ChromeDriver compatibility
 echo "🌐 Setting up browser driver compatibility..."
-if command_exists google-chrome || command_exists google-chrome-stable; then
-    npm install -g browser-driver-manager 2>/dev/null || {
-        echo -e "${YELLOW}⚠️  Could not install browser-driver-manager globally. Continuing...${NC}"
+if [ ! -d "node_modules/puppeteer" ]; then
+    echo "Installing Puppeteer for consistent Chrome/ChromeDriver versions..."
+    npm install puppeteer --save-dev 2>/dev/null || {
+        echo -e "${YELLOW}⚠️  Could not install Puppeteer. Tests may still work with system Chrome.${NC}"
     }
-    
-    # Try to get Chrome version and install matching ChromeDriver
-    if command_exists google-chrome; then
-        CHROME_CMD="google-chrome"
-    elif command_exists google-chrome-stable; then
-        CHROME_CMD="google-chrome-stable"
-    fi
-    
-    if [ ! -z "$CHROME_CMD" ]; then
-        CHROME_VERSION=$($CHROME_CMD --version 2>/dev/null | sed 's/Google Chrome //g' | sed 's/ .*//g')
-        if [ ! -z "$CHROME_VERSION" ]; then
-            echo "Chrome version detected: $CHROME_VERSION"
-            browser-driver-manager install chrome --chrome-version="$CHROME_VERSION" 2>/dev/null || {
-                echo -e "${YELLOW}⚠️  Could not sync ChromeDriver. Tests may still work with existing drivers.${NC}"
-            }
-        fi
-    fi
 else
-    echo -e "${YELLOW}⚠️  Chrome not found. Lighthouse tests may not work properly.${NC}"
+    echo "Puppeteer already installed for browser compatibility"
 fi
 
 # Build the documentation

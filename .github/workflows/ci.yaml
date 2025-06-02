@@ -54,13 +54,11 @@ jobs:
           pip install mkdocs-material
           pip install -r mkdocs-requirements.txt
           
-      - name: Install browser-driver-manager and sync Chrome/ChromeDriver versions
+      - name: Setup Chrome and ChromeDriver compatibility
         run: |
-          npm install -g browser-driver-manager
-          # Get Chrome version and install matching ChromeDriver
-          CHROME_VERSION=$(google-chrome --version | sed 's/Google Chrome //g' | sed 's/ .*//g')
-          echo "Chrome version: $CHROME_VERSION"
-          browser-driver-manager install chrome --chrome-version="$CHROME_VERSION"
+          # Let Puppeteer download its own Chrome version for consistency
+          npm install puppeteer --save-dev
+          # This ensures all tools use the same Chrome/ChromeDriver versions
           
       - name: Install accessibility testing tools
         run: |

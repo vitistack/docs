@@ -13,7 +13,8 @@
     "@axe-core/cli": "^4.8.3",
     "@lhci/cli": "^0.12.0",
     "pa11y": "^7.0.0",
-    "html_codesniffer": "^2.5.1"
+    "html_codesniffer": "^2.5.1",
+    "puppeteer": "^21.0.0"
   },
   "engines": {
     "node": ">=16"
