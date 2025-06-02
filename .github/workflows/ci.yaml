@@ -59,7 +59,8 @@ jobs:
           npm clean-install --silent
          
       - uses: browser-actions/setup-chrome@v1
-        with:
+        id: setup-chrome
+        with:  
           chrome-version: 127
           install-chromedriver: true
           
@@ -83,7 +84,7 @@ jobs:
       - name: Run Axe accessibility tests
         run: |
           echo "Running Axe accessibility tests..."
-          npx axe http://localhost:$PORT --exit --verbose --save axe-results.json || echo "Axe found accessibility issues"
+          npx axe http://localhost:$PORT --exit --verbose --save axe-results.json --chromedriver-path ${{ steps.setup-chrome.outputs.chromedriver-path }} || echo "Axe found accessibility issues"
           
       - name: Run Pa11y accessibility tests
         run: |
