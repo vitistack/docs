@@ -58,6 +58,7 @@ jobs:
         run: |
           # Let Puppeteer download its own Chrome version for consistency
           npm install puppeteer --save-dev
+          npx browser-driver-manager install chrome
           # This ensures all tools use the same Chrome/ChromeDriver versions
           
       - name: Install accessibility testing tools
