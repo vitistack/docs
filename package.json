@@ -12,9 +12,13 @@
   "devDependencies": {
     "@axe-core/cli": "^4.10.1",
     "@lhci/cli": "^0.14.0",
-    "pa11y": "^8.0.0",
+    "chromedriver": "^127.0.3",
     "html_codesniffer": "^2.5.1",
+    "pa11y": "^8.0.0",
     "puppeteer": "^22.15.0"
+  },
+  "_comments": {
+    "chromedriver": "Version must match the Chrome version used by Puppeteer (currently 127.x)"
   },
   "overrides": {
     "glob": "^10.3.10",

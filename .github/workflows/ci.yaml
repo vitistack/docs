@@ -58,6 +58,15 @@ jobs:
         run: |
           npm clean-install --silent
           
+      - name: Setup Puppeteer Chrome
+        run: |
+          # Get Puppeteer's Chrome version and set paths
+          echo "PUPPETEER_EXECUTABLE_PATH=$(node -e "console.log(require('puppeteer').executablePath())")" >> $GITHUB_ENV
+          echo "CHROMEDRIVER_PATH=$(pwd)/node_modules/chromedriver/bin/chromedriver" >> $GITHUB_ENV
+          # Verify versions match
+          CHROME_VERSION=$(node -e "console.log(require('puppeteer').executablePath().match(/chrome\/[^\/]+/)[0].split('-')[1].split('.')[0])")
+          echo "Using Chrome version: $CHROME_VERSION"
+          
       - name: Build documentation
         run: mkdocs build
         
@@ -78,7 +87,7 @@ jobs:
       - name: Run Axe accessibility tests
         run: |
           echo "Running Axe accessibility tests..."
-          npx axe http://localhost:$PORT --exit --verbose --save axe-results.json || echo "Axe found accessibility issues"
+          npx axe http://localhost:$PORT --exit --verbose --save axe-results.json --chrome-path "$PUPPETEER_EXECUTABLE_PATH" --chromedriver-path "$CHROMEDRIVER_PATH" || echo "Axe found accessibility issues"
           
       - name: Run Pa11y accessibility tests
         run: |
