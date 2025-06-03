@@ -4,4 +4,4 @@ Welcome to the **Vitistack** documentation! This site showcases a custom MkDocs 
 
 # viti
 
-![Test Image](/images/test.excalidraw.svg "test drawing")
+![Test Image](images/test.excalidraw.svg "test drawing")
