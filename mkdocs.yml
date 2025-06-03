@@ -73,3 +73,4 @@ extra:
 nav:
   - intro:
     - index.md
+    - dns.md
