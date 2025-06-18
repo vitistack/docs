@@ -74,3 +74,4 @@ nav:
   - intro:
     - index.md
     - dns.md
+    - ipam-operator.md
