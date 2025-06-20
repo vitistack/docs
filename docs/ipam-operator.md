@@ -4,4 +4,4 @@
 - 
 
 # model
-![dns Image](images/dns.excalidraw.png "dns drawing")
+![dns Image](images/ipam-operator_create.png "Service Create")
