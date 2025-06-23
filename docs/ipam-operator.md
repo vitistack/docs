@@ -34,12 +34,12 @@ metadata:
 ```
 Lets go through the annotations, one by one:
 
-1. **ipam.vitistack.io/addresses**: Metallb supports only one ip-address pr ip-family. IPAM-operator will fetch ip-address automatically, if not provided manually by consumer. Commas are used to separate multiple addresses.
-2. **ipam.vitistack.io/allow-local-shared-ip**: Metallb supports sharing single ip-adress between services within same cluster if the pre-shared-key is the same for both services with different ports.
+1. **ipam.vitistack.io/addresses**: Metallb supports only one (1) ip-address pr ip-family. IPAM-operator will fetch ip-address automatically, if not provided manually by consumer. Commas are used to separate multiple addresses.
+2. **ipam.vitistack.io/allow-local-shared-ip**: Metallb supports sharing single ip-address between services within same cluster if the pre-shared-key is the same for both services with different ports.
 3. **ipam.vitistack.io/deny-external-cleanup**: IPAM-API communicates (one-way) with ROR by using SSE (Server Sent Events), where ROR can send an event to IPAM-API with the cluster UUID to mark all services for a specific cluster to deletion. By toggeling this setting, consumer can prevent ROR from deleting services.
-4. **ipam.vitistack.io/ip-family**: IPAM-API supports ipv4, ipv6 & dual keywords. If you would like create a service that only supports ipv6, please make sure that .spec.ipFamilies is set to IPv6 during creation.
-5. **ipam.vitistack.io/retention-period-days**: Number of days the ip-address should be kept reserved in IPAM-API before it`s released. You need the secret to re-call the ip-address.
-6. **ipam.vitistack.io/secret**: IPAM-operator will create a default secret in namespace ipam-system while serving the first request. The secret is noted as "default" in annotations. Let says you would like to create a anycast service from multiple datacenters. In that case, you need to replace the secret with a opaque secret that exists on all required locations. The opaque secret must be stored in the same namespace as the service. **Note:** The secret cannot be replaced if it is used by multiple services.
+4. **ipam.vitistack.io/ip-family**: IPAM-API supports ipv4, ipv6 & dual keywords. If you would like create a service that only supports ipv6, please make sure that .spec.ipFamilies is set to IPv6 during initial creation.
+5. **ipam.vitistack.io/retention-period-days**: Number of days the ip-address should be reserved in IPAM-API before it`s released. You need the secret to re-call the ip-address.
+6. **ipam.vitistack.io/secret**: IPAM-operator will create a default secret in namespace ipam-system while serving the first request. The secret is noted as "default" in annotations. Let says you would like to create a anycast service from multiple datacenters. In that case, you need to replace the secret with a opaque secret that exists on all required locations. The opaque secret must be stored in the same namespace as the service. **Note:** The secret cannot be replaced if it´s used by multiple services.
 7. **ipam.vitistack.io/zone**: NHN supports three (3) zones for time being: hnet-private, hnet-public & inet. Zone **hnet-public** should be used with caution due to limited addresses in that space.
 
 ## Request Body
