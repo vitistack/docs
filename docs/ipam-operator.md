@@ -82,10 +82,10 @@ $ kubectl -n ipam-system logs ipam-controller-manager-7795669cd6-qrnzb
 2025-06-23T12:27:08Z    INFO    ipam-operator   Dry run mode detected, skipping validate create for Service:    {"name": "my-service"}
 2025-06-23T12:27:08Z    INFO    ipam-operator   Initialized default secret
 2025-06-23T12:27:08Z    INFO    ipam-operator   Request IPv4-address for Service:       {"name": "my-service"}
-2025-06-23T12:27:08Z    INFO    ipam-operator   Received IPv4-address for Service:      {"name": "my-service", "address": "10.204.147.224"}
+2025-06-23T12:27:08Z    INFO    ipam-operator   Received IPv4-address for Service:      {"name": "my-service", "address": "83.118.168.10"}
 2025-06-23T12:27:08Z    INFO    ipam-operator   Mutating Completed for Service  {"name": "my-service"}
 2025-06-23T12:27:08Z    INFO    ipam-operator   Validation Create Started for Service   {"name": "my-service"}
-2025-06-23T12:27:09Z    INFO    ipam-operator   Validate IP-address succeeded!  {"name": "my-service", "ip": "10.204.147.224"}
+2025-06-23T12:27:09Z    INFO    ipam-operator   Validate IP-address succeeded!  {"name": "my-service", "ip": "83.118.168.10"}
 2025-06-23T12:27:09Z    INFO    ipam-operator   Validation Create Completed for Service {"name": "my-service"}
 ```
 
