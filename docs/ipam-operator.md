@@ -12,4 +12,4 @@
 ![Service Update Image](images/update.service.ipam-operator.excalidraw.png "Service Update")
 
 # model : Service - Delete
-![Service Delete Image](images/update.service.ipam-operator.excalidraw.png "Service Delete")
+![Service Delete Image](images/delete.service.ipam-operator.excalidraw.png "Service Delete")
