@@ -13,10 +13,10 @@ An API for retrieving ip addresses from Netbox and storing them in MongoDB along
 We use Netbox for controlling zones and which prefixes are available for each zone. 
 
 ### Custom Field Choices
-* "k8s_zone_choices" is used to define the zones available for the api. These sones are fetch from Netbox and used to validate the request. This should be a select with the valid zones.
+* "k8s_zone_choices" is used to define the zones available for the api. These sones are fetched from Netbox and used to validate the request. This custom field should be a select with the valid zones.
 
 ### Custom Fields
-* "k8s_zone" is the selected zone
+* "k8s_zone" is the selected zone for which theses addresses should be used
 * "k8s_uuid" is used for the mongodb _id for the registered address
 
 ### Prefixes
@@ -25,7 +25,6 @@ We use Netbox for controlling zones and which prefixes are available for each zo
 * Custom field "k8s_uuid" needs to be added to the prefix
 
 When "k8s_zone" and "container" is set the prefix is available for IPAM-API
-
 
 ## Environment setup
 
@@ -79,6 +78,46 @@ go run cmd/ipam-api/main.go
 
 ### Swagger doc
 Swagger documentation is available at **ipam-api:3000/swagger/index.html**
+
+### Request Body
+```json
+{
+    "address": "83.118.168.10/32",
+    "ip_family": "ipv4",
+    "zone": "inet", 
+    "secret": "SuperSecret",
+    "new_secret": "SuperSecret",
+    "service": {
+        "service_name": "ingress_inet",
+        "namespace_id": "467579ae-b8d5-4524-9ce8-bcb66ee02ce0",
+        "cluster_id": "0f3c7805-6b1d-4387-b8c4-b8c5d0e9b878",
+        "retention_period_days": 0,
+        "deny_external_cleanup": false
+    },
+}
+```
+**Top level fields**
+
+| Field                     | Required | Description |
+|---------------------------|----------|-------------|
+| `address`                 | Optional | Specific IP address to register (must be available in NetBox zone) |
+| `ip_family`               | Yes      | IP family, either `"ipv4"` or `"ipv6"` |
+| `zone`                    | Yes      | Logical zone (must match a Netbox custom field `k8s_zone`) |
+| `secret`                  | Yes      | Unique identifier for the service; used for authentication and tracking |
+| `new_secret`              | Optional | If provided, replaces the `secret` after successful update |
+| `Service`                 | Yes      | Object containing metadata about the service being registered (see below) |
+
+**Service fields**
+
+| Field                     | Required | Description |
+|---------------------------|----------|-------------|
+| `service_name`            | Yes      | Name of the service being registered |
+| `namespace_id`            | Yes      | UUID of the namespace associated with the service |
+| `cluster_id`              | Yes      | UUID of the cluster the service belongs to |
+| `retention_period_days`   | Optional | Days to retain the IP even if the service is deleted |
+| `deny_external_cleanup`   | Optional | Prevents the IP from being cleaned by external tools |
+
+
 
 ### Example: Register a service
 ```bash
