@@ -4,9 +4,11 @@
 The IPAM-operator (IP Address Management operator) plays a critical role in managing IP addresses for services within healthcare network and internet.
 IPAM-operator depends on:
 
-1. cert-manager (https://cert-manager.io) to assign certificate to Admission Webhook components
-2. MetalLB (https://metallb.io) to expose the service outside the cluster
-3. IPAM-API (https://github.com/vitistack/ipam-api) for requesting ip-addresses
+1. **cert-manager** (https://cert-manager.io) to assign certificate to Admission Webhook components
+2. **MetalLB** (https://metallb.io) to expose the service outside the cluster
+3. **IPAM-API** (https://github.com/vitistack/ipam-api) for requesting ip-addresses
+
+IPAM-operator is built upon framework Kubebuilder for writing controllers and operators in a structured and standardized way.
 
 ## Service
 IPAM-operator will assign default IPAM annotations to the service object during create & update process. However, you may configure those values manually by choice!
