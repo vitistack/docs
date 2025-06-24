@@ -13,18 +13,18 @@ An API for retrieving ip addresses from Netbox and storing them in MongoDB along
 We use Netbox for controlling zones and which prefixes are available for each zone. 
 
 ### Custom Field Choices
-* "k8s_zone_choices" is used to define the zones available for the api. These sones are fetched from Netbox and used to validate the request. This custom field should be a select with the valid zones.
+* `k8s_zone_choices` is used to define the zones available for the api. These sones are fetched from Netbox and used to validate the request. This custom field should be a select with the valid zones.
 
 ### Custom Fields
-* "k8s_zone" is the selected zone for which theses addresses should be used
-* "k8s_uuid" is used for the mongodb _id for the registered address
+* `k8s_zone` is the `k8s_zone_choices` selection with valid zones
+* `k8s_uuid` is used for the mongodb _id for the registered address
 
 ### Prefixes
-* "type" needs to be "container"
-* Custom field "k8s_zone" needs to be added to the prefix
-* Custom field "k8s_uuid" needs to be added to the prefix
+* `type` needs to be `"container"`
+* Custom field `k8s_zone` needs to be added to the prefix
+* Custom field `k8s_uuid` needs to be added to the prefix
 
-When "k8s_zone" and "container" is set the prefix is available for IPAM-API
+When `k8s_zone` and `container` is set the prefix is available for IPAM-API
 
 ## Environment setup
 
@@ -165,6 +165,7 @@ curl -X DELETE http://localhost:3000/ \
 
 ## IPAM-CLI
 The ipam-cli can be used to display or manipulate ip addresses and services stored in MongoDB, and to create a Mongodb dump for backup.
+
 ### Build
 ```bash
 go build -o bin/ipam-cli ./cmd/cli
