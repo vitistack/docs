@@ -162,3 +162,36 @@ curl -X DELETE http://localhost:3000/ \
 
 ### DELETE request
 ![DELETE Request Overview Image](images/ipam-api/delete.ipam-api.excalidraw.png "DELETE request flow")
+
+## IPAM-CLI
+The ipam-cli can be used to display or manipulate ip addresses and services stored in MongoDB, and to create a Mongodb dump for backup.
+### Build
+```bash
+go build -o bin/ipam-cli ./cmd/cli
+```
+
+### ipam-api help
+
+```
+Command-line interface for interacting with the Vitistack IPAM-API.
+
+Usage:
+  ipam-cli [flags]
+  ipam-cli [command]
+
+Available Commands:
+  completion     Generate the autocompletion script for the specified shell
+  delete-cluster Set exiresAt == time.Now() for services linked to a cluster id
+  delete-service Delete service from address
+  help           Help about any command
+  mongo-backup   Backup MongoDB data
+  replace-secret Replace address secret
+  show-secret    Show address secret
+  show-services  Show address services
+  version        Print the version
+
+Flags:
+  -h, --help   help for ipam-cli
+
+Use "ipam-cli [command] --help" for more information about a command.
+```
