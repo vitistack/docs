@@ -12,7 +12,7 @@ IPAM-operator is built upon framework Kubebuilder for writing controllers and op
 
 ## Service
 IPAM-operator will assign default IPAM annotations to the service object during create & update process. However, you may configure those values manually by choice!
-IPAM annotations require that end-user set .spec.type to **LoadBalancer**.
+IPAM annotations require that end-user set `.spec.type` to `LoadBalancer`.
 If kubernetes API is happy with dryRun - f.ex all required kubernetes parameters is valid - the service will be populated with all required default annotations through IPAM-operator.
 ```yaml
  apiVersion: v1
@@ -46,8 +46,8 @@ Let´s go through the annotations, one by one:
 
 - **ipam.vitistack.io/addresses**: Metallb support only one (1) ip-address pr ip-family. IPAM-operator will fetch ip-address automatically, if not provided manually by consumer. Commas are used to separate multiple addresses.
 - **ipam.vitistack.io/allow-local-shared-ip**: Metallb support sharing single ip-address between services within same cluster if the pre-shared-key is the same for both services with different ports.
-- **ipam.vitistack.io/deny-external-cleanup**: IPAM-API initiate communication (one-way) with ROR to support SSE (Server Sent Events), where ROR can send an event to IPAM-API with the cluster UUID to mark all services for a specific cluster to deletion. By toggeling this setting, consumer can prevent ROR from deleting services.
-- **ipam.vitistack.io/ip-family**: IPAM-API supports ipv4, ipv6 & dual keywords. If you would like create a service that only supports ipv6, please make sure that .spec.ipFamilies is set to IPv6 during initial creation.
+- **ipam.vitistack.io/deny-external-cleanup**: IPAM-API initiate communication (one-way) with ROR to support **SSE** (Server Sent Events), where ROR can send an event to IPAM-API with the cluster UUID to mark all services for a specific cluster to deletion. By toggeling this setting, consumer can prevent ROR from deleting services.
+- **ipam.vitistack.io/ip-family**: IPAM-API supports `ipv4`, `ipv6` & `dual` keywords. If you would like create a service that only supports ipv6, please make sure that `.spec.ipFamilies` is set to `IPv6` during initial creation.
 - **ipam.vitistack.io/retention-period-days**: Number of days the service should be reserved in IPAM-API before it`s deleted. You need the secret to re-call the ip-address.
 - **ipam.vitistack.io/secret**: IPAM-operator will create a default secret in namespace ipam-system while serving the first request. The secret is noted as "default" in annotations. Let say you would like to create an anycast service from multiple datacenters. In that case, you need to replace the secret with a opaque secret that exists on all required locations. The opaque secret must be stored in the same namespace as the service. **Note:** The secret cannot be replaced if it´s used by multiple services.
 ```yaml
@@ -61,15 +61,15 @@ data:
  secret: bXktYXdlc29tZS1wYXNzd29yZA==
 ```
 - **ipam.vitistack.io/zone**: NHN supports three (3) zones for the time being:
-    - hnet-private - healthcare network - supports only ipv4-family - f.ex 10.0.0.0/8 & 172.16.0.0/12
-    - hnet-public - healthcare network - supports only ipv4-family - f.ex 83.118.128.0/22 & 91.186.80/20
-        - Zone **hnet-public** should be used with caution due to limited addresses in that space.
-    - inet - internet - supports both ipv4- & ipv6-family
+    - `hnet-private` - healthcare network - supports only ipv4-family - f.ex 10.0.0.0/8 & 172.16.0.0/12
+    - `hnet-public` - healthcare network - supports only ipv4-family - f.ex 83.118.128.0/22 & 91.186.80/20
+        - zone `hnet-public` should be used with caution due to limited addresses in that space.
+    - `inet` - internet - supports both ipv4- & ipv6-family
 
 ## Request Body
 IPAM-API has no authentication methods available, hence not needed.
 The person who holds the secret, owns the ip-address. Multiple services can consume the same ip-address as long as the secret matches. Each service will be added as a dependency to the ip-address. The ip-address will be released when dependencies no longer exists.
-Key **new_secret** is optional and only required when replacing existing secret!
+Key `new_secret` is optional and only required when replacing existing secret!
 ```json
 {
     "address": "83.118.168.10/32",
@@ -97,7 +97,7 @@ Key **new_secret** is optional and only required when replacing existing secret!
 ```
 
 ## Controller Logs
-Admission Webhook has a default timeout of "10 seconds". We have configured the timeout to "30 seconds", which is the maximum allowed value.
+Admission Webhook has a default timeout of `10 seconds`. We have configured the timeout to `30 seconds`, which is the maximum allowed value.
 A "webhook timeout exceeded" error in Kubernetes, indicates that the Kubernetes API server couldn´t get a response from the webhook within the configured timeout period. Before drawing any conclusion, please verify the logs in IPAM-controller!
 ```bash
 $ kubectl -n ipam-system logs ipam-controller-manager-7795669cd6-qrnzb
