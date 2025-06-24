@@ -118,8 +118,8 @@ Swagger documentation is available at **ipam-api:3000/swagger/index.html**
 | `deny_external_cleanup`   | Optional | Prevents the IP from being cleaned by external tools |
 
 
-
-### Example: Register a service
+### Examples
+#### Register a service
 ```bash
 curl -X POST http://localhost:3000/ \
   -H "Content-Type: application/json" \
@@ -137,7 +137,7 @@ curl -X POST http://localhost:3000/ \
     },
 }'
 ```
-### Example: Set expiration for a service
+#### Set expiration for a service
 ```bash
 curl -X DELETE http://localhost:3000/ \
   -H "Content-Type: application/json" \
@@ -195,4 +195,21 @@ Flags:
   -h, --help   help for ipam-cli
 
 Use "ipam-cli [command] --help" for more information about a command.
+```
+
+### Examples
+
+#### Show all services for an address
+```bash
+ipam-cli show-services --zone inet --address 83.118.168.10/32
+```
+
+#### Delete cluster
+```bash
+ipam-cli delete-cluster --cluster-id 0f3c7805-6b1d-4387-b8c4-b8c5d0e9b878
+```
+
+#### MongoDump for backup
+```bash
+ipam-cli mongo-backup --out /backups/ipam-backup.gz
 ```
