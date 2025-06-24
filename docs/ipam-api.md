@@ -164,7 +164,10 @@ curl -X DELETE http://localhost:3000/ \
 ![DELETE Request Overview Image](images/ipam-api/delete.ipam-api.excalidraw.png "DELETE request flow")
 
 ## IPAM-CLI
-The ipam-cli can be used to display or manipulate ip addresses and services stored in MongoDB, and to create a Mongodb dump for backup.
+The ipam-cli can be used to display or manipulate ip addresses and services stored in MongoDB, and to create a Mongodb dump for backup
+### Requirements
+- `config.json` must be available and correctly configured (see main IPAM-API docs)
+- `ipam-cli` assumes access to the same MongoDB as the IPAM-API 
 
 ### Build
 ```bash
@@ -200,7 +203,7 @@ Use "ipam-cli [command] --help" for more information about a command.
 ### Examples
 
 #### Show all services for an address
-```bash
+```
 ipam-cli show-services --zone inet --address 83.118.168.10/32
 ```
 
