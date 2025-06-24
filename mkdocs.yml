@@ -75,3 +75,4 @@ nav:
     - index.md
     - dns.md
     - ipam-operator.md
+    - ipam-api.md
