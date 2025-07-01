@@ -70,7 +70,7 @@ go run cmd/ipam-api/main.go
 
 ## API Endpoints
 
-| Method  | Path         | Description                    |
+| Method  | Path         | Description                                      |
 | ------- | -------------| ------------------------------------------------ |
 | `POST`  | `/`          | Register or update a ip address, returns IP      |
 | `DELETE`| `/`          | Set expiration for a service for an IP address   |
@@ -214,5 +214,39 @@ ipam-cli delete-cluster --cluster-id 0f3c7805-6b1d-4387-b8c4-b8c5d0e9b878
 
 #### MongoDump for backup
 ```bash
-ipam-cli mongo-backup --out /backups/ipam-backup.gz
+ipam-cli mongo-backup --out ipam-backup.gz
 ```
+This will save the backup file to ./backups/ipam-backup.gz
+
+## Logging
+
+### Configuration
+When `splunk` is present in `config.json` logs from the ipam-api app and http server will be forwarded to a Splunk HEC. 
+```json  
+{
+  "splunk": {
+    "enable": true,
+    "url": "https://splunk-hec.example.com",
+    "token_path": "splunk.secret",
+    "index": "vitistack",
+    "source": "vitistack:ipam-api",
+    "sourcetype_app": "ipam-api:app",
+    "sourcetype_http": "ipam-api:http"
+  }
+}  
+```
+
+| Key               | Type      | Description                                                                                           |
+|-------------------|-----------|-------------------------------------------------------------------------------------------------------|
+| `enable`          | `boolean` | Whether Splunk integration is enabled (`true`) or disabled (`false`).                                 |
+| `url`             | `string`  | URL of the Splunk HEC endpoint, in the form `https://splunk-hec.example.com`.                         |
+| `token_path`      | `string`  | Path to the file or secret containing the Splunk HEC token.                                           |
+| `index`           | `string`  | The Splunk index where logs will be stored.                                                           |
+| `source`          | `string`  | The name of the source, e.g., `vitistack:ipam-api`.                                                   |
+| `sourcetype_app`  | `string`  | The Splunk sourcetype used for **application logs**.                                                  |
+| `sourcetype_http` | `string`  | The Splunk sourcetype used for **HTTP request logs**.                                                 |
+
+
+### Example
+
+![Splunk Overview Image](images/splunk.ipam-operator.excalidraw.png "Splunk Overview")
