@@ -219,8 +219,16 @@ ipam-cli mongo-backup --out ipam-backup.gz
 This will save the backup file to ./backups/ipam-backup.gz
 
 ## Logging
+### Files
+#### Local filesystem
+ipam-api logs can be found in ./logs
 
-### Configuration
+- ipam-api.log - Application logs
+- http.log - HTTP logs
+
+
+### Splunk 
+#### Configuration
 When `splunk` is present in `config.json` logs from the ipam-api app and http server will be forwarded to a Splunk HEC. 
 ```json  
 {
@@ -247,6 +255,6 @@ When `splunk` is present in `config.json` logs from the ipam-api app and http se
 | `sourcetype_http` | `string`  | The Splunk sourcetype used for **HTTP request logs**.                                                 |
 
 
-### Example
+#### Splunk overview
 
 ![Splunk Overview Image](images/splunk.ipam-operator.excalidraw.png "Splunk Overview")
