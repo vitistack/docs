@@ -71,7 +71,7 @@ extra:
       name: vitistack
   generator: false
 nav:
-  - intro:
+  - Introduction:
     - index.md
     - dns.md
     - ipam-operator.md
