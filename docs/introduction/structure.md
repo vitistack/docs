@@ -1,6 +1,6 @@
 # Documentation structure
 
-The VITIstack documentation follows Divio documentation structure which a method for organizing documentation in a clear and efficient way. 
+The VITIstack documentation follows Divio documentation structure which is a method for organizing documentation in a clear and efficient way. 
 
 It divides content into four main categories:
 
