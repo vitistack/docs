@@ -1,6 +1,6 @@
 # Reference
 
-The VITIstack documentation follows Divio documentation structure which is a method for organizing documentation in a clear and efficient way.
+The Vitistack documentation follows Divio documentation structure which is a method for organizing documentation in a clear and efficient way.
 
 Reference is detailed and accurate information, such as API docs or configuration settings.
 

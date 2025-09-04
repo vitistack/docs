@@ -1,6 +1,6 @@
 # Tutorials
 
-The VITIstack documentation follows Divio documentation structure which is a method for organizing documentation in a clear and efficient way. 
+The Vitistack documentation follows Divio documentation structure which is a method for organizing documentation in a clear and efficient way. 
 
 Tutorials is Step-by-step guides aimed at beginners, designed to teach by doing. 
 

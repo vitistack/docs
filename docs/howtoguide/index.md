@@ -1,6 +1,6 @@
 # How-to-guides
 
-The VITIstack documentation follows Divio documentation structure which is a method for organizing documentation in a clear and efficient way. 
+The Vitistack documentation follows Divio documentation structure which is a method for organizing documentation in a clear and efficient way. 
 
 How-to guides is practical instructions for solving specific problems.
 
