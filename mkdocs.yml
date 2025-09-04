@@ -79,7 +79,7 @@ nav:
   - Tutorials:
     - tutorials/index.md
   - How-to-guides:
-    - howtoguides/how-to/index.md
+    - howtoguide/how-to/index.md
   - Reference:
     - reference/index.md
   - Explanations:
