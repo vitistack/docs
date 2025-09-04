@@ -72,7 +72,7 @@ extra:
   generator: false
 nav:
   - Introduction:
-    - index.md
+    - introduction/index.md
   - Tutorials:
     - tutorials/index.md
   - How-to-guides:
