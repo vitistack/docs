@@ -77,10 +77,10 @@ nav:
     - ipam-operator.md
     - ipam-api.md
   - Tutorials:
-    - index.md
+    - tutorials/index.md
   - How-to-guides:
-    - index.md
+    - howtoguides/how-to/index.md
   - Reference:
-    - index.md
+    - reference/index.md
   - Explanations:
-    - index.md
+    - explanation/index.md
