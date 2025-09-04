@@ -73,14 +73,14 @@ extra:
 nav:
   - Introduction:
     - index.md
-    - dns.md
-    - ipam-operator.md
-    - ipam-api.md
   - Tutorials:
     - tutorials/index.md
   - How-to-guides:
     - howtoguide/index.md
   - Reference:
     - reference/index.md
+    - reference/dns.md
+    - reference/ipam-operator.md
+    - reference/ipam-api.md
   - Explanations:
     - explanation/index.md
