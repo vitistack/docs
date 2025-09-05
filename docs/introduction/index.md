@@ -1,7 +1,8 @@
-# Welcome to vitistack
+# Welcome to Vitistack
 
 Welcome to the **Vitistack** documentation! This site showcases a custom MkDocs theme designed around the vibrant Viti brand colors.
 
-# viti
+## What is Viti?
+Viti is a cloud platform based on open-source software that allows its users to achieve increased cost-efficiency, flexibility, security and interoperability.
 
-![Test Image](../images/test.excalidraw.svg "test drawing")
+
