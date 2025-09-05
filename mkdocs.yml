@@ -79,6 +79,7 @@ nav:
     - howtoguide/index.md
   - Reference:
     - reference/index.md
+    - reference/opensourcesoftware.md
     - reference/dns.md
     - reference/ipam-operator.md
     - reference/ipam-api.md
