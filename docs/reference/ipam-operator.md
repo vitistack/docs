@@ -2,6 +2,7 @@
 
 ## Concept
 The IPAM-operator (IP Address Management operator) plays a critical role in managing IP addresses for services within healthcare network and internet.
+
 IPAM-operator depends on:
 
 1. **cert-manager** (https://cert-manager.io) to assign certificate to Admission Webhook components
