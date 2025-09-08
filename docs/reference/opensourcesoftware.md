@@ -1,7 +1,5 @@
 # Open Source Software
 
-!!! warning "Under construction!"
-
 The Vitistack consists of the following open-source software:
 
 - [x] Talos Linux:
