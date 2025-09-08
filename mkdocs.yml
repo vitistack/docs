@@ -75,6 +75,7 @@ nav:
     - introduction/index.md
   - Tutorials:
     - tutorials/index.md
+    - tutorials/how.md
   - How-to-guides:
     - howtoguide/index.md
   - Reference:
