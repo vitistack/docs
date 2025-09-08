@@ -5,9 +5,9 @@ The IPAM-operator (IP Address Management operator) plays a critical role in mana
 
 IPAM-operator depends on:
 
-1. **cert-manager** (https://cert-manager.io) to assign certificate to Admission Webhook components
-2. **MetalLB** (https://metallb.io) to expose the service outside the cluster
-3. **IPAM-API** (https://github.com/vitistack/ipam-api) for requesting ip-addresses
+1. [cert-manager](https://docs.vitistack.io/reference/opensourcesoftware/#cert-manager)
+2. [MetalLB](https://docs.vitistack.io/reference/opensourcesoftware/#metallb)
+3. [IPAM-API](https://github.com/vitistack/ipam-api) for requesting ip-addresses
 
 IPAM-operator is built upon framework Kubebuilder for writing controllers and operators in a structured and standardized way.
 
