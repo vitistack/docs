@@ -19,6 +19,7 @@ In Viti, all release notes are automatically generated from:
 ## How to Access Release Notes
 
 Release notes for each component are available:
+
 - In the respective repository's releases section
 - Through the Viti documentation portal
 - Via automated notifications for major releases
