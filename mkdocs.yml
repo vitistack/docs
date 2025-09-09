@@ -90,3 +90,4 @@ nav:
       - reference/api/ipam-api.md
   - Explanation:
     - explanation/index.md
+    - explanation/architecture.md
