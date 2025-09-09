@@ -1,5 +1,5 @@
 # Release Notes
 
-Contents:
+**Contents:**
 
-- Release notes - Vitistack v1.0
+- [Release notes - Vitistack v1.0](https://docs.vitistack.io/release_notes/v1.0.x/v1_0_x/)
