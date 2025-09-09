@@ -81,6 +81,7 @@ nav:
   - Reference:
     - reference/index.md
     - reference/opensourcesoftware.md
+    - reference/repository.md
     - reference/dns.md
     - Configuration:
       - reference/configuration/index.md
