@@ -82,6 +82,8 @@ nav:
     - reference/index.md
     - reference/opensourcesoftware.md
     - reference/dns.md
+    - Configuration:
+      - reference/configuration/index.md
     - Operators:
       - reference/operators/index.md
       - reference/operators/ipam-operator.md
