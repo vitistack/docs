@@ -82,7 +82,11 @@ nav:
     - reference/index.md
     - reference/opensourcesoftware.md
     - reference/dns.md
-    - reference/ipam-operator.md
-    - reference/ipam-api.md
+    - Operators:
+      - reference/operators/index.md
+      - reference/operators/ipam-operator.md
+    - API:
+      - reference/api/index.md
+      - reference/ipam-api.md
   - Explanations:
     - explanation/index.md
