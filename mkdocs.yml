@@ -87,6 +87,6 @@ nav:
       - reference/operators/ipam-operator.md
     - API:
       - reference/api/index.md
-      - reference/ipam-api.md
-  - Explanations:
+      - reference/api/ipam-api.md
+  - Explanation:
     - explanation/index.md
