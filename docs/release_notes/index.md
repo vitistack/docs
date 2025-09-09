@@ -11,6 +11,7 @@ Release notes in Viti are brief documents that explain what has changed in new v
 ## Automated Generation
 
 In Viti, all release notes are automatically generated from:
+
 - Git commit messages
 - Pull request descriptions
 - Issue tracking data
