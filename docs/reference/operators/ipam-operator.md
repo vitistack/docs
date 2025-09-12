@@ -1,4 +1,4 @@
-# IPAM-OPERATOR
+# IPAM Operator
 
 ## Concept
 The IPAM-operator (IP Address Management operator) plays a critical role in managing IP addresses for services within healthcare network and internet.

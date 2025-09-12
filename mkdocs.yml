@@ -87,6 +87,10 @@ nav:
       - reference/configuration/index.md
     - Operators:
       - reference/operators/index.md
+      - reference/operators/vitistack-operator.md
+      - reference/operators/viti-talos-operator.md
+      - reference/operators/viti-kube-operator.md
+      - reference/operators/viti-physical-operator.md
       - reference/operators/ipam-operator.md
     - API:
       - reference/api/index.md

@@ -1,4 +1,4 @@
-# IPAM-API
+# IPAM API
 
 ## Concept
 An API for retrieving ip addresses from Netbox and storing them in MongoDB along with services connected to the ip address.
