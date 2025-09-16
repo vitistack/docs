@@ -5,8 +5,8 @@ edit_uri: edit/main/docs/
 theme:
   name: material
   language: "nb"
-  logo: images/viti.png
-  favicon: images/viti.png
+  logo: docs/images/viti.png
+  favicon: docs/images/viti.png
   palette:
     # Palette toggle for light mode
     - scheme: default
