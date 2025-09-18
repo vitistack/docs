@@ -6,6 +6,18 @@ Welcome to the **Vitistack** documentation! This site showcases a custom MkDocs 
 
 Viti is a cloud platform based on open-source software that allows its users to achieve increased cost-efficiency, flexibility, security and interoperability. By leveraging the power of open-source technologies, Viti provides a robust, scalable, and transparent cloud infrastructure solution.
 
+## Why Choose Viti?
+
+Viti combines the best of open-source cloud technologies to deliver:
+
+- **Enterprise-grade reliability** with community-driven innovation
+- **Cost-effective scaling** without proprietary software limitations
+- **Complete operational transparency** and control
+- **Seamless hybrid and multi-cloud** deployments
+- **Future-ready architecture** built on proven open standards
+
+Whether you're running microservices, traditional applications, or next-generation workloads, Viti provides the foundation for sustainable, efficient, and secure cloud operations.
+
 ## The Power of Open Source
 
 Open-source software forms the foundation of Viti's architecture, delivering numerous advantages:
@@ -46,16 +58,6 @@ Open-source software forms the foundation of Viti's architecture, delivering num
 - **Knowledge sharing** and best practices from the community
 - **Continuous improvement** driven by real-world usage and feedback
 
-## Why Choose Viti?
 
-Viti combines the best of open-source cloud technologies to deliver:
-
-- **Enterprise-grade reliability** with community-driven innovation
-- **Cost-effective scaling** without proprietary software limitations
-- **Complete operational transparency** and control
-- **Seamless hybrid and multi-cloud** deployments
-- **Future-ready architecture** built on proven open standards
-
-Whether you're running microservices, traditional applications, or next-generation workloads, Viti provides the foundation for sustainable, efficient, and secure cloud operations.
 
 
