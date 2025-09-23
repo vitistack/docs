@@ -85,6 +85,7 @@ nav:
       - reference/configuration/index.md
     - Operators:
       - reference/operators/index.md
+      - reference/operators/viti-proxmox-operator.md
       - reference/operators/vitistack-operator.md
       - reference/operators/viti-talos-operator.md
       - reference/operators/viti-kubevirt-operator.md
