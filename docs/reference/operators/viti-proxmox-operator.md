@@ -18,7 +18,8 @@ The Proxmox operator bridges the gap between Kubernetes orchestration and Proxmo
 #### 1. **Controller Manager**
 - **Location**: `cmd/` directory
 - **Function**: Main entry point that starts the operator and manages all controllers
-- **Responsibilities**: 
+- **Responsibilities**:
+
   - Initialize Kubernetes client
   - Start controller loops
   - Handle graceful shutdown
@@ -27,6 +28,7 @@ The Proxmox operator bridges the gap between Kubernetes orchestration and Proxmo
 - **Location**: `config/crd/` directory
 - **Function**: Define custom Kubernetes resources for Proxmox entities
 - **Likely Resources**:
+
   - `ProxmoxCluster` - Represents a Proxmox cluster
   - `ProxmoxNode` - Represents individual Proxmox nodes
   - `ProxmoxVirtualMachine` - Represents VMs in Proxmox
@@ -40,6 +42,7 @@ The Proxmox operator bridges the gap between Kubernetes orchestration and Proxmo
 - **Location**: `internal/services/` directory
 - **Function**: Business logic for interacting with Proxmox API
 - **Components**:
+
   - `initializeservice/` - Likely handles initial setup and configuration
 
 ## How It Works
@@ -129,6 +132,7 @@ The operator is deployed using Helm charts located in `charts/proxmox-operator/`
 ## Configuration
 
 Configuration is managed through:
+
 - **Environment variables** for Proxmox API credentials
 - **ConfigMaps** for cluster-specific settings
 - **Secrets** for sensitive authentication data
