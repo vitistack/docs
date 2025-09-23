@@ -19,19 +19,18 @@ The Proxmox operator bridges the gap between Kubernetes orchestration and Proxmo
 - **Location**: `cmd/` directory
 - **Function**: Main entry point that starts the operator and manages all controllers
 - **Responsibilities**:
-
-  - Initialize Kubernetes client
-  - Start controller loops
-  - Handle graceful shutdown
+    - Initialize Kubernetes client
+    - Start controller loops
+    - Handle graceful shutdown
 
 #### 2. **Custom Resource Definitions (CRDs)**
 - **Location**: `config/crd/` directory
 - **Function**: Define custom Kubernetes resources for Proxmox entities
 - **Likely Resources**:
 
-  - `ProxmoxCluster` - Represents a Proxmox cluster
-  - `ProxmoxNode` - Represents individual Proxmox nodes
-  - `ProxmoxVirtualMachine` - Represents VMs in Proxmox
+    - `ProxmoxCluster` - Represents a Proxmox cluster
+    - `ProxmoxNode` - Represents individual Proxmox nodes
+    - `ProxmoxVirtualMachine` - Represents VMs in Proxmox
 
 #### 3. **Controllers**
 - **Location**: `internal/controller/` directory
@@ -43,7 +42,7 @@ The Proxmox operator bridges the gap between Kubernetes orchestration and Proxmo
 - **Function**: Business logic for interacting with Proxmox API
 - **Components**:
 
-  - `initializeservice/` - Likely handles initial setup and configuration
+    - `initializeservice/` - Likely handles initial setup and configuration
 
 ## How It Works
 
@@ -65,7 +64,9 @@ For each custom resource, the operator follows this pattern:
 4. **Update**: Update the resource status in Kubernetes
 
 ### 3. **Proxmox API Integration**
+
 The operator communicates with Proxmox VE through its REST API to:
+
 - **Create/Delete VMs**: Provision new virtual machines or remove existing ones
 - **Modify VM Configuration**: Change CPU, memory, disk, network settings
 - **Monitor Status**: Check VM running state, resource usage
