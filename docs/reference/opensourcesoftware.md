@@ -27,6 +27,11 @@ Rook is an open-source, storage orchestrator for Kubernetes that makes it easy t
 
 For more information see - https://github.com/rook/rook
 
+## Cilium
+Cilium is a cloud-native networking and security solution for Kubernetes clusters, providing advanced network policies, load balancing, and observability using eBPF technology for high-performance packet processing.
+
+For more information see - https://cilium.io
+
 ## MetalLB
 MetalLB is a load-balancer implementation for bare metal Kubernetes clusters, using standard routing protocols to expose the service outside the cluster.
 
