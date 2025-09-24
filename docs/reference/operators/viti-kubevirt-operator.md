@@ -25,6 +25,7 @@ KubeVirt is a Kubernetes add-on that allows you to run virtual machines alongsid
 
 #### 2. **Custom Resource Definitions** (`config/crd/`)
 The operator defines the primary resource:
+
 - **`Machine`**: High-level abstraction for virtual machines
 
 #### 3. **Controllers** (`controllers/v1alpha1/`)
@@ -75,6 +76,7 @@ The operator provides predefined instance types:
 ### 3. **Resource Override Capability**
 
 Users can override default instance type settings for fine-grained control:
+
 - **CPU Configuration**: Cores, sockets, threads per core
 - **Memory Allocation**: Custom memory sizes in bytes
 - **Disk Configuration**: Additional storage volumes
@@ -152,6 +154,7 @@ spec:
 
 ### **Helm Installation**
 The operator includes Helm charts (`charts/kubevirt-operator/`) with:
+
 - **CRD Management**: Automatic custom resource definition installation
 - **RBAC Setup**: Proper permissions for cluster operations
 - **Operator Deployment**: Configurable operator pod deployment
