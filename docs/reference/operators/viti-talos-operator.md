@@ -24,6 +24,7 @@ Talos Linux is a modern, secure, and minimal Linux distribution designed specifi
 
 #### 2. **Custom Resource Definitions** (`config/crd/`)
 The operator defines these primary resources:
+
 - **`KubernetesCluster`**: High-level cluster specification
 - **`Machine`**: Individual node configurations (generated automatically)
 
