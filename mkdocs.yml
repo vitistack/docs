@@ -91,6 +91,8 @@ nav:
       - reference/operators/viti-kubevirt-operator.md
       - reference/operators/viti-physical-operator.md
       - reference/operators/ipam-operator.md
+    - CRDs:
+      - reference/crd/index.md
     - API:
       - reference/api/index.md
       - reference/api/ipam-api.md
