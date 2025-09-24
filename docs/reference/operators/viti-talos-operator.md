@@ -65,6 +65,7 @@ The operator analyzes the `KubernetesCluster` specification and automatically ge
 ### 3. **File Generation and Debugging**
 
 A unique feature of this operator is its debugging capability:
+
 - **Local File Output**: Saves all generated manifests to `hack/results/{cluster-name}/`
 - **Manual Inspection**: Allows developers to review generated configurations
 - **Troubleshooting**: Enables debugging of cluster generation logic
