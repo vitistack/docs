@@ -175,6 +175,7 @@ ls hack/results/simple-cluster/
 
 ### **Helm Installation**
 The operator includes Helm charts (`charts/talos-operator/`) with:
+
 - **CRD Installation**: Automatic custom resource definition setup
 - **RBAC Configuration**: Proper service accounts and permissions
 - **Deployment Manifests**: Operator deployment with configurable settings
@@ -195,6 +196,7 @@ The operator includes Helm charts (`charts/talos-operator/`) with:
 ## Integration with Viti Stack
 
 The Talos Operator is a key component of the Viti infrastructure platform:
+
 - **Multi-Provider Support**: Works alongside other Viti operators (Proxmox, Physical, etc.)
 - **Consistent APIs**: Follows Viti conventions for cluster management
 - **Monitoring Integration**: Built-in observability for cluster operations
