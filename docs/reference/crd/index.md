@@ -1,5 +1,7 @@
 # Custom Resource Definitions (CRDs)
 
+!!! warning "Work in progress!"
+
 A **CRD (Custom Resource Definition)** is a way to extend Kubernetes by creating your own resource types. It allows you to define and manage custom objects—just like built-in types such as Pod or Service. CRDs are often used to model domain-specific concepts and are commonly paired with operators to automate complex workflows.
 
 ## Viti CRDs Overview
@@ -23,32 +25,35 @@ The top-level resource representing a logical data center or infrastructure regi
 
 - **Purpose**: Orchestrate multiple machine and Kubernetes providers within a specific geographical area
 - **Capabilities**:
-  - Multi-cloud provider coordination (AWS, Azure, GCP, VMware vSphere)
-  - Resource management with quotas and limits
-  - Network configuration (VPCs, subnets, load balancers, DNS)
-  - Security governance and compliance frameworks
-  - Monitoring and backup policies
-  - Disaster recovery configuration
+
+    - Multi-cloud provider coordination (AWS, Azure, GCP, VMware vSphere)
+    - Resource management with quotas and limits
+    - Network configuration (VPCs, subnets, load balancers, DNS)
+    - Security governance and compliance frameworks
+    - Monitoring and backup policies
+    - Disaster recovery configuration
 
 #### **Machine**
 Represents individual compute instances across different infrastructure providers.
 
 - **Purpose**: Declarative management of virtual machines and physical servers
 - **Features**:
-  - Multi-provider support
-  - Resource specifications (CPU, memory, storage)
-  - Network configuration
-  - Security policies
-  - Lifecycle management
+
+    - Multi-provider support
+    - Resource specifications (CPU, memory, storage)
+    - Network configuration
+    - Security policies
+    - Lifecycle management
 
 #### **MachineProvider**
 Defines infrastructure providers that can provision machines.
 
 - **Supported Providers**:
-  - Cloud providers (AWS EC2, Azure VMs, Google Compute Engine)
-  - Virtualization platforms (VMware vSphere, Proxmox)
-  - Physical infrastructure providers
-  - Container platforms (KubeVirt)
+
+    - Cloud providers (AWS EC2, Azure VMs, Google Compute Engine)
+    - Virtualization platforms (VMware vSphere, Proxmox)
+    - Physical infrastructure providers
+    - Container platforms (KubeVirt)
 
 ### Kubernetes Resources
 
@@ -57,19 +62,21 @@ Represents managed Kubernetes clusters across different platforms.
 
 - **Purpose**: Declarative Kubernetes cluster management
 - **Features**:
-  - Multi-provider cluster deployment
-  - Version management
-  - Node pool configuration
-  - Add-on management
-  - Scaling policies
+
+    - Multi-provider cluster deployment
+    - Version management
+    - Node pool configuration
+    - Add-on management
+    - Scaling policies
 
 #### **KubernetesProvider**
 Defines Kubernetes service providers and their capabilities.
 
 - **Supported Providers**:
-  - Managed services (EKS, AKS, GKE)
-  - Self-managed distributions (Talos, RKE2, K3s)
-  - On-premises solutions (vSphere with Tanzu, Rancher)
+
+    - Managed services (EKS, AKS, GKE)
+    - Self-managed distributions (Talos, RKE2, K3s)
+    - On-premises solutions (vSphere with Tanzu, Rancher)
 
 ### Networking Resources
 
@@ -77,20 +84,22 @@ Defines Kubernetes service providers and their capabilities.
 Defines network policies and configurations across the infrastructure.
 
 - **Features**:
-  - VPC and subnet management
-  - Load balancer configuration
-  - DNS settings
-  - Firewall rules and security groups
-  - Cross-provider networking
+
+    - VPC and subnet management
+    - Load balancer configuration
+    - DNS settings
+    - Firewall rules and security groups
+    - Cross-provider networking
 
 #### **NetworkNamespace**
 Provides network isolation and segmentation capabilities.
 
 - **Use Cases**:
-  - Multi-tenancy support
-  - Environment isolation (dev, staging, production)
-  - Compliance and security boundaries
-  - Traffic segmentation
+
+    - Multi-tenancy support
+    - Environment isolation (dev, staging, production)
+    - Compliance and security boundaries
+    - Traffic segmentation
 
 ## Key Features
 
@@ -219,6 +228,7 @@ graph TB
 
 ### Operator Integration
 The CRDs are managed by corresponding operators:
+
 - **Vitistack Operator**: Manages overall infrastructure orchestration
 - **Machine Operators**: Provider-specific machine management (Proxmox, Talos, KubeVirt, Physical)
 - **Network Operators**: IPAM and network policy management
@@ -249,6 +259,7 @@ The CRDs are managed by corresponding operators:
 
 ### **Detailed Documentation**
 Each CRD has comprehensive documentation:
+
 - [Vitistack CRD Documentation](https://github.com/vitistack/crds/blob/main/docs/vitistack-crd.md)
 - [Machine CRD Documentation](https://github.com/vitistack/crds/blob/main/docs/machine-crd.md)
 - [MachineProvider CRD Documentation](https://github.com/vitistack/crds/blob/main/docs/machine-provider-crd.md)
