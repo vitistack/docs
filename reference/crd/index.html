@@ -1,0 +1,1165 @@
+<!DOCTYPE html><html class="no-js" lang="nb"><head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<link href="../operators/ipam-operator/" rel="prev">
+<link href="../api/" rel="next">
+<link href="../../images/viti.png" rel="icon">
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.20" name="generator">
+<title>Custom Resource Definitions (CRDs) - vitistack docs</title>
+<link href="../../assets/stylesheets/main.e53b48f4.min.css" rel="stylesheet">
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet">
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../css/viti.css" rel="stylesheet">
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+<body data-md-color-accent="green" data-md-color-primary="blue" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox">
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox">
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#custom-resource-definitions-crds">
+          Gå til innhold
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="vitistack docs" class="md-header__button md-logo" data-md-component="logo" href="../.." title="vitistack docs">
+<img alt="logo" src="../../images/viti.png">
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            vitistack docs
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Custom Resource Definitions (CRDs)
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="green" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio">
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="green" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio">
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Søk" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Søk" required="" spellcheck="false" type="text">
+<label class="md-search__icon md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Søk" class="md-search__options">
+<a aria-label="Del" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Del">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Nullstill" class="md-search__icon md-icon" tabindex="-1" title="Nullstill" type="reset">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Starter søk
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/vitistack/docs" title="Gå til kilde">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</div>
+<div class="md-source__repository">
+    vitistack/docs
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Faner" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tutorials/">
+          
+  
+  
+    
+  
+  Tutorials
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../howtoguide/">
+          
+  
+  
+    
+  
+  How-to-guides
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../explanation/">
+          
+  
+  
+    
+  
+  Explanation
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../release_notes/">
+          
+  
+  
+    
+  
+  Release Notes
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigasjon" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="vitistack docs" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="vitistack docs">
+<img alt="logo" src="../../images/viti.png">
+</a>
+    vitistack docs
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/vitistack/docs" title="Gå til kilde">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</div>
+<div class="md-source__repository">
+    vitistack/docs
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tutorials/">
+<span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorials/how/">
+<span class="md-ellipsis">
+    How Vitistack works
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../howtoguide/">
+<span class="md-ellipsis">
+    How-to-guides
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            How-to-guides
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    Reference
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../opensourcesoftware/">
+<span class="md-ellipsis">
+    Open Source Software
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../repository/">
+<span class="md-ellipsis">
+    Repository
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dns/">
+<span class="md-ellipsis">
+    DNS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_5" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../configuration/">
+<span class="md-ellipsis">
+    Configuration
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_6" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../operators/">
+<span class="md-ellipsis">
+    Operators
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
+            Operators
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../operators/viti-proxmox-operator/">
+<span class="md-ellipsis">
+    Viti Proxmox Operator
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../operators/vitistack-operator/">
+<span class="md-ellipsis">
+    Vitistack Operator
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../operators/viti-talos-operator/">
+<span class="md-ellipsis">
+    Viti Talos Operator
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../operators/viti-kubevirt-operator/">
+<span class="md-ellipsis">
+    Viti KubeVirt Operator
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../operators/viti-physical-operator/">
+<span class="md-ellipsis">
+    Viti Physical Operator
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../operators/kea-operator/">
+<span class="md-ellipsis">
+    Kea Operator
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../operators/ipam-operator/">
+<span class="md-ellipsis">
+    IPAM Operator
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_7" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    CRDs
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_7">
+<span class="md-nav__icon md-icon"></span>
+            CRDs
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_8" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../api/">
+<span class="md-ellipsis">
+    API
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_8">
+<span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../api/ipam-api/">
+<span class="md-ellipsis">
+    IPAM API
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../explanation/">
+<span class="md-ellipsis">
+    Explanation
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Explanation
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../explanation/architecture/">
+<span class="md-ellipsis">
+    Architecture
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../release_notes/">
+<span class="md-ellipsis">
+    Release Notes
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../release_notes/v1.0.x/v1_0_x/">
+<span class="md-ellipsis">
+    Release notes - Viti v1.0.x
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Innholdsliste" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Innholdsliste
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#viti-crds-overview">
+<span class="md-ellipsis">
+      Viti CRDs Overview
+    </span>
+</a>
+<nav aria-label="Viti CRDs Overview" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#repository-information">
+<span class="md-ellipsis">
+      Repository Information
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#available-crds">
+<span class="md-ellipsis">
+      Available CRDs
+    </span>
+</a>
+<nav aria-label="Available CRDs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-infrastructure-resources">
+<span class="md-ellipsis">
+      Core Infrastructure Resources
+    </span>
+</a>
+<nav aria-label="Core Infrastructure Resources" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vitistack">
+<span class="md-ellipsis">
+      Vitistack
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#machine">
+<span class="md-ellipsis">
+      Machine
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#machineprovider">
+<span class="md-ellipsis">
+      MachineProvider
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-resources">
+<span class="md-ellipsis">
+      Kubernetes Resources
+    </span>
+</a>
+<nav aria-label="Kubernetes Resources" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetescluster">
+<span class="md-ellipsis">
+      KubernetesCluster
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetesprovider">
+<span class="md-ellipsis">
+      KubernetesProvider
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#networking-resources">
+<span class="md-ellipsis">
+      Networking Resources
+    </span>
+</a>
+<nav aria-label="Networking Resources" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#networkconfiguration">
+<span class="md-ellipsis">
+      NetworkConfiguration
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#networknamespace">
+<span class="md-ellipsis">
+      NetworkNamespace
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#key-features">
+<span class="md-ellipsis">
+      Key Features
+    </span>
+</a>
+<nav aria-label="Key Features" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multi-cloud-support">
+<span class="md-ellipsis">
+      Multi-Cloud Support
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enterprise-security">
+<span class="md-ellipsis">
+      Enterprise Security
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#resource-management">
+<span class="md-ellipsis">
+      Resource Management
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#operational-excellence">
+<span class="md-ellipsis">
+      Operational Excellence
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#getting-started">
+<span class="md-ellipsis">
+      Getting Started
+    </span>
+</a>
+<nav aria-label="Getting Started" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation">
+<span class="md-ellipsis">
+      Installation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#basic-usage">
+<span class="md-ellipsis">
+      Basic Usage
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#go-integration">
+<span class="md-ellipsis">
+      Go Integration
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#development-and-contribution">
+<span class="md-ellipsis">
+      Development and Contribution
+    </span>
+</a>
+<nav aria-label="Development and Contribution" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites">
+<span class="md-ellipsis">
+      Prerequisites
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#common-development-tasks">
+<span class="md-ellipsis">
+      Common Development Tasks
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#crd-structure">
+<span class="md-ellipsis">
+      CRD Structure
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#architecture-integration">
+<span class="md-ellipsis">
+      Architecture Integration
+    </span>
+</a>
+<nav aria-label="Architecture Integration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#operator-integration">
+<span class="md-ellipsis">
+      Operator Integration
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#best-practices">
+<span class="md-ellipsis">
+      Best Practices
+    </span>
+</a>
+<nav aria-label="Best Practices" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#resource-organization">
+<span class="md-ellipsis">
+      Resource Organization
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration-management">
+<span class="md-ellipsis">
+      Configuration Management
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#monitoring-and-observability">
+<span class="md-ellipsis">
+      Monitoring and Observability
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#security">
+<span class="md-ellipsis">
+      Security
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#documentation-and-support">
+<span class="md-ellipsis">
+      Documentation and Support
+    </span>
+</a>
+<nav aria-label="Documentation and Support" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#detailed-documentation">
+<span class="md-ellipsis">
+      Detailed Documentation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#additional-resources">
+<span class="md-ellipsis">
+      Additional Resources
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/vitistack/docs/edit/main/docs/reference/crd/index.md" rel="edit" title="Rediger denne siden">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
+</a>
+<h1 id="custom-resource-definitions-crds">Custom Resource Definitions (CRDs)</h1>
+<div class="admonition warning">
+<p class="admonition-title">Work in progress!</p>
+</div>
+<p>A <strong>CRD (Custom Resource Definition)</strong> is a way to extend Kubernetes by creating your own resource types. It allows you to define and manage custom objects—just like built-in types such as Pod or Service. CRDs are often used to model domain-specific concepts and are commonly paired with operators to automate complex workflows.</p>
+<h2 id="viti-crds-overview">Viti CRDs Overview</h2>
+<p>The Viti CRDs form the foundation of the Viti infrastructure platform, providing declarative APIs for managing multi-cloud and on-premises resources. These CRDs extend Kubernetes to support comprehensive infrastructure orchestration, from individual machines to complete data centers.</p>
+<h3 id="repository-information">Repository Information</h3>
+<ul>
+<li><strong>Source</strong>: <a href="https://github.com/vitistack/crds">github.com/vitistack/crds</a></li>
+<li><strong>API Group</strong>: <code>vitistack.io</code></li>
+<li><strong>Version</strong>: <code>v1alpha1</code></li>
+<li><strong>License</strong>: Apache 2.0</li>
+<li><strong>Latest Release</strong>: v0.1.3</li>
+</ul>
+<h2 id="available-crds">Available CRDs</h2>
+<h3 id="core-infrastructure-resources">Core Infrastructure Resources</h3>
+<h4 id="vitistack"><strong>Vitistack</strong></h4>
+<p>The top-level resource representing a logical data center or infrastructure region.</p>
+<ul>
+<li><strong>Purpose</strong>: Orchestrate multiple machine and Kubernetes providers within a specific geographical area</li>
+<li>
+<p><strong>Capabilities</strong>:</p>
+<ul>
+<li>Multi-cloud provider coordination (AWS, Azure, GCP, VMware vSphere)</li>
+<li>Resource management with quotas and limits</li>
+<li>Network configuration (VPCs, subnets, load balancers, DNS)</li>
+<li>Security governance and compliance frameworks</li>
+<li>Monitoring and backup policies</li>
+<li>Disaster recovery configuration</li>
+</ul>
+</li>
+</ul>
+<h4 id="machine"><strong>Machine</strong></h4>
+<p>Represents individual compute instances across different infrastructure providers.</p>
+<ul>
+<li><strong>Purpose</strong>: Declarative management of virtual machines and physical servers</li>
+<li>
+<p><strong>Features</strong>:</p>
+<ul>
+<li>Multi-provider support</li>
+<li>Resource specifications (CPU, memory, storage)</li>
+<li>Network configuration</li>
+<li>Security policies</li>
+<li>Lifecycle management</li>
+</ul>
+</li>
+</ul>
+<h4 id="machineprovider"><strong>MachineProvider</strong></h4>
+<p>Defines infrastructure providers that can provision machines.</p>
+<ul>
+<li>
+<p><strong>Supported Providers</strong>:</p>
+<ul>
+<li>Cloud providers (AWS EC2, Azure VMs, Google Compute Engine)</li>
+<li>Virtualization platforms (VMware vSphere, Proxmox)</li>
+<li>Physical infrastructure providers</li>
+<li>Container platforms (KubeVirt)</li>
+</ul>
+</li>
+</ul>
+<h3 id="kubernetes-resources">Kubernetes Resources</h3>
+<h4 id="kubernetescluster"><strong>KubernetesCluster</strong></h4>
+<p>Represents managed Kubernetes clusters across different platforms.</p>
+<ul>
+<li><strong>Purpose</strong>: Declarative Kubernetes cluster management</li>
+<li>
+<p><strong>Features</strong>:</p>
+<ul>
+<li>Multi-provider cluster deployment</li>
+<li>Version management</li>
+<li>Node pool configuration</li>
+<li>Add-on management</li>
+<li>Scaling policies</li>
+</ul>
+</li>
+</ul>
+<h4 id="kubernetesprovider"><strong>KubernetesProvider</strong></h4>
+<p>Defines Kubernetes service providers and their capabilities.</p>
+<ul>
+<li>
+<p><strong>Supported Providers</strong>:</p>
+<ul>
+<li>Managed services (EKS, AKS, GKE)</li>
+<li>Self-managed distributions (Talos, RKE2, K3s)</li>
+<li>On-premises solutions (vSphere with Tanzu, Rancher)</li>
+</ul>
+</li>
+</ul>
+<h3 id="networking-resources">Networking Resources</h3>
+<h4 id="networkconfiguration"><strong>NetworkConfiguration</strong></h4>
+<p>Defines network policies and configurations across the infrastructure.</p>
+<ul>
+<li>
+<p><strong>Features</strong>:</p>
+<ul>
+<li>VPC and subnet management</li>
+<li>Load balancer configuration</li>
+<li>DNS settings</li>
+<li>Firewall rules and security groups</li>
+<li>Cross-provider networking</li>
+</ul>
+</li>
+</ul>
+<h4 id="networknamespace"><strong>NetworkNamespace</strong></h4>
+<p>Provides network isolation and segmentation capabilities.</p>
+<ul>
+<li>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Multi-tenancy support</li>
+<li>Environment isolation (dev, staging, production)</li>
+<li>Compliance and security boundaries</li>
+<li>Traffic segmentation</li>
+</ul>
+</li>
+</ul>
+<h2 id="key-features">Key Features</h2>
+<h3 id="multi-cloud-support"><strong>Multi-Cloud Support</strong></h3>
+<ul>
+<li><strong>Provider Agnostic</strong>: Work with AWS, Azure, GCP, VMware, and on-premises infrastructure</li>
+<li><strong>Unified API</strong>: Consistent interface across different cloud providers</li>
+<li><strong>Provider Prioritization</strong>: Configure preferences and failover between providers</li>
+</ul>
+<h3 id="enterprise-security"><strong>Enterprise Security</strong></h3>
+<ul>
+<li><strong>Compliance Frameworks</strong>: Support for SOC2, ISO27001, and other standards</li>
+<li><strong>Encryption</strong>: At-rest and in-transit encryption policies</li>
+<li><strong>Access Control</strong>: RBAC integration with MFA support</li>
+<li><strong>Audit Logging</strong>: Comprehensive audit trails with configurable retention</li>
+</ul>
+<h3 id="resource-management"><strong>Resource Management</strong></h3>
+<ul>
+<li><strong>Quotas and Limits</strong>: Prevent resource over-provisioning</li>
+<li><strong>Usage Monitoring</strong>: Real-time resource utilization tracking</li>
+<li><strong>Cost Optimization</strong>: Resource allocation based on cost and performance</li>
+</ul>
+<h3 id="operational-excellence"><strong>Operational Excellence</strong></h3>
+<ul>
+<li><strong>Backup and Recovery</strong>: Automated backup policies with multiple destinations</li>
+<li><strong>Disaster Recovery</strong>: Cross-region failover capabilities</li>
+<li><strong>Monitoring Integration</strong>: Built-in observability and alerting</li>
+<li><strong>GitOps Ready</strong>: Declarative configuration suitable for version control</li>
+</ul>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="installation">Installation</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generate CRDs</span>
+make<span class="w"> </span>manifests
+
+<span class="c1"># Install CRDs into your cluster</span>
+make<span class="w"> </span>install-crds
+
+<span class="c1"># Verify installation</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>crd<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>vitistack.io
+</code></pre></div>
+<h3 id="basic-usage">Basic Usage</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Apply example configurations</span>
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/machine-example.yaml
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/kubernetes-provider-example.yaml
+
+<span class="c1"># List resources</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>vitistacks
+kubectl<span class="w"> </span>get<span class="w"> </span>machines
+kubectl<span class="w"> </span>get<span class="w"> </span>kubernetesclusters
+</code></pre></div>
+<h3 id="go-integration">Go Integration</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">v1alpha1</span><span class="w"> </span><span class="s">"github.com/vitistack/crds/pkg/v1alpha1"</span>
+<span class="w">    </span><span class="nx">unstructuredutil</span><span class="w"> </span><span class="s">"github.com/vitistack/crds/pkg/unstructuredutil"</span>
+<span class="w">    </span><span class="s">"k8s.io/apimachinery/pkg/runtime"</span>
+<span class="p">)</span>
+
+<span class="c1">// Create typed client</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">scheme</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">NewScheme</span><span class="p">()</span>
+<span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">v1alpha1</span><span class="p">.</span><span class="nx">AddToScheme</span><span class="p">(</span><span class="nx">scheme</span><span class="p">)</span>
+
+<span class="c1">// Use typed resources</span>
+<span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">v1alpha1</span><span class="p">.</span><span class="nx">Machine</span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// configure machine spec</span>
+<span class="p">}</span>
+
+<span class="c1">// Convert to unstructured for dynamic clients</span>
+<span class="nx">u</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">unstructuredutil</span><span class="p">.</span><span class="nx">MachineToUnstructured</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="development-and-contribution">Development and Contribution</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Go 1.25+</li>
+<li>make, kubectl</li>
+<li>Access to a Kubernetes cluster</li>
+</ul>
+<h3 id="common-development-tasks">Common Development Tasks</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generate code and CRDs</span>
+make<span class="w"> </span>generate
+
+<span class="c1"># Format, vet, and lint</span>
+make<span class="w"> </span>fmt<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>vet<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>lint
+
+<span class="c1"># Run tests</span>
+make<span class="w"> </span><span class="nb">test</span>
+
+<span class="c1"># Security scanning</span>
+make<span class="w"> </span>go-security-scan
+
+<span class="c1"># Update dependencies</span>
+make<span class="w"> </span>update-deps
+</code></pre></div>
+<h3 id="crd-structure">CRD Structure</h3>
+<p>All CRDs follow consistent patterns:</p>
+<ul>
+<li><strong>API Group</strong>: <code>vitistack.io</code></li>
+<li><strong>Version</strong>: <code>v1alpha1</code> (evolving towards v1beta1, then v1)</li>
+<li><strong>Validation</strong>: Comprehensive OpenAPI v3 schema validation</li>
+<li><strong>Status Reporting</strong>: Rich status information with conditions and phases</li>
+<li><strong>Printer Columns</strong>: User-friendly <code>kubectl get</code> output</li>
+</ul>
+<h2 id="architecture-integration">Architecture Integration</h2>
+<p>The Viti CRDs are designed to work together as a cohesive system:</p>
+<div class="mermaid">graph TB
+    V[Vitistack] --&gt; MP[MachineProvider]
+    V --&gt; KP[KubernetesProvider]
+    V --&gt; NC[NetworkConfiguration]
+
+    MP --&gt; M[Machine]
+    KP --&gt; KC[KubernetesCluster]
+    NC --&gt; NN[NetworkNamespace]
+
+    M --&gt; Pods[Workload Pods]
+    KC --&gt; Pods
+    NN --&gt; Pods</div>
+<h3 id="operator-integration">Operator Integration</h3>
+<p>The CRDs are managed by corresponding operators:</p>
+<ul>
+<li><strong>Vitistack Operator</strong>: Manages overall infrastructure orchestration</li>
+<li><strong>Machine Operators</strong>: Provider-specific machine management (Proxmox, Talos, KubeVirt, Physical)</li>
+<li><strong>Network Operators</strong>: IPAM and network policy management</li>
+</ul>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="resource-organization"><strong>Resource Organization</strong></h3>
+<ul>
+<li>Use namespaces to separate environments and tenants</li>
+<li>Apply consistent labeling and tagging strategies</li>
+<li>Implement proper RBAC for CRD access</li>
+</ul>
+<h3 id="configuration-management"><strong>Configuration Management</strong></h3>
+<ul>
+<li>Store CRD definitions in version control (GitOps)</li>
+<li>Use Helm charts or Kustomize for templating</li>
+<li>Implement proper backup and disaster recovery for configurations</li>
+</ul>
+<h3 id="monitoring-and-observability"><strong>Monitoring and Observability</strong></h3>
+<ul>
+<li>Monitor CRD status and conditions</li>
+<li>Set up alerts for resource quota thresholds</li>
+<li>Track resource utilization and costs</li>
+</ul>
+<h3 id="security"><strong>Security</strong></h3>
+<ul>
+<li>Enable encryption for sensitive data</li>
+<li>Implement compliance frameworks appropriate for your industry</li>
+<li>Regularly audit access patterns and permissions</li>
+</ul>
+<h2 id="documentation-and-support">Documentation and Support</h2>
+<h3 id="detailed-documentation"><strong>Detailed Documentation</strong></h3>
+<p>Each CRD has comprehensive documentation:</p>
+<ul>
+<li><a href="https://github.com/vitistack/crds/blob/main/docs/vitistack-crd.md">Vitistack CRD Documentation</a></li>
+<li><a href="https://github.com/vitistack/crds/blob/main/docs/machine-crd.md">Machine CRD Documentation</a></li>
+<li><a href="https://github.com/vitistack/crds/blob/main/docs/machine-provider-crd.md">MachineProvider CRD Documentation</a></li>
+<li><a href="https://github.com/vitistack/crds/blob/main/docs/kubernetes-provider-crd.md">KubernetesProvider CRD Documentation</a></li>
+</ul>
+<h3 id="additional-resources"><strong>Additional Resources</strong></h3>
+<ul>
+<li><a href="https://github.com/vitistack/crds/blob/main/docs/architecture.md">Architecture Overview</a></li>
+<li><a href="https://github.com/vitistack/crds/blob/main/docs/api-reference.md">API Reference</a></li>
+<li><a href="https://github.com/vitistack/crds/blob/main/docs/operational-guide.md">Operational Guide</a></li>
+<li><a href="https://github.com/vitistack/crds/blob/main/docs/performance-optimization.md">Performance Optimization</a></li>
+</ul>
+<p>The Viti CRDs provide a powerful, unified API for managing complex, multi-cloud infrastructure declaratively within Kubernetes, enabling true infrastructure-as-code at enterprise scale.</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Tilbake til toppen
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Forrige: IPAM Operator" class="md-footer__link md-footer__link--prev" href="../operators/ipam-operator/">
+<div class="md-footer__button md-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Forrige
+              </span>
+<div class="md-ellipsis">
+                IPAM Operator
+              </div>
+</div>
+</a>
+<a aria-label="Neste: API" class="md-footer__link md-footer__link--next" href="../api/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Neste
+              </span>
+<div class="md-ellipsis">
+                API
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/vitistack" rel="noopener" target="_blank" title="vitistack">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "content.action.edit", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Kopiert til utklippstavlen", "clipboard.copy": "Kopier til utklippstavlen", "search.result.more.one": "1 til p\u00e5 denne siden", "search.result.more.other": "# flere p\u00e5 denne siden", "search.result.none": "Ingen treff", "search.result.one": "1 treff", "search.result.other": "# treff", "search.result.placeholder": "Skriv s\u00f8keord", "search.result.term.missing": "Mangler", "select.version": "Velg versjon"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+<script src="../../js/accessibility.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
