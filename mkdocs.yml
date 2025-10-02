@@ -76,6 +76,7 @@ nav:
     - tutorials/how.md
   - How-to-guides:
     - howtoguide/index.md
+    - howtoguide/argocd_ipam-api.md
   - Reference:
     - reference/index.md
     - reference/opensourcesoftware.md
