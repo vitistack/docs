@@ -157,6 +157,7 @@ func (r *NetworkConfigurationReconciler) Reconcile(ctx context.Context, req ctrl
 ```
 
 **Key Controller Features**:
+
 - **Event-Driven Processing**: Responds to NetworkConfiguration create/update/delete events
 - **Finalizer Management**: Ensures proper cleanup of DHCP reservations on deletion
 - **Status Reporting**: Updates resource status with reservation results
@@ -243,6 +244,7 @@ All Kea API calls follow this JSON structure:
 }
 ```
 Response provides subnet configuration including:
+
 - Subnet ID numbers
 - CIDR blocks (e.g., "10.100.1.0/24")
 - Pool ranges and reservations
@@ -259,6 +261,7 @@ Response provides subnet configuration including:
 }
 ```
 Returns current lease information:
+
 - Assigned IP address
 - Lease expiration time
 - Subnet ID
@@ -316,6 +319,7 @@ Returns current lease information:
 ```
 
 **Common Error Codes**:
+
 - `0`: Success
 - `1`: Generic error
 - `2`: Malformed command
@@ -497,6 +501,7 @@ The operator includes Helm charts (`charts/kea-operator/`) with:
 ### **MAC Address Normalization**
 
 The operator automatically normalizes MAC addresses:
+
 - **Case Insensitive**: `AA:BB:CC:DD:EE:FF` → `aa:bb:cc:dd:ee:ff`
 - **Separator Normalization**: `aa-bb-cc-dd-ee-ff` → `aa:bb:cc:dd:ee:ff`
 - **Format Validation**: Ensures proper MAC address format
@@ -530,6 +535,7 @@ func NormalizeMAC(mac string) (string, error) {
 ```
 
 **Supported Input Formats**:
+
 - `AA:BB:CC:DD:EE:FF` → `aa:bb:cc:dd:ee:ff`
 - `aa-bb-cc-dd-ee-ff` → `aa:bb:cc:dd:ee:ff`  
 - `aabbccddeeff` → Rejected (requires separators)
@@ -954,6 +960,7 @@ kubectl get networknamespaces -o jsonpath='{.items[*].status.ipv4Prefix}'
 ### **REST API Testing**
 
 The repository includes REST API testing tools in `hack/rest/`:
+
 - **Lease queries**: Test lease discovery functionality
 - **Reservation management**: Verify reservation creation/deletion
 - **Subnet operations**: Test subnet discovery
