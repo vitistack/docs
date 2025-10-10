@@ -1,4 +1,4 @@
-# Viti Talos Operator
+# Talos Operator
 
 !!! warning "Work in progress!"
 

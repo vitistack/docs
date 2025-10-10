@@ -1,4 +1,4 @@
-# Viti KubeVirt Operator
+# KubeVirt Operator
 
 !!! warning "Work in progress!"
 

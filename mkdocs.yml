@@ -86,11 +86,11 @@ nav:
       - reference/configuration/index.md
     - Operators:
       - reference/operators/index.md
-      - reference/operators/viti-proxmox-operator.md
+      - reference/operators/proxmox-operator.md
       - reference/operators/vitistack-operator.md
-      - reference/operators/viti-talos-operator.md
-      - reference/operators/viti-kubevirt-operator.md
-      - reference/operators/viti-physical-operator.md
+      - reference/operators/talos-operator.md
+      - reference/operators/kubevirt-operator.md
+      - reference/operators/physical-operator.md
       - reference/operators/kea-operator.md
       - reference/operators/ipam-operator.md
     - CRDs:
