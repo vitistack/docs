@@ -92,7 +92,6 @@ nav:
       - reference/operators/viti-kubevirt-operator.md
       - reference/operators/viti-physical-operator.md
       - reference/operators/kea-operator.md
-      - reference/operators/kea-operator2.md
       - reference/operators/ipam-operator.md
     - CRDs:
       - reference/crd/index.md
