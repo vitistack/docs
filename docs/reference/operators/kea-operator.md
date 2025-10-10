@@ -1,4 +1,4 @@
-# Kea Operator 2
+# Kea Operator
 
 !!! warning "Work in progress!"
 
