@@ -4,47 +4,6 @@
 
 The Kea Operator is a specialized Kubernetes operator that manages ISC Kea DHCP server reservations based on Viti network configurations. It automatically ensures that devices with known MAC addresses receive consistent IP addresses by creating and managing DHCP reservations in Kea DHCP servers.
 
-## How the Kea Operator Works - Overview
-
-The Kea Operator functions as a bridge between Kubernetes-native network configuration and ISC Kea DHCP servers, automating the creation and management of IP address reservations. Here's how it operates:
-
-### **Core Workflow**
-
-1. **Watches NetworkConfiguration CRDs**: The operator continuously monitors Kubernetes for `NetworkConfiguration` resources that contain MAC address specifications in their `spec.networkInterfaces[]` fields.
-
-2. **Discovers Network Context**: For each NetworkConfiguration, it retrieves the associated `NetworkNamespace` to obtain the IPv4 network prefix (e.g., `10.100.1.0/24`) from the status field.
-
-3. **Resolves Kea Subnets**: Using Kea's REST API `subnet4-list` command, it identifies which Kea DHCP subnet corresponds to the network prefix.
-
-4. **Queries Existing Leases**: For each MAC address, it uses `lease4-get-by-hw-address` to find if the device already has an active DHCP lease.
-
-5. **Creates Reservations**: If a lease exists, the operator creates a permanent IP reservation using `reservation-add`, ensuring the device will always receive the same IP address.
-
-6. **Maintains State**: The operator continuously reconciles the desired state (MAC addresses in NetworkConfigurations) with the actual state (reservations in Kea).
-
-### **Key Operating Principles**
-
-- **Lease-First Approach**: Devices must already have DHCP leases before reservations can be created - the operator doesn't assign new IPs, it makes existing assignments permanent.
-
-- **Declarative Management**: Network administrators define desired MAC-to-network mappings in Kubernetes CRDs, and the operator ensures Kea DHCP reflects this configuration.
-
-- **High Availability**: Supports primary and secondary Kea servers with automatic failover, ensuring DHCP reservation management remains available.
-
-- **MAC Address Normalization**: Automatically handles different MAC address formats (`AA:BB:CC:DD:EE:FF`, `aa-bb-cc-dd-ee-ff`) by normalizing them to a consistent format.
-
-### **Integration Points**
-
-- **Kubernetes CRDs**: Uses `vitistack.io/v1alpha1` NetworkConfiguration and NetworkNamespace resources
-- **Kea REST API**: Communicates with ISC Kea DHCP servers via HTTP REST interface
-- **Network Infrastructure**: Integrates with existing DHCP infrastructure without disrupting current operations
-
-### **Operational Benefits**
-
-- **Automation**: Eliminates manual DHCP reservation management
-- **Consistency**: Ensures IP address assignments remain stable across DHCP lease renewals
-- **GitOps Compatible**: Network configurations can be version-controlled and deployed via CI/CD
-- **Scalability**: Handles large numbers of devices and network segments efficiently
-
 ## Overview
 
 ISC Kea is a modern, high-performance DHCP server developed by the Internet Systems Consortium (ISC). The Kea Operator bridges the gap between Kubernetes-native network configuration and traditional DHCP infrastructure, enabling declarative management of IP address reservations through Viti CRDs.
