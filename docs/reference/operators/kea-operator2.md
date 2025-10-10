@@ -341,10 +341,12 @@ rules:
 ### Resource Requirements
 
 **Minimum**:
+
 - CPU: 10m
 - Memory: 64Mi
 
 **Recommended**:
+
 - CPU: 100m
 - Memory: 128Mi
 
