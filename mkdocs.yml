@@ -4,7 +4,7 @@ repo_name: vitistack/docs
 edit_uri: edit/main/docs/
 theme:
   name: material
-  language: "nb"
+  language: "en"
   logo: images/viti.png
   favicon: images/viti.png
   palette:
