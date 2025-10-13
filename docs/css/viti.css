@@ -149,7 +149,7 @@
 
 .md-nav__link--active {
   color: var(--viti-primary);
-  background: linear-gradient(90deg, var(--viti-gray-50) 0%, transparent 100%);
+  /*background: linear-gradient(90deg, var(--viti-gray-50) 0%, transparent 100%); */
   border-left: 3px solid var(--viti-secondary);
   font-weight: 600;
 }
