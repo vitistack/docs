@@ -32,10 +32,6 @@
 .md-header {
   background: linear-gradient(135deg, var(--viti-primary) 0%, var(--viti-primary-dark) 100%);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  position: fixed !important;
-  top: 0 !important;
-  transform: none !important;
-  transition: none !important;
 }
 
 .md-header__button.md-logo img, .md-header__button.md-logo svg {
