@@ -175,7 +175,7 @@
 }
 
 .md-typeset h3 {
-  /* color: var(--viti-gray-700); */
+  color: var(--viti-gray-700);
   position: relative;
 }
 
