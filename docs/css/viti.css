@@ -291,9 +291,10 @@
   font-weight: 600;
 }
 
-.md-typeset table tr:nth-child(even) {
+/*.md-typeset table tr:nth-child(even) {
   background: #f8fafc;
 }
+*/
 
 .md-typeset table tr:hover {
   background: #f1f5f9;
