@@ -32,10 +32,6 @@
 .md-header {
   background: linear-gradient(135deg, var(--viti-primary) 0%, var(--viti-primary-dark) 100%);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  position: fixed !important;
-  top: 0 !important;
-  transform: none !important;
-  transition: none !important;
 }
 
 .md-header__button.md-logo img, .md-header__button.md-logo svg {
@@ -54,9 +50,6 @@
 .md-tabs {
   background: var(--viti-primary-dark);
   border-bottom: 2px solid var(--viti-secondary);
-  position: fixed !important;
-  transform: none !important;
-  transition: none !important;
 }
 
 .md-tabs__link {
@@ -159,22 +152,6 @@
   background: linear-gradient(90deg, var(--viti-gray-50) 0%, transparent 100%);
   border-left: 3px solid var(--viti-secondary);
   font-weight: 600;
-}
-
-/* Fix for disappearing menu on scroll */
-.md-header[data-md-state="shadow"],
-.md-header[data-md-state="hidden"] {
-  transform: none !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
-}
-
-.md-tabs[data-md-state="hidden"] {
-  transform: none !important;
-}
-
-/* Disable auto-hide behavior completely */
-.md-header--lifted {
-  transform: none !important;
 }
 
 /* Content styling */
