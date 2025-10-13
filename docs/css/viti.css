@@ -435,7 +435,8 @@ select:focus {
 }
 
 .md-typeset table tr:nth-child(even) {
-  background: #f8fafc;
+  /* background: #f8fafc; */
+  background: var(--viti-gray-700)
 }
 
 .md-typeset table tr:hover {
