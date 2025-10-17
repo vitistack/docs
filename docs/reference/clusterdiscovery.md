@@ -4,11 +4,11 @@ A cluster that is created or should be adopted by vitistack must have the follow
 
 | Annotation/Label | Description | Example |
 |---|---|---|
-|vitistack.io/clustername||t-per-et-401|
-|vitistack.io/clusterworkspace||t-per|
-|vitistack.io/region||west|
-|vitistack.io/az||bgo|
-|vitistack.io/vmprovider||kubevirt|
-|vitistack.io/kubernetesprovider||talos|
-|vitistack.io/clusterid||8875ca15-abed-46f3-8c0f-8a73a2423baa|
-|vitistack.io/kubernetes-endpoint-addr||https://10.204.150.5:6443|
+|vitistack.io/clustername|the name og the cluster|t-nhn-001|
+|vitistack.io/clusterworkspace|the workspace of the cluster|t-nhn|
+|vitistack.io/region|the region|west|
+|vitistack.io/az|the availability zone|bgo|
+|vitistack.io/vmprovider|the provider of the machine|kubevirt|
+|vitistack.io/kubernetesprovider|the provider of kubernetes|talos|
+|vitistack.io/clusterid|an unique id of the cluster|t-nhn-001-l33t|
+|vitistack.io/kubernetes-endpoint-addr|the loadbalanced api endpoint|https://10.204.150.5:6443|
