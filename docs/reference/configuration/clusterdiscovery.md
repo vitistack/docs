@@ -1,4 +1,4 @@
-# Cluster discovery
+# Cluster Discovery
 
 A cluster that is created or should be adopted by vitistack must have the following annotations or labels on at least one of its nodes:
 

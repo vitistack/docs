@@ -83,10 +83,9 @@ nav:
     - reference/opensourcesoftware.md
     - reference/repository.md
     - reference/dns.md
-
     - Configuration:
-      - reference/clusterdiscovery.md
       - reference/configuration/index.md
+      - reference/configuration/clusterdiscovery.md
     - Operators:
       - reference/operators/index.md
       - reference/operators/proxmox-operator.md
