@@ -11,4 +11,4 @@ A cluster that is created or should be adopted by vitistack must have the follow
 |vitistack.io/vmprovider|the provider of the machine|kubevirt|
 |vitistack.io/kubernetesprovider|the provider of kubernetes|talos|
 |vitistack.io/clusterid|an unique id of the cluster|t-nhn-001-l33t|
-|vitistack.io/kubernetes-endpoint-addr|the loadbalanced api endpoint|https://10.204.150.5:6443|
+|vitistack.io/kubernetes-endpoint-addr|the loadbalanced api endpoint|https://10.20.30.40:6443|
