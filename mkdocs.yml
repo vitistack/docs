@@ -81,7 +81,9 @@ nav:
     - reference/opensourcesoftware.md
     - reference/repository.md
     - reference/dns.md
+
     - Configuration:
+      - reference/clusterdiscovery.md
       - reference/configuration/index.md
     - Operators:
       - reference/operators/index.md
