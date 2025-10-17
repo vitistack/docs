@@ -142,14 +142,14 @@
 
 .md-nav__link:hover {
   color: var(--viti-primary);
-  background: linear-gradient(90deg, transparent 0%, var(--viti-gray-50) 100%);
+  /*background: linear-gradient(90deg, transparent 0%, var(--viti-gray-50) 100%); */
   border-left: 3px solid var(--viti-secondary);
   padding-left: 1rem;
 }
 
 .md-nav__link--active {
   color: var(--viti-primary);
-  background: linear-gradient(90deg, var(--viti-gray-50) 0%, transparent 100%);
+  /*background: linear-gradient(90deg, var(--viti-gray-50) 0%, transparent 100%); */
   border-left: 3px solid var(--viti-secondary);
   font-weight: 600;
 }
@@ -175,7 +175,8 @@
 }
 
 .md-typeset h3 {
-  color: var(--viti-gray-700);
+  /* color: var(--viti-gray-700); */
+  color: var(--viti-primary-light);
   position: relative;
 }
 
@@ -291,10 +292,10 @@
   font-weight: 600;
 }
 
-.md-typeset table tr:nth-child(even) {
+/*.md-typeset table tr:nth-child(even) {
   background: #f8fafc;
 }
-
+*/
 .md-typeset table tr:hover {
   background: #f1f5f9;
 }
@@ -433,9 +434,11 @@ select:focus {
   font-weight: 600;
 }
 
-.md-typeset table tr:nth-child(even) {
-  background: #f8fafc;
+
+/*.md-typeset table tr:nth-child(even) {
+  background: var(--viti-gray-500)
 }
+*/
 
 .md-typeset table tr:hover {
   background: #f1f5f9;

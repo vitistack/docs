@@ -4,7 +4,7 @@ repo_name: vitistack/docs
 edit_uri: edit/main/docs/
 theme:
   name: material
-  language: "nb"
+  language: "en"
   logo: images/viti.png
   favicon: images/viti.png
   palette:
@@ -24,6 +24,7 @@ theme:
         name: Switch to light mode
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.indexes
     - navigation.top
@@ -76,6 +77,7 @@ nav:
     - tutorials/how.md
   - How-to-guides:
     - howtoguide/index.md
+    - howtoguide/argocd_ipam-api.md
   - Reference:
     - reference/index.md
     - reference/opensourcesoftware.md
@@ -87,11 +89,11 @@ nav:
       - reference/configuration/index.md
     - Operators:
       - reference/operators/index.md
-      - reference/operators/viti-proxmox-operator.md
+      - reference/operators/proxmox-operator.md
       - reference/operators/vitistack-operator.md
-      - reference/operators/viti-talos-operator.md
-      - reference/operators/viti-kubevirt-operator.md
-      - reference/operators/viti-physical-operator.md
+      - reference/operators/talos-operator.md
+      - reference/operators/kubevirt-operator.md
+      - reference/operators/physical-operator.md
       - reference/operators/kea-operator.md
       - reference/operators/ipam-operator.md
     - CRDs:
