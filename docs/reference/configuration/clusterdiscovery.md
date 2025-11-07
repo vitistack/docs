@@ -6,6 +6,7 @@ A cluster that is created or should be adopted by vitistack must have the follow
 |---|---|---|
 |vitistack.io/clustername|the name of the cluster|t-mgmt-001|
 |vitistack.io/clusterworkspace|the workspace of the cluster|t-nhn-l44t|
+|vitistack.io/country|the country abreviation|no|
 |vitistack.io/region|the region|west|
 |vitistack.io/az|the availability zone|bgo|
 |vitistack.io/vmprovider|the provider of the machine|kubevirt|
