@@ -22,5 +22,5 @@ A cluster that is created or should be adopted by vitistack must have the follow
 
 |Type|Pattern|Example|
 |---|---|---|
-|cluster|[clusterId].[az].[region].[country].platform.nhn.no|t-mgmt-001-l33t.az1.west.no.plattform.nhn.no|
-|node|[hostname].[clusterId].[workspaceId].[az].[region].[country].platform.nhn.no|t-mgmt-001-cpl01.t-mgmt-001-l33t.t-nhn-l44t.az1.west.no.plattform.nhn.no|
+|cluster|[clusterId].[az].[region].[country].platform.nhn.no|t-mgmt-001-l33t.az1.west.no.platform.nhn.no|
+|node|[hostname].[clusterId].[workspaceId].[az].[region].[country].platform.nhn.no|t-mgmt-001-cpl01.t-mgmt-001-l33t.t-nhn-l44t.az1.west.no.platform.nhn.no|
