@@ -19,7 +19,7 @@ A cluster that is created or should be adopted by vitistack must have the follow
 |vitistack.io/clusterid|an unique id of the cluster|t-mgmt-001-l33t|
 |vitistack.io/kubernetes-endpoint-addr|the loadbalanced api endpoint|https://10.20.30.40:6443|
 
-## DNSnames (may be used)
+## DNS-names (may be used)
 
 |Type|Pattern|Example|
 |---|---|---|
@@ -29,7 +29,7 @@ A cluster that is created or should be adopted by vitistack must have the follow
 
 ## Infrastructure
 
-|infrastructure|dns|
+|Infrastructure|DNS|
 |---|---|
 |prod|t-mgmt-001-l33t.az1.west.no.platform.nhn.no|
 |mgmt|t-mgmt-001-l33t.az1.west.no.mgmt.platform.nhn.no|
