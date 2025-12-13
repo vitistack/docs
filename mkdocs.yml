@@ -77,6 +77,8 @@ nav:
     - tutorials/how.md
   - How-to-guides:
     - howtoguide/index.md
+    - howtoguide/setup-vitistack.md
+    - howtoguide/install-kubevirt.md
     - howtoguide/argocd_ipam-api.md
   - Reference:
     - reference/index.md
