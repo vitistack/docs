@@ -92,5 +92,5 @@ And then:
 
 ```bash
 helm registry login ghcr.io
-helm install viti-kubevirt-operator oci://ghcr.io/vitistack/helm/kubevirt-operator
+helm install vitistack-kubevirt-operator oci://ghcr.io/vitistack/helm/kubevirt-operator
 ```
