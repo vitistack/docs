@@ -1,6 +1,9 @@
 # Example Machines
 
 ## Debian iso
+
+Dependent on the experimental feature CDI (https://kubevirt.io/user-guide/storage/containerized_data_importer)
+
 ```yaml
 ---
 apiVersion: vitistack.io/v1alpha1
@@ -33,10 +36,12 @@ spec:
       boot: true
       type: "virtio"
       encrypted: false
-
 ```
 
 ## Talos iso
+
+Dependent on the experimental feature CDI (https://kubevirt.io/user-guide/storage/containerized_data_importer)
+
 ```yaml
 ---
 apiVersion: vitistack.io/v1alpha1
@@ -69,5 +74,4 @@ spec:
       boot: true
       type: "virtio"
       encrypted: false
-
 ```
