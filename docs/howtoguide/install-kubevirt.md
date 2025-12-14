@@ -1,4 +1,4 @@
-# Kubevirt
+# Install Kubevirt
 
 ## Install kubevirt
 (docs with kind: https://kubevirt.io/quickstart_kind)
@@ -37,4 +37,60 @@ ARCH=$(uname -s | tr A-Z a-z)-$(uname -m | sed 's/x86_64/amd64/') || windows-amd
 echo ${ARCH}
 curl -L -o virtctl https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/virtctl-${VERSION}-${ARCH}
 sudo install -m 0755 virtctl /usr/local/bin
+```
+
+## Verify kubevirt components
+
+```bash
+kubectl get kubevirt.kubevirt.io/kubevirt -n kubevirt -o=jsonpath="{.status.phase}"
+```
+
+Check the components
+```bash
+kubectl get all -n kubevirtkubectl get all -n kubevirt
+```
+
+## How create a KubeVirtConfig
+
+Create a k8s secret from file content (kubeconfig file to the kubevirt cluster)
+
+```bash
+kubectl create secret generic kubevirt-provider --from-file=kubeconfig=<path to kubevirt kubeconfig file>`
+```
+
+Note, if you are using the supervisor cluster as the kubevirt cluster, use the kubernetes service address in the kubeconfig
+```yaml
+apiVersion: v1
+clusters:
+- cluster:
+    server: https://kubernetes.default.svc:443
+....
+```
+
+## Create the KubevirtConfig
+
+Create and modify this yaml 
+
+Filename: kubevirtconfig.yaml
+```yaml
+apiVersion: vitistack.io/v1alpha1
+kind: KubevirtConfig
+metadata:
+  name: kubevirt-provider
+spec:
+  name: kubevirt-provider
+  secretNamespace: default
+  kubeconfigSecretRef: kubevirt-provider
+```
+
+And then:
+
+`kubectl apply -f kubevirtconfig.yaml`
+
+
+## Install the Kubevirt-operator
+
+```bash
+helm registry login ghcr.io
+helm install viti-kubevirt-operator oci://ghcr.io/vitistack/helm/kubevirt-operator
 ```

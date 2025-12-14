@@ -46,90 +46,14 @@ Or using kubectl (no authentication required)
 kubectl apply -f https://github.com/vitistack/common/releases/latest/download/crds.yaml
 ```
 
-## Machine classes
-These a example machine classes
+## Machine Classes
+[Install machineclasses](install-machineclasses.md)
 
-### Small
-filename: machineclass-small.yaml
-```yaml
-apiVersion: vitistack.io/v1alpha1
-kind: MachineClass
-metadata:
-  name: small
-spec:
-  displayName: Small
-  description: Small instance with 2 cores and 8Gi memory
-  enabled: true
-  default: false
-  category: Standard
-  cpu:
-    cores: 2
-    sockets: 1
-    threads: 1
-  memory:
-    quantity: 8Gi
-  machineProviders: []
-```
+## DHCP
 
-```bash
-kubectl apply -f machineclass-small.yaml
-```
+We currently support:
 
-### Medium
-filename: machineclass-medium.yaml
-```yaml
-apiVersion: vitistack.io/v1alpha1
-kind: MachineClass
-metadata:
-  name: medium
-spec:
-  displayName: Medium
-  description: Medium instance with 4 cores and 16Gi memory
-  enabled: true
-  default: true
-  category: Standard
-  cpu:
-    cores: 4
-    sockets: 1
-    threads: 1
-  memory:
-    quantity: 16Gi
-  machineProviders: []
-
-```
-
-```bash
-kubectl apply -f machineclass-medium.yaml
-```
-
-### Large
-filename: machineclass-large.yaml
-```yaml
-apiVersion: vitistack.io/v1alpha1
-kind: MachineClass
-metadata:
-  name: large
-spec:
-  displayName: Large
-  description: Large instance with 4 cores and 32Gi memory
-  enabled: true
-  default: false
-  category: Standard
-  cpu:
-    cores: 4
-    sockets: 1
-    threads: 1
-  memory:
-    quantity: 32Gi
-  machineProviders: []
-```
-
-```bash
-kubectl apply -f machineclass-large.yaml
-```
-
-## Kea Operator
-To be continued
+- [Kea DHCP](install-keadhcp.md)
 
 ## Vitistack operator
 
@@ -141,73 +65,17 @@ Install the vitistack operator by:
 helm install vitistack-operator oci://ghcr.io/vitistack/helm/vitistack-operator
 ```
 
-## Kubevirt
-To create machines with kubevirt we need to install kubevirt into a own cluster (or into the supervisor cluster)
+## Vitistack Machine Providers
+To make vitistack machines, we currently support 
 
-### To install kubevirt 
-[Guide to install Kubevirt](install-kubevirt.md)
-
-### Verify kubevirt components
-
-```bash
-kubectl get kubevirt.kubevirt.io/kubevirt -n kubevirt -o=jsonpath="{.status.phase}"
-```
-
-Check the components
-```bash
-kubectl get all -n kubevirtkubectl get all -n kubevirt
-```
-
-### How create a KubeVirtConfig
-
-Create a k8s secret from file content (kubeconfig file to the kubevirt cluster)
-
-```bash
-kubectl create secret generic kubevirt-provider --from-file=kubeconfig=<path to kubevirt kubeconfig file>`
-```
-
-### Create the KubevirtConfig
-
-Create and modify this yaml 
-
-Filename: kubevirtconfig.yaml
-```yaml
-apiVersion: vitistack.io/v1alpha1
-kind: KubevirtConfig
-metadata:
-  name: kubevirt-provider
-spec:
-  name: kubevirt-provider
-  secretNamespace: default
-  kubeconfigSecretRef: kubevirt-provider
-```
-
-And then:
-
-`kubectl apply -f kubevirtconfig.yaml`
+- [Kubevirt](./install-kubevirt.md)
+- [Proxmox](./install-proxmox.md)
+- [Physical](./install-physical-machine.md)
 
 
-### Install the Kubevirt-operator
+## Vitistack Kubernetes Providers
 
-```bash
-helm registry login ghcr.io
-helm install viti-kubevirt-operator oci://ghcr.io/vitistack/helm/kubevirt-operator
-```
+To install a vitistack Kubernetes cluster, we currently support
 
-## Proxmox-operator
+- [Talos](./install-talos.md)
 
-You need one or more Proxmox instances.
-
-To install proxmox, follow this installation guide: 
-- https://proxmox.com/en/products/proxmox-virtual-environment/get-started
-- https://pve.proxmox.com/pve-docs/chapter-pve-installation.html
-
-### Install the Proxmox operator
-
-```bash
-helm registry login ghcr.io
-helm install viti-proxmox-operator oci://ghcr.io/vitistack/helm/proxmox-operator
-```
-
-## Talos Operator
-To be continued
