@@ -50,6 +50,33 @@ Check the components
 kubectl get all -n kubevirtkubectl get all -n kubevirt
 ```
 
+## Multus
+
+The Vitistack uses Multus together with Kubevirt, so please install multus.
+
+Docs: https://github.com/k8snetworkplumbingwg/multus-cni and https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/quickstart.md
+
+
+## Containerized Data Importer (CDI)
+
+Notice, this is an experimental feature from Kubevirt
+
+Docs: https://kubevirt.io/labs/kubernetes/lab2.html
+
+"You can experiment with this lab online at Killercoda
+In this lab, you will learn how to use Containerized Data Importer (CDI) to import Virtual Machine images for use with Kubevirt. CDI simplifies the process of importing data from various sources into Kubernetes Persistent Volumes, making it easier to use that data within your virtual machines.
+
+CDI introduces DataVolumes, custom resources meant to be used as abstractions of PVCs. A custom controller watches for DataVolumes and handles the creation of a target PVC with all the spec and annotations required for importing the data. Depending on the type of source, other specific CDI controller will start the import process and create a raw image named disk.img with the desired content into the target PVC."
+
+
+To install:
+
+```bash
+export VERSION=$(basename $(curl -s -w %{redirect_url} https://github.com/kubevirt/containerized-data-importer/releases/latest))
+kubectl create -f https://github.com/kubevirt/containerized-data-importer/releases/download/$VERSION/cdi-operator.yaml
+kubectl create -f https://github.com/kubevirt/containerized-data-importer/releases/download/$VERSION/cdi-cr.yaml
+```
+
 ## How create a KubeVirtConfig
 
 Create a k8s secret from file content (kubeconfig file to the kubevirt cluster)
@@ -93,4 +120,178 @@ And then:
 ```bash
 helm registry login ghcr.io
 helm install vitistack-kubevirt-operator oci://ghcr.io/vitistack/helm/kubevirt-operator
+```
+
+Values.yaml from Helm chart:
+```yaml
+# Default values for kubevirt-operator.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
+replicaCount: 1
+
+# This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
+image:
+  repository: ghcr.io/vitistack/kubevirt-operator
+  # This sets the pull policy for images.
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+# This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+imagePullSecrets: []
+# This is to override the chart name.
+nameOverride: ""
+fullnameOverride: ""
+
+# This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# This is for setting Kubernetes Annotations to a Pod.
+# For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+podAnnotations: {}
+# This is for setting Kubernetes Labels to a Pod.
+# For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+podLabels: {}
+
+podSecurityContext:
+  fsGroup: 2000
+
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+  seccompProfile:
+    type: RuntimeDefault
+
+# This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
+service:
+  # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+  type: ClusterIP
+  # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
+  port: 80
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 9992
+  initialDelaySeconds: 15
+  periodSeconds: 20
+readinessProbe:
+  httpGet:
+    path: /readyz
+    port: 9992
+  initialDelaySeconds: 5
+  periodSeconds: 10
+
+# This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# Additional volumes on the output Deployment definition.
+volumes: []
+# - name: foo
+#   secret:
+#     secretName: mysecret
+#     optional: false
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts: []
+# - name: foo
+#   mountPath: "/etc/foo"
+#   readOnly: true
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Operator configuration
+# These settings are passed as environment variables to the operator
+
+# Namespace the operator manages (uses Release.Namespace if empty)
+namespace: ""
+# CPU model for VMs: "host-model" (default for x86), "host-passthrough" (required for ARM)
+cpuModel: ""
+# CNI version for NetworkAttachmentDefinitions
+nadCniVersion: "1.0.0"
+# Where to fetch public IPs from: "vmi" (default, from KubeVirt VMI) or "networkconfiguration"
+ipSource: "vmi"
+# Enable Containerized Data Importer (CDI) support
+kubevirtSupportCDI: false
+# Name of the MachineProvider
+machineProviderName: "kubevirt-provider"
+# PVC volume mode: "Block" (default) or "Filesystem"
+pvcVolumeMode: "Block"
+# Optional prefix for VM names
+vmNamePrefix: ""
+# Vitistack name (optional)
+vitistackName: "vitistack"
+
+# Logging configuration
+logging:
+  # Log level: debug, info, warn, error
+  level: "info"
+  # Output logs as JSON
+  json: true
+  # Add caller information to logs
+  addCaller: false
+  # Disable stacktrace in logs
+  disableStacktrace: true
+  # Unescape multiline log messages
+  unescapedMultiline: false
+  # Colorize log lines (for development)
+  colorizeLine: false
+
+# Leader election for HA deployments
+leaderElection:
+  enabled: true
+
+# Metrics configuration
+metrics:
+  # Enable metrics endpoint
+  enabled: true
+  # Metrics bind address (use ":8443" for HTTPS, ":8080" for HTTP, "0" to disable)
+  bindAddress: ":8443"
+  # Serve metrics over HTTPS
+  secure: true
+
+# Health probe configuration
+healthProbe:
+  # Health probe bind address
+  bindAddress: ":9992"
+
+# RBAC configuration
+rbac:
+  # Create ClusterRole and ClusterRoleBinding
+  create: true
+
 ```
