@@ -158,10 +158,10 @@ curl -X DELETE http://localhost:3000/ \
 
 ## API Request flows
 ### POST request
-![POST Request Overview Image](../images/ipam-api/post.ipam-api.excalidraw.png "POST request flow")
+![POST Request Overview Image](../../images/ipam-api/post.ipam-api.excalidraw.png "POST request flow")
 
 ### DELETE request
-![DELETE Request Overview Image](../images/ipam-api/delete.ipam-api.excalidraw.png "DELETE request flow")
+![DELETE Request Overview Image](../../images/ipam-api/delete.ipam-api.excalidraw.png "DELETE request flow")
 
 ## IPAM-CLI
 The ipam-cli can be used to display or manipulate ip addresses and services stored in MongoDB, and to create a Mongodb dump for backup
@@ -257,4 +257,4 @@ When `splunk` is present in `config.json` logs from the ipam-api app and http se
 
 #### Splunk overview
 
-![Splunk Overview Image](../images/splunk.ipam-operator.excalidraw.png "Splunk Overview")
+![Splunk Overview Image](../../images/splunk.ipam-operator.excalidraw.png "Splunk Overview")

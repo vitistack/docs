@@ -77,6 +77,15 @@ nav:
     - tutorials/how.md
   - How-to-guides:
     - howtoguide/index.md
+    - howtoguide/setup-vitistack.md
+    - howtoguide/install-machineclasses.md
+    - howtoguide/install-keadhcp.md
+    - howtoguide/install-kubevirt.md
+    - howtoguide/install-proxmox.md
+    - howtoguide/install-physical-machine.md
+    - howtoguide/install-talos.md
+    - howtoguide/example-machines.md
+    - howtoguide/example-kubernetesclusters.md
     - howtoguide/argocd_ipam-api.md
   - Reference:
     - reference/index.md

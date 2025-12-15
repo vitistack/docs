@@ -18,6 +18,9 @@ npm install
 # Serve locally
 mkdocs serve
 
+# or with live reload
+mkdocs serve --livereload
+
 # Build for production
 mkdocs build
 ```
