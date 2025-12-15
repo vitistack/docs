@@ -1,11 +1,35 @@
 # Example Machines
 
+## Network namespace
+
+First we need the NetworkNamespace object
+
+Filename: networknamespace.yaml
+
+```yaml
+apiVersion: vitistack.io/v1alpha1
+kind: NetworkNamespace
+metadata:
+  name: t-test01
+spec:
+  datacenterIdentifier: test-north-az1
+  supervisorIdentifier: test-viti
+```
+
+Apply with:
+
+```bash
+kubectl create namespace t-test01
+kubectl apply -f networknamespace.yaml -n t-test01
+```
+
 ## Debian iso
 
 Dependent on the experimental feature CDI (https://kubevirt.io/user-guide/storage/containerized_data_importer)
 
+Filename: machine-iso-debian.yaml
+
 ```yaml
----
 apiVersion: vitistack.io/v1alpha1
 kind: Machine
 metadata:
@@ -38,9 +62,17 @@ spec:
       encrypted: false
 ```
 
+Apply with:
+
+```bash
+kubectl apply -f machine-iso-debian.yaml -n t-test01
+```
+
 ## Talos iso
 
 Dependent on the experimental feature CDI (https://kubevirt.io/user-guide/storage/containerized_data_importer)
+
+Filename: machine-iso-talos.yaml
 
 ```yaml
 ---
@@ -74,4 +106,10 @@ spec:
       boot: true
       type: "virtio"
       encrypted: false
+```
+
+Apply with:
+
+```bash
+kubectl apply -f machine-iso-talos.yaml -n t-test01
 ```

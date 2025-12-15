@@ -37,7 +37,7 @@ theme:
     - content.code.copy
     - content.code.annotate
   icon:
-    edit: material/pencil 
+    edit: material/pencil
     view: material/eye
     repo: fontawesome/brands/github
 extra_css:
@@ -45,9 +45,9 @@ extra_css:
 extra_javascript:
   - js/accessibility.js
 plugins:
-    - search
-    - mermaid2
-    - glightbox
+  - search
+  - mermaid2
+  - glightbox
 markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
@@ -73,45 +73,47 @@ extra:
   generator: false
 nav:
   - Tutorials:
-    - tutorials/index.md
-    - tutorials/how.md
+      - tutorials/index.md
+      - tutorials/how.md
   - How-to-guides:
-    - howtoguide/index.md
-    - howtoguide/setup-vitistack.md
-    - howtoguide/install-machineclasses.md
-    - howtoguide/install-keadhcp.md
-    - howtoguide/install-kubevirt.md
-    - howtoguide/install-proxmox.md
-    - howtoguide/install-physical-machine.md
-    - howtoguide/install-talos.md
-    - howtoguide/example-machines.md
-    - howtoguide/example-kubernetesclusters.md
-    - howtoguide/argocd_ipam-api.md
+      - howtoguide/index.md
+      - howtoguide/setup-vitistack.md
+      - howtoguide/install-machineclasses.md
+      - howtoguide/install-vitistack-operator.md
+      - howtoguide/install-network-operator.md
+      - howtoguide/install-keadhcp.md
+      - howtoguide/install-kubevirt.md
+      - howtoguide/install-proxmox.md
+      - howtoguide/install-physical-machine.md
+      - howtoguide/install-talos.md
+      - howtoguide/example-machines.md
+      - howtoguide/example-kubernetesclusters.md
+      - howtoguide/argocd_ipam-api.md
   - Reference:
-    - reference/index.md
-    - reference/opensourcesoftware.md
-    - reference/repository.md
-    - reference/dns.md
-    - Configuration:
-      - reference/configuration/index.md
-      - reference/configuration/clusterdiscovery.md
-    - Operators:
-      - reference/operators/index.md
-      - reference/operators/proxmox-operator.md
-      - reference/operators/vitistack-operator.md
-      - reference/operators/talos-operator.md
-      - reference/operators/kubevirt-operator.md
-      - reference/operators/physical-operator.md
-      - reference/operators/kea-operator.md
-      - reference/operators/ipam-operator.md
-    - CRDs:
-      - reference/crd/index.md
-    - API:
-      - reference/api/index.md
-      - reference/api/ipam-api.md
+      - reference/index.md
+      - reference/opensourcesoftware.md
+      - reference/repository.md
+      - reference/dns.md
+      - Configuration:
+          - reference/configuration/index.md
+          - reference/configuration/clusterdiscovery.md
+      - Operators:
+          - reference/operators/index.md
+          - reference/operators/proxmox-operator.md
+          - reference/operators/vitistack-operator.md
+          - reference/operators/talos-operator.md
+          - reference/operators/kubevirt-operator.md
+          - reference/operators/physical-operator.md
+          - reference/operators/kea-operator.md
+          - reference/operators/ipam-operator.md
+      - CRDs:
+          - reference/crd/index.md
+      - API:
+          - reference/api/index.md
+          - reference/api/ipam-api.md
   - Explanation:
-    - explanation/index.md
-    - explanation/architecture.md
+      - explanation/index.md
+      - explanation/architecture.md
   - Release Notes:
-    - release_notes/index.md
-    - release_notes/v1.0.x/v1_0_x.md
+      - release_notes/index.md
+      - release_notes/v1.0.x/v1_0_x.md

@@ -1,12 +1,15 @@
 # How to setup vitistack
 
 ## Prerequisites
+
 First of all you need a Kubernetes cluster to run all the Vitistack operators.
 
 ### On prem
+
 Create hardware nodes an install ex Talos, K0s or other kubernetes solutions
 
 ### Cloud
+
 - Azure Kubernetes Service (AKS)
 - Elastic Kubernetes Service (EKS)
 - Scaleway
@@ -14,8 +17,8 @@ Create hardware nodes an install ex Talos, K0s or other kubernetes solutions
 - or others
 
 ### Locally
-You could use Kind (https://kind.sigs.k8s.io/docs/user/quick-start/#installation) or Talosctl (https://docs.siderolabs.com/talos/v1.11/getting-started/talosctl) to install spin up a Kubernetes cluster locally.
 
+You could use Kind (https://kind.sigs.k8s.io/docs/user/quick-start/#installation) or Talosctl (https://docs.siderolabs.com/talos/v1.11/getting-started/talosctl) to install spin up a Kubernetes cluster locally.
 
 ## Visual cluster overview
 
@@ -47,7 +50,16 @@ kubectl apply -f https://github.com/vitistack/common/releases/latest/download/cr
 ```
 
 ## Machine Classes
+
 [Install machineclasses](install-machineclasses.md)
+
+## Vitistack operator
+
+[Vitistack operator](./install-vitistack-operator.md)
+
+## Network
+
+To be continued
 
 ## DHCP
 
@@ -55,27 +67,16 @@ We currently support:
 
 - [Kea DHCP](install-keadhcp.md)
 
-## Vitistack operator
-
-The vitistack operator handles the vitistack crd object. The operator fetches information and adds it to the vitistack crd object, so other solutions could show or integrate with the vitistack. One example is ROR (Release Operate Report) found here: https://github.com/norskHelsenett/ror
-
-Install the vitistack operator by:
-
-```bash
-helm install vitistack-operator oci://ghcr.io/vitistack/helm/vitistack-operator
-```
-
 ## Vitistack Machine Providers
-To make vitistack machines, we currently support 
+
+To make vitistack machines, we currently support
 
 - [Kubevirt](./install-kubevirt.md)
 - [Proxmox](./install-proxmox.md)
 - [Physical](./install-physical-machine.md)
-
 
 ## Vitistack Kubernetes Providers
 
 To install a vitistack Kubernetes cluster, we currently support
 
 - [Talos](./install-talos.md)
-

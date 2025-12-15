@@ -1,6 +1,31 @@
 # Example KubernetesClusters
 
+## Network namespace
+
+First we need the NetworkNamespace object
+
+Filename: networknamespace.yaml
+
+```yaml
+apiVersion: vitistack.io/v1alpha1
+kind: NetworkNamespace
+metadata:
+  name: t-test01
+spec:
+  datacenterIdentifier: test-north-az1
+  supervisorIdentifier: test-viti
+```
+
+Apply with:
+
+```bash
+kubectl create namespace t-test01
+kubectl apply -f networknamespace.yaml -n t-test01
+```
+
 ## Small simple kubernetescluster
+
+Filename: kubernetescluster.yaml
 
 ```yaml
 apiVersion: vitistack.io/v1alpha1
@@ -62,5 +87,10 @@ spec:
             - class: "standard"
               path: "/var/lib/vitistack/kubevirt"
               size: "20Gi"
+```
 
+Apply with:
+
+```bash
+kubectl apply -f kubernetescluster.yaml -n t-test01
 ```
