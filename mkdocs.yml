@@ -76,9 +76,7 @@ nav:
       - tutorials/index.md
       - tutorials/how.md
   - How-to-guides:
-      - Setup:
-          - howtoguide/setup/index.md
-          - howtoguide/setup/setup-vitistack.md
+      - howtoguide/setup-vitistack.md
       - Infrastructure:
           - howtoguide/infrastructure/index.md
           - howtoguide/infrastructure/vitistack-crds.md
