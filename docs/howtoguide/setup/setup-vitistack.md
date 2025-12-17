@@ -22,40 +22,21 @@ You could use Kind (https://kind.sigs.k8s.io/docs/user/quick-start/#installation
 
 ## Visual cluster overview
 
-![Vitistack cluster setup](../images/vitistack-setup.excalidraw.png "Vitistack cluster setup")
+![Vitistack cluster setup](../../images/vitistack-setup.excalidraw.png "Vitistack cluster setup")
 
 It is also possible that the supervisor cluster also has Kubevirt installed, so there is also support for only one cluster. But it is wise to spread out the risk onto multiple clusters, incause of errors.
 
-## Install Vitistack CRDS
+## CRDS
 
-Using Helm (recommended)
-
-First, login to GitHub Container Registry
-
-Username: your GitHub username
-
-Password: a Personal Access Token (PAT) with `read:packages` scope
-
-Create a PAT at: https://github.com/settings/tokens/new?scopes=read:packages
-
-```bash
-helm registry login ghcr.io
-helm install vitistack-crds oci://ghcr.io/vitistack/crds
-```
-
-Or using kubectl (no authentication required)
-
-```bash
-kubectl apply -f https://github.com/vitistack/common/releases/latest/download/crds.yaml
-```
+[Install vitistack crds](../infrastructure/vitistack-crds.md)
 
 ## Machine Classes
 
-[Install machineclasses](install-machineclasses.md)
+[Install machineclasses](../setup/install-machineclasses.md)
 
 ## Vitistack operator
 
-[Vitistack operator](./install-vitistack-operator.md)
+[Vitistack operator](../operators/install-vitistack-operator.md)
 
 ## Network
 
@@ -65,18 +46,18 @@ To be continued
 
 We currently support:
 
-- [Kea DHCP](install-keadhcp.md)
+- [Kea DHCP](../operators/install-keadhcp.md)
 
 ## Vitistack Machine Providers
 
 To make vitistack machines, we currently support
 
-- [Kubevirt](./install-kubevirt.md)
-- [Proxmox](./install-proxmox.md)
-- [Physical](./install-physical-machine.md)
+- [Kubevirt](../machines/install-kubevirt.md)
+- [Proxmox](../machines/install-proxmox.md)
+- [Physical](../machines/install-physical-operator.md)
 
 ## Vitistack Kubernetes Providers
 
 To install a vitistack Kubernetes cluster, we currently support
 
-- [Talos](./install-talos.md)
+- [Talos](../clusters/install-talos.md)

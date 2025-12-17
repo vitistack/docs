@@ -5,6 +5,7 @@ The vitistack operator handles the vitistack crd object. The operator fetches in
 Install the vitistack operator by:
 
 ```bash
+helm registry login ghcr.io
 helm install vitistack-operator oci://ghcr.io/vitistack/helm/vitistack-operator
 ```
 

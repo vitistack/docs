@@ -1,8 +1,9 @@
-# Install Proxmox
+# Install Proxmox and operator
 
 You need one or more Proxmox instances.
 
-To install proxmox, follow this installation guide: 
+To install proxmox, follow this installation guide:
+
 - https://proxmox.com/en/products/proxmox-virtual-environment/get-started
 - https://pve.proxmox.com/pve-docs/chapter-pve-installation.html
 
@@ -15,6 +16,7 @@ The secret should contain: PROXMOX_ENDPOINT, PROXMOX_USERNAME, PROXMOX_PASSWORD
 or PROXMOX_TOKEN_ID, PROXMOX_TOKEN_SECRET
 
 ### Create the secret with:
+
 ```bash
 kubectl create secret generic proxmox-credentials-secret \
     --from-literal=PROXMOX_ENDPOINT=https://proxmox.example.com:8006/api2/json \
@@ -23,6 +25,7 @@ kubectl create secret generic proxmox-credentials-secret \
 ```
 
 ### Or for token auth:
+
 ```bash
 kubectl create secret generic proxmox-credentials-secret \
     --from-literal=PROXMOX_ENDPOINT=https://proxmox.example.com:8006/api2/json \
@@ -31,7 +34,9 @@ kubectl create secret generic proxmox-credentials-secret \
 ```
 
 ### or with yaml
+
 Filename: proxmox-credentials-secret.yaml
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -54,13 +59,17 @@ Apply with
 kubectl apply -f proxmox-credentials-secret.yaml
 ```
 
-### Install the Vitistack Proxmox Operator
+## Proxmox Operator
+
 ```bash
 helm registry login ghcr.io
 helm install vitistack-proxmox-operator oci://ghcr.io/vitistack/helm/proxmox-operator
 ```
 
+### Operator helm values
+
 Values.yaml from helm chart:
+
 ```yaml
 # Default values for proxmox-operator.
 # This is a YAML-formatted file.
@@ -250,5 +259,4 @@ network:
   # Second octet for MAC address generation (format: 02:XX:RR:RR:RR:RR where XX is this value)
   # Default is 24 (0x18 in hex), resulting in MAC addresses like 02:18:XX:XX:XX:XX
   macSet: "24"
-
 ```

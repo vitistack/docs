@@ -76,19 +76,29 @@ nav:
       - tutorials/index.md
       - tutorials/how.md
   - How-to-guides:
-      - howtoguide/index.md
-      - howtoguide/setup-vitistack.md
-      - howtoguide/install-machineclasses.md
-      - howtoguide/install-vitistack-operator.md
-      - howtoguide/install-network-operator.md
-      - howtoguide/install-keadhcp.md
-      - howtoguide/install-kubevirt.md
-      - howtoguide/install-proxmox.md
-      - howtoguide/install-physical-machine.md
-      - howtoguide/install-talos.md
-      - howtoguide/example-machines.md
-      - howtoguide/example-kubernetesclusters.md
-      - howtoguide/argocd_ipam-api.md
+      - Setup:
+          - howtoguide/setup/index.md
+          - howtoguide/setup/setup-vitistack.md
+      - Infrastructure:
+          - howtoguide/infrastructure/index.md
+          - howtoguide/infrastructure/vitistack-crds.md
+          - howtoguide/infrastructure/install-machineclasses.md
+          - howtoguide/infrastructure/install-keadhcp.md
+          - howtoguide/infrastructure/install-network-operator.md
+          - howtoguide/infrastructure/install-vitistack-operator.md
+      - Machines:
+          - howtoguide/machines/index.md
+          - howtoguide/machines/install-kubevirt.md
+          - howtoguide/machines/install-proxmox.md
+          - howtoguide/machines/install-physical-operator.md
+          - howtoguide/machines/example-machines.md
+      - Clusters:
+          - howtoguide/clusters/index.md
+          - howtoguide/clusters/install-talos.md
+          - howtoguide/clusters/example-kubernetesclusters.md
+      - Applications / Configuration:
+          - howtoguide/applications/index.md
+          - howtoguide/applications/argocd_ipam-api.md
   - Reference:
       - reference/index.md
       - reference/opensourcesoftware.md

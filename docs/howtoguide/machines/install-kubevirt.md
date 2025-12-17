@@ -1,7 +1,11 @@
-# Install Kubevirt
+# Install Kubevirt and operator
 
-## Install kubevirt
+## Kubevirt in kubernetes
+
+If you are running one or more own kubevirt clusters, you have to install the vitistack crds into the kubevirt cluster(s) too: [install vitistack crds](../infrastructure/vitistack-crds.md)
+
 (docs with kind: https://kubevirt.io/quickstart_kind)
+
 ```bash
 export VERSION=$(curl -s https://storage.googleapis.com/kubevirt-prow/release/kubevirt/kubevirt/stable.txt)
 
@@ -9,7 +13,8 @@ echo $VERSION
 kubectl create -f "https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/kubevirt-operator.yaml"
 ```
 
-## Virtualized environment
+### Virtualized environment
+
 If running in a virtualized environment
 
 If the kind cluster runs on a virtual machine consider enabling nested virtualization. Follow the instructions described here. If for any reason nested virtualization cannot be enabled do enable KubeVirt emulation as follows:
@@ -18,14 +23,14 @@ If the kind cluster runs on a virtual machine consider enabling nested virtualiz
 kubectl -n kubevirt patch kubevirt kubevirt --type=merge --patch '{"spec":{"configuration":{"developerConfiguration":{"useEmulation":true}}}}'
 ```
 
-## Deploy the KubeVirt custom resource definitions
+### Deploy the KubeVirt custom resource definitions
 
 ```bash
 kubectl create -f "https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/kubevirt-cr.yaml"
 ```
 
+### Virtctl
 
-## Virtctl
 KubeVirt provides an additional binary called virtctl for quick access to the serial and graphical ports of a VM and also handle start/stop operations.
 
 Install
@@ -39,25 +44,19 @@ curl -L -o virtctl https://github.com/kubevirt/kubevirt/releases/download/${VERS
 sudo install -m 0755 virtctl /usr/local/bin
 ```
 
-## Verify kubevirt components
+### Verify kubevirt components
 
 ```bash
 kubectl get kubevirt.kubevirt.io/kubevirt -n kubevirt -o=jsonpath="{.status.phase}"
 ```
 
 Check the components
+
 ```bash
 kubectl get all -n kubevirtkubectl get all -n kubevirt
 ```
 
-## Multus
-
-The Vitistack uses Multus together with Kubevirt, so please install multus.
-
-Docs: https://github.com/k8snetworkplumbingwg/multus-cni and https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/quickstart.md
-
-
-## Containerized Data Importer (CDI)
+### Containerized Data Importer (CDI)
 
 Notice, this is an experimental feature from Kubevirt
 
@@ -68,7 +67,6 @@ In this lab, you will learn how to use Containerized Data Importer (CDI) to impo
 
 CDI introduces DataVolumes, custom resources meant to be used as abstractions of PVCs. A custom controller watches for DataVolumes and handles the creation of a target PVC with all the spec and annotations required for importing the data. Depending on the type of source, other specific CDI controller will start the import process and create a raw image named disk.img with the desired content into the target PVC."
 
-
 To install:
 
 ```bash
@@ -77,7 +75,15 @@ kubectl create -f https://github.com/kubevirt/containerized-data-importer/releas
 kubectl create -f https://github.com/kubevirt/containerized-data-importer/releases/download/$VERSION/cdi-cr.yaml
 ```
 
-## How create a KubeVirtConfig
+## Multus
+
+The Vitistack uses Multus together with Kubevirt, so please install multus.
+
+Docs: https://github.com/k8snetworkplumbingwg/multus-cni and https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/quickstart.md
+
+## Kubevirt Operator
+
+### How create a KubeVirtConfig
 
 Create a k8s secret from file content (kubeconfig file to the kubevirt cluster)
 
@@ -86,6 +92,7 @@ kubectl create secret generic kubevirt-provider --from-file=kubeconfig=<path to 
 ```
 
 Note, if you are using the supervisor cluster as the kubevirt cluster, use the kubernetes service address in the kubeconfig
+
 ```yaml
 apiVersion: v1
 clusters:
@@ -94,11 +101,12 @@ clusters:
 ....
 ```
 
-## Create the KubevirtConfig
+### Create the KubevirtConfig
 
-Create and modify this yaml 
+Create and modify this yaml
 
 Filename: kubevirtconfig.yaml
+
 ```yaml
 apiVersion: vitistack.io/v1alpha1
 kind: KubevirtConfig
@@ -114,15 +122,17 @@ And then:
 
 `kubectl apply -f kubevirtconfig.yaml`
 
-
-## Install the Kubevirt-operator
+### Install the Kubevirt-operator
 
 ```bash
 helm registry login ghcr.io
 helm install vitistack-kubevirt-operator oci://ghcr.io/vitistack/helm/kubevirt-operator
 ```
 
+### Kubevirt-operator helm values
+
 Values.yaml from Helm chart:
+
 ```yaml
 # Default values for kubevirt-operator.
 # This is a YAML-formatted file.
@@ -293,5 +303,4 @@ healthProbe:
 rbac:
   # Create ClusterRole and ClusterRoleBinding
   create: true
-
 ```

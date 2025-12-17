@@ -1,4 +1,4 @@
-# Install Kea DHCP
+# Install Kea DHCP and operator
 
 You need a instance of Kea DHCP, please read this doc for installation and configuration: https://kea.readthedocs.io/en/stable
 
@@ -10,6 +10,7 @@ helm install vitistack-kea-operator oci://ghcr.io/vitistack/helm/kea-operator
 ```
 
 Values.yaml from helm chart
+
 ```yaml
 # Default values for kea-operator.
 # This is a YAML-formatted file.
