@@ -22,21 +22,21 @@ You could use Kind (https://kind.sigs.k8s.io/docs/user/quick-start/#installation
 
 ## Visual cluster overview
 
-![Vitistack cluster setup](../../images/vitistack-setup.excalidraw.png "Vitistack cluster setup")
+![Vitistack cluster setup](../images/vitistack-setup.excalidraw.png "Vitistack cluster setup")
 
 It is also possible that the supervisor cluster also has Kubevirt installed, so there is also support for only one cluster. But it is wise to spread out the risk onto multiple clusters, incause of errors.
 
 ## CRDS
 
-[Install vitistack crds](../infrastructure/vitistack-crds.md)
+[Install vitistack crds](infrastructure/vitistack-crds.md)
 
 ## Machine Classes
 
-[Install machineclasses](../setup/install-machineclasses.md)
+[Install machineclasses](infrastructure/install-machineclasses.md)
 
 ## Vitistack operator
 
-[Vitistack operator](../operators/install-vitistack-operator.md)
+[Vitistack operator](infrastructure/install-vitistack-operator.md)
 
 ## Network
 
@@ -46,18 +46,18 @@ To be continued
 
 We currently support:
 
-- [Kea DHCP](../operators/install-keadhcp.md)
+- [Kea DHCP](infrastructure/install-keadhcp.md)
 
 ## Vitistack Machine Providers
 
 To make vitistack machines, we currently support
 
-- [Kubevirt](../machines/install-kubevirt.md)
-- [Proxmox](../machines/install-proxmox.md)
-- [Physical](../machines/install-physical-operator.md)
+- [Kubevirt](machines/install-kubevirt.md)
+- [Proxmox](machines/install-proxmox.md)
+- [Physical](machines/install-physical-operator.md)
 
 ## Vitistack Kubernetes Providers
 
 To install a vitistack Kubernetes cluster, we currently support
 
-- [Talos](../clusters/install-talos.md)
+- [Talos](clusters/install-talos.md)
