@@ -61,3 +61,4 @@ To make vitistack machines, we currently support
 To install a vitistack Kubernetes cluster, we currently support
 
 - [Talos](clusters/install-talos.md)
+- [AKS](clusters/install-aks.md)

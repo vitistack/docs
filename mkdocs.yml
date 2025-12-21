@@ -93,6 +93,7 @@ nav:
       - Clusters:
           - howtoguide/clusters/index.md
           - howtoguide/clusters/install-talos.md
+          - howtoguide/clusters/install-aks.md
           - howtoguide/clusters/example-kubernetesclusters.md
       - Applications / Configuration:
           - howtoguide/applications/index.md
