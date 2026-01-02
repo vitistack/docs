@@ -46,7 +46,7 @@ metadata:
 Let´s go through the annotations, one by one:
 
 - **ipam.vitistack.io/addresses**: Metallb support only one (1) ip-address pr ip-family. IPAM-operator will fetch ip-address automatically, if not provided manually by consumer. Commas are used to separate multiple addresses.
-- **ipam.vitistack.io/allow-local-shared-ip**: Metallb support sharing single ip-address between services within same cluster if the pre-shared-key is the same for both services with different ports.
+- **ipam.vitistack.io/allow-local-shared-ip**: Metallb support sharing single ip-address between services within same cluster if the pre-shared-key is the same for both services with different ports. It requires that both use the `Cluster` external traffic policy, or they both point to the exact same set of pods (i.e. the pod selectors are identical).
 - **ipam.vitistack.io/deny-external-cleanup**: IPAM-API initiate communication (one-way) with ROR to support **SSE** (Server Sent Events), where ROR can send an event to IPAM-API with the cluster UUID to mark all services for a specific cluster to deletion. By toggeling this setting, consumer can prevent ROR from deleting services.
 - **ipam.vitistack.io/ip-family**: IPAM-API supports `ipv4`, `ipv6` & `dual` keywords. If you would like create a service that only supports ipv6, please make sure that `.spec.ipFamilies` is set to `IPv6` during initial creation.
 - **ipam.vitistack.io/retention-period-days**: Number of days the service should be reserved in IPAM-API before it`s deleted. You need the secret to re-call the ip-address.
