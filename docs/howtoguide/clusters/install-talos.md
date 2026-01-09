@@ -2,10 +2,22 @@
 
 ```bash
 helm registry login ghcr.io
-helm install vitistack-talos-operator oci://ghcr.io/vitistack/helm/talos-operator
+helm install vitistack-talos-operator oci://ghcr.io/vitistack/helm/talos-operator \
+  --namespace vitistack \
+  --create-namespace
+```
+
+## Upgrade to latest version
+
+```bash
+helm install vitistack-talos-operator oci://ghcr.io/vitistack/helm/talos-operator \
+  --namespace vitistack \
+  --create-namespace \
+  --reuse-values
 ```
 
 Values.yaml from Helm chart
+
 ```yaml
 # Default values for talos-operator.
 # This is a YAML-formatted file.
@@ -179,5 +191,4 @@ extraEnv: []
 #   - configMapRef:
 #       name: my-configmap
 envFrom: []
-
 ```

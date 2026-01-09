@@ -55,7 +55,7 @@ metadata:
 spec:
   # Template Configuration
   template: string                 # Machine template name (small, medium, large)
-  
+
   # Resource Overrides
   resources:
     cpu:
@@ -64,7 +64,7 @@ spec:
       sockets: int                # CPU sockets override
     memory:
       size: string                # Memory size (e.g., "2Gi", "4Gi")
-    
+
   # Storage Configuration
   disks:
   - name: string                  # Disk identifier
@@ -72,17 +72,17 @@ spec:
     storageClass: string          # Kubernetes StorageClass
     accessMode: string            # Volume access mode: ReadWriteOnce, ReadWriteMany
     volumeMode: string            # Volume mode: Filesystem, Block
-    
+
   # Network Configuration
   networks:
   - name: string                  # Network interface name
     networkName: string           # NetworkConfiguration reference
     model: string                 # NIC model: virtio, e1000, rtl8139
     macAddress: string            # MAC address (optional)
-    
+
   # Boot Configuration
   bootOrder: []string             # Boot device order: disk, network, cdrom
-  
+
   # Cloud-Init Configuration
   cloudInit:
     userData: string              # Cloud-init user data
@@ -90,7 +90,7 @@ spec:
     secretRef:                    # Reference to secret containing cloud-init
       name: string               # Secret name
       key: string                # Secret key
-      
+
   # Virtual Machine Settings
   domain:
     machine:
@@ -103,7 +103,7 @@ spec:
       bootloader:
         efi: bool                 # Use EFI bootloader
         secureBoot: bool          # Enable secure boot
-        
+
 status:
   phase: string                   # Current phase: Pending, Creating, Running, Stopped, Failed
   conditions: []Condition         # Status conditions
@@ -132,9 +132,9 @@ resources:
   memory:
     size: "2Gi"
 disks:
-- name: "root"
-  size: "20Gi"
-  storageClass: "default"
+  - name: "root"
+    size: "20Gi"
+    storageClass: "default"
 ```
 
 #### Medium Template
@@ -150,9 +150,9 @@ resources:
   memory:
     size: "4Gi"
 disks:
-- name: "root"
-  size: "40Gi"
-  storageClass: "default"
+  - name: "root"
+    size: "40Gi"
+    storageClass: "default"
 ```
 
 #### Large Template
@@ -168,9 +168,9 @@ resources:
   memory:
     size: "8Gi"
 disks:
-- name: "root"
-  size: "80Gi"
-  storageClass: "default"
+  - name: "root"
+    size: "80Gi"
+    storageClass: "default"
 ```
 
 ### Generated KubeVirt Resources
@@ -183,18 +183,18 @@ The operator creates corresponding KubeVirt resources:
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
-  name: string                    # Generated from Machine name
-  namespace: string               # Inherited from Machine
+  name: string # Generated from Machine name
+  namespace: string # Inherited from Machine
   labels:
     vitistack.io/managed-by: kubevirt-operator
-    vitistack.io/machine: string  # Reference to source Machine
+    vitistack.io/machine: string # Reference to source Machine
   ownerReferences:
-  - apiVersion: vitistack.io/v1alpha1
-    kind: Machine
-    name: string                  # Parent Machine name
-    uid: string                   # Parent Machine UID
+    - apiVersion: vitistack.io/v1alpha1
+      kind: Machine
+      name: string # Parent Machine name
+      uid: string # Parent Machine UID
 spec:
-  running: bool                   # VM power state
+  running: bool # VM power state
   template:
     metadata:
       labels:
@@ -202,36 +202,36 @@ spec:
     spec:
       domain:
         cpu:
-          cores: int              # From Machine resources.cpu.cores
-          threads: int            # From Machine resources.cpu.threads
-          sockets: int            # From Machine resources.cpu.sockets
+          cores: int # From Machine resources.cpu.cores
+          threads: int # From Machine resources.cpu.threads
+          sockets: int # From Machine resources.cpu.sockets
         memory:
-          guest: string           # From Machine resources.memory.size
+          guest: string # From Machine resources.memory.size
         devices:
-          disks: []               # Generated from Machine disks
-          interfaces: []          # Generated from Machine networks
+          disks: [] # Generated from Machine disks
+          interfaces: [] # Generated from Machine networks
           networkInterfaceMultiqueue: bool
         machine:
-          type: string            # From Machine domain.machine.type
-        features: {}              # From Machine domain.features
-        firmware: {}              # From Machine domain.firmware
-      networks: []                # Network configurations
-      volumes: []                 # Volume configurations
+          type: string # From Machine domain.machine.type
+        features: {} # From Machine domain.features
+        firmware: {} # From Machine domain.firmware
+      networks: [] # Network configurations
+      volumes: [] # Volume configurations
 ```
 
 ## Configuration Reference
 
 ### Environment Variables
 
-| Variable | Type | Default | Description |
-|----------|------|---------|-------------|
-| `KUBECONFIG` | string | - | Kubernetes configuration file path |
-| `RECONCILE_INTERVAL` | duration | 30s | Machine reconciliation interval |
-| `MAX_CONCURRENT_RECONCILES` | int | 5 | Maximum concurrent reconciliations |
-| `METRICS_BIND_ADDRESS` | string | `:8080` | Metrics server bind address |
-| `HEALTH_PROBE_BIND_ADDRESS` | string | `:8081` | Health probe bind address |
-| `LEADER_ELECTION` | bool | true | Enable leader election |
-| `NAMESPACE` | string | - | Operator namespace |
+| Variable                    | Type     | Default | Description                        |
+| --------------------------- | -------- | ------- | ---------------------------------- |
+| `KUBECONFIG`                | string   | -       | Kubernetes configuration file path |
+| `RECONCILE_INTERVAL`        | duration | 30s     | Machine reconciliation interval    |
+| `MAX_CONCURRENT_RECONCILES` | int      | 5       | Maximum concurrent reconciliations |
+| `METRICS_BIND_ADDRESS`      | string   | `:8080` | Metrics server bind address        |
+| `HEALTH_PROBE_BIND_ADDRESS` | string   | `:8081` | Health probe bind address          |
+| `LEADER_ELECTION`           | bool     | true    | Enable leader election             |
+| `NAMESPACE`                 | string   | -       | Operator namespace                 |
 
 ### Machine Template Configuration
 
@@ -239,23 +239,24 @@ spec:
 
 Templates are hardcoded configurations that can be referenced by name:
 
-| Template | CPU | Memory | Root Disk | Use Case |
-|----------|-----|--------|-----------|----------|
-| `small` | 1 core | 2Gi | 20Gi | Development, testing |
-| `medium` | 2 cores | 4Gi | 40Gi | Light workloads |
-| `large` | 4 cores | 8Gi | 80Gi | Production workloads |
+| Template | CPU     | Memory | Root Disk | Use Case             |
+| -------- | ------- | ------ | --------- | -------------------- |
+| `small`  | 1 core  | 2Gi    | 20Gi      | Development, testing |
+| `medium` | 2 cores | 4Gi    | 40Gi      | Light workloads      |
+| `large`  | 4 cores | 8Gi    | 80Gi      | Production workloads |
 
 #### Resource Override Behavior
 
 When both template and resource overrides are specified:
+
 ```yaml
 spec:
-  template: medium              # Base: 2 cores, 4Gi memory
+  template: medium # Base: 2 cores, 4Gi memory
   resources:
     cpu:
-      cores: 4                 # Override: Results in 4 cores
+      cores: 4 # Override: Results in 4 cores
     memory:
-      size: "8Gi"              # Override: Results in 8Gi memory
+      size: "8Gi" # Override: Results in 8Gi memory
 ```
 
 Final configuration: 4 cores, 8Gi memory, 40Gi disk (from template)
@@ -264,20 +265,20 @@ Final configuration: 4 cores, 8Gi memory, 40Gi disk (from template)
 
 #### Storage Class Integration
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `storageClass` | string | Kubernetes StorageClass name |
-| `size` | string | Volume size (e.g., "20Gi", "100Gi") |
-| `accessMode` | string | Volume access mode |
-| `volumeMode` | string | Volume mode: Filesystem or Block |
+| Parameter      | Type   | Description                         |
+| -------------- | ------ | ----------------------------------- |
+| `storageClass` | string | Kubernetes StorageClass name        |
+| `size`         | string | Volume size (e.g., "20Gi", "100Gi") |
+| `accessMode`   | string | Volume access mode                  |
+| `volumeMode`   | string | Volume mode: Filesystem or Block    |
 
 #### Supported Access Modes
 
-| Mode | Description | Multi-Node | Use Case |
-|------|-------------|------------|----------|
-| `ReadWriteOnce` | Single node read-write | No | Standard VM disks |
-| `ReadWriteMany` | Multi-node read-write | Yes | Shared storage |
-| `ReadOnlyMany` | Multi-node read-only | Yes | Read-only data |
+| Mode            | Description            | Multi-Node | Use Case          |
+| --------------- | ---------------------- | ---------- | ----------------- |
+| `ReadWriteOnce` | Single node read-write | No         | Standard VM disks |
+| `ReadWriteMany` | Multi-node read-write  | Yes        | Shared storage    |
+| `ReadOnlyMany`  | Multi-node read-only   | Yes        | Read-only data    |
 
 ### Network Configuration
 
@@ -287,19 +288,19 @@ The operator integrates with Viti Stack NetworkConfiguration resources:
 
 ```yaml
 networks:
-- name: "eth0"
-  networkName: "prod-network"    # References NetworkConfiguration
-  model: "virtio"
-  macAddress: "52:54:00:12:34:56"
+  - name: "eth0"
+    networkName: "prod-network" # References NetworkConfiguration
+    model: "virtio"
+    macAddress: "52:54:00:12:34:56"
 ```
 
 #### Network Interface Models
 
-| Model | Description | Performance | Compatibility |
-|-------|-------------|-------------|---------------|
-| `virtio` | Paravirtualized NIC | High | Modern OS |
-| `e1000` | Intel E1000 emulation | Medium | Legacy OS |
-| `rtl8139` | Realtek RTL8139 | Low | Very old OS |
+| Model     | Description           | Performance | Compatibility |
+| --------- | --------------------- | ----------- | ------------- |
+| `virtio`  | Paravirtualized NIC   | High        | Modern OS     |
+| `e1000`   | Intel E1000 emulation | Medium      | Legacy OS     |
+| `rtl8139` | Realtek RTL8139       | Low         | Very old OS   |
 
 ## Operational Reference
 
@@ -318,28 +319,28 @@ The Machine controller implements the following reconciliation logic:
 
 ### Machine Lifecycle States
 
-| Phase | Description | Next States |
-|-------|-------------|-------------|
-| `Pending` | Machine created, awaiting reconciliation | Creating, Failed |
-| `Creating` | Resources being provisioned | Running, Failed |
-| `Running` | VM successfully running | Stopped, Failed |
-| `Stopped` | VM powered off | Running, Failed |
-| `Failed` | Unrecoverable error | - |
+| Phase      | Description                              | Next States      |
+| ---------- | ---------------------------------------- | ---------------- |
+| `Pending`  | Machine created, awaiting reconciliation | Creating, Failed |
+| `Creating` | Resources being provisioned              | Running, Failed  |
+| `Running`  | VM successfully running                  | Stopped, Failed  |
+| `Stopped`  | VM powered off                           | Running, Failed  |
+| `Failed`   | Unrecoverable error                      | -                |
 
 ### KubeVirt Resource Mapping
 
 #### CPU Configuration Mapping
 
-| Machine Spec | KubeVirt VirtualMachine | Description |
-|--------------|------------------------|-------------|
-| `resources.cpu.cores: 2` | `domain.cpu.cores: 2` | Total CPU cores |
+| Machine Spec               | KubeVirt VirtualMachine | Description      |
+| -------------------------- | ----------------------- | ---------------- |
+| `resources.cpu.cores: 2`   | `domain.cpu.cores: 2`   | Total CPU cores  |
 | `resources.cpu.threads: 1` | `domain.cpu.threads: 1` | Threads per core |
-| `resources.cpu.sockets: 1` | `domain.cpu.sockets: 1` | CPU sockets |
+| `resources.cpu.sockets: 1` | `domain.cpu.sockets: 1` | CPU sockets      |
 
 #### Memory Configuration Mapping
 
-| Machine Spec | KubeVirt VirtualMachine | Description |
-|--------------|------------------------|-------------|
+| Machine Spec                   | KubeVirt VirtualMachine      | Description             |
+| ------------------------------ | ---------------------------- | ----------------------- |
 | `resources.memory.size: "4Gi"` | `domain.memory.guest: "4Gi"` | Guest memory allocation |
 
 #### Disk Configuration Mapping
@@ -382,14 +383,14 @@ disks:
 ```go
 func ProcessMachineSpec(machine *Machine) *ProcessedSpec {
     spec := &ProcessedSpec{}
-    
+
     // 1. Apply base template
     if template := GetTemplate(machine.Spec.Template); template != nil {
         spec.CPU = template.CPU
         spec.Memory = template.Memory
         spec.Disks = template.Disks
     }
-    
+
     // 2. Apply resource overrides
     if machine.Spec.Resources.CPU != nil {
         spec.CPU = machine.Spec.Resources.CPU
@@ -397,12 +398,12 @@ func ProcessMachineSpec(machine *Machine) *ProcessedSpec {
     if machine.Spec.Resources.Memory != nil {
         spec.Memory = machine.Spec.Resources.Memory
     }
-    
+
     // 3. Merge disk configurations
     if len(machine.Spec.Disks) > 0 {
         spec.Disks = mergeDiskConfigs(spec.Disks, machine.Spec.Disks)
     }
-    
+
     return spec
 }
 ```
@@ -412,11 +413,11 @@ func ProcessMachineSpec(machine *Machine) *ProcessedSpec {
 ```go
 func ProcessNetworkConfiguration(machine *Machine) []NetworkConfig {
     var configs []NetworkConfig
-    
+
     for _, network := range machine.Spec.Networks {
         // Lookup NetworkConfiguration CRD
         netConfig := GetNetworkConfiguration(network.NetworkName)
-        
+
         config := NetworkConfig{
             Name:       network.Name,
             Model:      network.Model,
@@ -426,7 +427,7 @@ func ProcessNetworkConfiguration(machine *Machine) []NetworkConfig {
         }
         configs = append(configs, config)
     }
-    
+
     return configs
 }
 ```
@@ -450,33 +451,33 @@ spec:
 
 # Generated VirtualMachine volume
 volumes:
-- name: "cloudinitdisk"
-  cloudInitNoCloud:
-    userData: |
-      #cloud-config
-      users: ...
+  - name: "cloudinitdisk"
+    cloudInitNoCloud:
+      userData: |
+        #cloud-config
+        users: ...
 ```
 
 ## Error Handling Reference
 
 ### Reconciliation Error Types
 
-| Error Type | Condition | Recovery Action |
-|------------|-----------|-----------------|
-| `TemplateNotFound` | Invalid template reference | Fix template name in Machine spec |
-| `NetworkConfigurationNotFound` | Missing NetworkConfiguration CRD | Create required NetworkConfiguration |
-| `StorageClassNotFound` | Invalid StorageClass | Update storageClass or create StorageClass |
-| `InsufficientResources` | Node resource exhaustion | Scale cluster or reduce resource requests |
-| `KubeVirtApiError` | KubeVirt API failure | Check KubeVirt installation and permissions |
+| Error Type                     | Condition                        | Recovery Action                             |
+| ------------------------------ | -------------------------------- | ------------------------------------------- |
+| `TemplateNotFound`             | Invalid template reference       | Fix template name in Machine spec           |
+| `NetworkConfigurationNotFound` | Missing NetworkConfiguration CRD | Create required NetworkConfiguration        |
+| `StorageClassNotFound`         | Invalid StorageClass             | Update storageClass or create StorageClass  |
+| `InsufficientResources`        | Node resource exhaustion         | Scale cluster or reduce resource requests   |
+| `KubeVirtApiError`             | KubeVirt API failure             | Check KubeVirt installation and permissions |
 
 ### Status Conditions
 
-| Condition Type | Status | Reason | Description |
-|----------------|--------|--------|-------------|
-| `Ready` | True/False | Various | Overall machine readiness |
-| `VirtualMachineReady` | True/False | `VMCreated`/`VMFailed` | VirtualMachine resource status |
-| `StorageReady` | True/False | `PVCBound`/`PVCPending` | Storage provisioning status |
-| `NetworkReady` | True/False | `NetworkConfigured`/`NetworkFailed` | Network configuration status |
+| Condition Type        | Status     | Reason                              | Description                    |
+| --------------------- | ---------- | ----------------------------------- | ------------------------------ |
+| `Ready`               | True/False | Various                             | Overall machine readiness      |
+| `VirtualMachineReady` | True/False | `VMCreated`/`VMFailed`              | VirtualMachine resource status |
+| `StorageReady`        | True/False | `PVCBound`/`PVCPending`             | Storage provisioning status    |
+| `NetworkReady`        | True/False | `NetworkConfigured`/`NetworkFailed` | Network configuration status   |
 
 ### Finalizer Management
 
@@ -485,7 +486,7 @@ The operator uses finalizers for proper cleanup:
 ```yaml
 metadata:
   finalizers:
-  - machine.vitistack.io/cleanup
+    - machine.vitistack.io/cleanup
 ```
 
 **Cleanup Process**:
@@ -499,22 +500,22 @@ metadata:
 
 ### Prometheus Metrics
 
-| Metric Name | Type | Labels | Description |
-|-------------|------|--------|-------------|
-| `kubevirt_operator_machines_total` | Gauge | `phase`, `template` | Total machines by phase |
-| `kubevirt_operator_reconciliation_duration_seconds` | Histogram | `controller` | Reconciliation duration |
-| `kubevirt_operator_reconciliation_errors_total` | Counter | `controller`, `error_type` | Reconciliation errors |
-| `kubevirt_operator_virtual_machines_total` | Gauge | `status` | Created VirtualMachine resources |
-| `kubevirt_operator_storage_provisioning_duration_seconds` | Histogram | `storage_class` | Storage provisioning time |
-| `kubevirt_operator_network_configuration_errors_total` | Counter | `network_name` | Network configuration errors |
+| Metric Name                                               | Type      | Labels                     | Description                      |
+| --------------------------------------------------------- | --------- | -------------------------- | -------------------------------- |
+| `kubevirt_operator_machines_total`                        | Gauge     | `phase`, `template`        | Total machines by phase          |
+| `kubevirt_operator_reconciliation_duration_seconds`       | Histogram | `controller`               | Reconciliation duration          |
+| `kubevirt_operator_reconciliation_errors_total`           | Counter   | `controller`, `error_type` | Reconciliation errors            |
+| `kubevirt_operator_virtual_machines_total`                | Gauge     | `status`                   | Created VirtualMachine resources |
+| `kubevirt_operator_storage_provisioning_duration_seconds` | Histogram | `storage_class`            | Storage provisioning time        |
+| `kubevirt_operator_network_configuration_errors_total`    | Counter   | `network_name`             | Network configuration errors     |
 
 ### Health Endpoints
 
-| Endpoint | Purpose | Status Codes |
-|----------|---------|--------------|
-| `/healthz` | Liveness probe | 200 (healthy), 500 (unhealthy) |
-| `/readyz` | Readiness probe | 200 (ready), 500 (not ready) |
-| `/metrics` | Prometheus metrics | 200 (metrics available) |
+| Endpoint   | Purpose            | Status Codes                   |
+| ---------- | ------------------ | ------------------------------ |
+| `/healthz` | Liveness probe     | 200 (healthy), 500 (unhealthy) |
+| `/readyz`  | Readiness probe    | 200 (ready), 500 (not ready)   |
+| `/metrics` | Prometheus metrics | 200 (metrics available)        |
 
 ### Logging Reference
 
@@ -542,18 +543,18 @@ kind: ClusterRole
 metadata:
   name: kubevirt-operator
 rules:
-- apiGroups: ["vitistack.io"]
-  resources: ["machines", "networkconfigurations"]
-  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-- apiGroups: ["kubevirt.io"]
-  resources: ["virtualmachines", "virtualmachineinstances"]
-  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-- apiGroups: [""]
-  resources: ["persistentvolumeclaims", "secrets", "configmaps"]
-  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-- apiGroups: [""]
-  resources: ["events"]
-  verbs: ["create", "patch"]
+  - apiGroups: ["vitistack.io"]
+    resources: ["machines", "networkconfigurations"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: ["kubevirt.io"]
+    resources: ["virtualmachines", "virtualmachineinstances"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims", "secrets", "configmaps"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "patch"]
 ```
 
 ### Service Account Configuration
@@ -574,28 +575,28 @@ roleRef:
   kind: ClusterRole
   name: kubevirt-operator
 subjects:
-- kind: ServiceAccount
-  name: kubevirt-operator-controller-manager
-  namespace: kubevirt-operator-system
+  - kind: ServiceAccount
+    name: kubevirt-operator-controller-manager
+    namespace: kubevirt-operator-system
 ```
 
 ## Deployment Reference
 
 ### Helm Chart Configuration
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `image.repository` | `ghcr.io/vitistack/kubevirt-operator` | Container image |
-| `image.tag` | Chart version | Image tag |
-| `image.pullPolicy` | `IfNotPresent` | Image pull policy |
-| `replicaCount` | 1 | Operator replicas |
-| `resources.limits.cpu` | `500m` | CPU limit |
-| `resources.limits.memory` | `512Mi` | Memory limit |
-| `resources.requests.cpu` | `100m` | CPU request |
-| `resources.requests.memory` | `256Mi` | Memory request |
-| `nodeSelector` | `{}` | Node selection constraints |
-| `tolerations` | `[]` | Pod tolerations |
-| `affinity` | `{}` | Pod affinity rules |
+| Parameter                   | Default                               | Description                |
+| --------------------------- | ------------------------------------- | -------------------------- |
+| `image.repository`          | `ghcr.io/vitistack/kubevirt-operator` | Container image            |
+| `image.tag`                 | Chart version                         | Image tag                  |
+| `image.pullPolicy`          | `IfNotPresent`                        | Image pull policy          |
+| `replicaCount`              | 1                                     | Operator replicas          |
+| `resources.limits.cpu`      | `500m`                                | CPU limit                  |
+| `resources.limits.memory`   | `512Mi`                               | Memory limit               |
+| `resources.requests.cpu`    | `100m`                                | CPU request                |
+| `resources.requests.memory` | `256Mi`                               | Memory request             |
+| `nodeSelector`              | `{}`                                  | Node selection constraints |
+| `tolerations`               | `[]`                                  | Pod tolerations            |
+| `affinity`                  | `{}`                                  | Pod affinity rules         |
 
 ### Prerequisites
 
@@ -630,8 +631,17 @@ helm repo add vitistack oci://ghcr.io/vitistack/helm
 
 # Install operator
 helm install kubevirt-operator vitistack/kubevirt-operator \
-  --namespace kubevirt-operator-system \
+  --namespace vitistack \
   --create-namespace
+```
+
+#### Upgrade to latest version
+
+```bash
+helm install kubevirt-operator vitistack/kubevirt-operator \
+  --namespace vitistack \
+  --create-namespace \
+  --reuse-values
 ```
 
 #### Manual Installation
@@ -673,9 +683,9 @@ spec:
     memory:
       size: "8Gi"
   disks:
-  - name: "data"
-    size: "100Gi"
-    storageClass: "fast-ssd"
+    - name: "data"
+      size: "100Gi"
+      storageClass: "fast-ssd"
 ```
 
 ### Virtual Machine with Networking
@@ -689,12 +699,12 @@ metadata:
 spec:
   template: medium
   networks:
-  - name: "eth0"
-    networkName: "prod-network"
-    model: "virtio"
-  - name: "eth1" 
-    networkName: "storage-network"
-    model: "virtio"
+    - name: "eth0"
+      networkName: "prod-network"
+      model: "virtio"
+    - name: "eth1"
+      networkName: "storage-network"
+      model: "virtio"
 ```
 
 ### Virtual Machine with Cloud-Init
@@ -727,12 +737,12 @@ spec:
 
 ### Common Issues
 
-| Issue | Symptom | Resolution |
-|-------|---------|------------|
-| VM not starting | Machine stuck in Creating phase | Check KubeVirt installation and node resources |
-| Storage provisioning failure | PVC in Pending state | Verify StorageClass exists and has available capacity |
-| Network configuration error | VM created but no network access | Check NetworkConfiguration CRD and multus installation |
-| Template not found | Machine validation error | Use valid template name: small, medium, or large |
+| Issue                        | Symptom                          | Resolution                                             |
+| ---------------------------- | -------------------------------- | ------------------------------------------------------ |
+| VM not starting              | Machine stuck in Creating phase  | Check KubeVirt installation and node resources         |
+| Storage provisioning failure | PVC in Pending state             | Verify StorageClass exists and has available capacity  |
+| Network configuration error  | VM created but no network access | Check NetworkConfiguration CRD and multus installation |
+| Template not found           | Machine validation error         | Use valid template name: small, medium, or large       |
 
 ### Debug Commands
 
@@ -763,4 +773,3 @@ kubectl get vmi -A
 ```
 
 This reference documentation provides comprehensive technical details for system administrators and developers working with the KubeVirt Operator, assuming familiarity with Kubernetes, KubeVirt, and virtualization concepts.
-

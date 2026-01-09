@@ -1,9 +1,9 @@
 # Install AKS Operator
 
-To run and install the aks-operator, you need to use or create a service principal in Azure. 
-
+To run and install the aks-operator, you need to use or create a service principal in Azure.
 
 ## Create Service Principal in Azure
+
 ```bash
 # Get subscription ID
 SUBSCRIPTION_ID=$(az account show --query id -o tsv)
@@ -28,20 +28,23 @@ Output:
 
 **Share these with the user:**
 
-| Output Field | Environment Variable | Description |
-|--------------|---------------------|-------------|
-| `appId` | `AZURE_CLIENT_ID` | Application (client) ID |
-| `password` | `AZURE_CLIENT_SECRET` | Client secret (shown only once!) |
-| `tenant` | `AZURE_TENANT_ID` | Azure AD tenant ID |
-| (from account) | `AZURE_SUBSCRIPTION_ID` | Subscription ID |
+| Output Field   | Environment Variable    | Description                      |
+| -------------- | ----------------------- | -------------------------------- |
+| `appId`        | `AZURE_CLIENT_ID`       | Application (client) ID          |
+| `password`     | `AZURE_CLIENT_SECRET`   | Client secret (shown only once!) |
+| `tenant`       | `AZURE_TENANT_ID`       | Azure AD tenant ID               |
+| (from account) | `AZURE_SUBSCRIPTION_ID` | Subscription ID                  |
 
 ## Log into ghcr.io to fetch oci helm package
+
 ```bash
 helm registry login ghcr.io
 ```
 
 ## Create kubernetes secret for the helm chart
+
 Filename: vitistack-aks-credentials.yaml
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -60,6 +63,7 @@ kubectl apply -f vitistack-aks-credentials.yaml -n vitistack
 ```
 
 ## Install the operator
+
 ```bash
 helm install vitistack-aks-operator oci://ghcr.io/vitistack/helm/aks-operator \
   --namespace vitistack \
@@ -67,9 +71,19 @@ helm install vitistack-aks-operator oci://ghcr.io/vitistack/helm/aks-operator \
   --create-namespace
 ```
 
+### Upgrade the operator to latest version
+
+```bash
+helm install vitistack-aks-operator oci://ghcr.io/vitistack/helm/aks-operator \
+  --namespace vitistack \
+  --create-namespace \
+  --reuse-values
+```
+
 # Default values for the helm chart
 
 Values.yaml from Helm chart
+
 ```yaml
 # Default values for aks-operator.
 # This is a YAML-formatted file.
@@ -283,5 +297,4 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
 ```

@@ -6,7 +6,18 @@ You need a instance of Kea DHCP, please read this doc for installation and confi
 
 ```bash
 helm registry login ghcr.io
-helm install vitistack-kea-operator oci://ghcr.io/vitistack/helm/kea-operator
+helm install vitistack-kea-operator oci://ghcr.io/vitistack/helm/kea-operator \
+  --namespace vitistack \
+  --create-namespace
+```
+
+## Upgrade to latest version
+
+```bash
+helm install vitistack-kea-operator oci://ghcr.io/vitistack/helm/kea-operator \
+  --namespace vitistack \
+  --create-namespace \
+  --reuse-values
 ```
 
 Values.yaml from helm chart

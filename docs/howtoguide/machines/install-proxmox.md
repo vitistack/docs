@@ -63,7 +63,18 @@ kubectl apply -f proxmox-credentials-secret.yaml
 
 ```bash
 helm registry login ghcr.io
-helm install vitistack-proxmox-operator oci://ghcr.io/vitistack/helm/proxmox-operator
+helm install vitistack-proxmox-operator oci://ghcr.io/vitistack/helm/proxmox-operator \
+  --namespace vitistack \
+  --create-namespace
+```
+
+## Upgrade to latest version
+
+```bash
+helm install vitistack-proxmox-operator oci://ghcr.io/vitistack/helm/proxmox-operator \
+  --namespace vitistack \
+  --create-namespace \
+  --reuse-values
 ```
 
 ### Operator helm values

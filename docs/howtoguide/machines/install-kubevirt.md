@@ -13,6 +13,32 @@ echo $VERSION
 kubectl create -f "https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/kubevirt-operator.yaml"
 ```
 
+## Install the CRDS
+
+```bash
+kubectl create -f "https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/kubevirt-cr.yaml"
+```
+
+### Verify kubevirt components
+
+```bash
+kubectl get kubevirt.kubevirt.io/kubevirt -n kubevirt -o=jsonpath="{.status.phase}"
+```
+
+Check the components
+
+```bash
+kubectl get all -n kubevirt
+```
+
+Wait and see that the Kube Virt CRD object (`kubevirt`) has `Phase`: `Deployed`
+
+```bash
+$ kubectl get kubevirts.kubevirt.io -n kubevirt
+NAME       AGE     PHASE
+kubevirt   4m24s   Deployed
+```
+
 ### Virtualized environment
 
 If running in a virtualized environment
@@ -21,12 +47,6 @@ If the kind cluster runs on a virtual machine consider enabling nested virtualiz
 
 ```bash
 kubectl -n kubevirt patch kubevirt kubevirt --type=merge --patch '{"spec":{"configuration":{"developerConfiguration":{"useEmulation":true}}}}'
-```
-
-### Deploy the KubeVirt custom resource definitions
-
-```bash
-kubectl create -f "https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/kubevirt-cr.yaml"
 ```
 
 ### Virtctl
@@ -42,18 +62,6 @@ ARCH=$(uname -s | tr A-Z a-z)-$(uname -m | sed 's/x86_64/amd64/') || windows-amd
 echo ${ARCH}
 curl -L -o virtctl https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/virtctl-${VERSION}-${ARCH}
 sudo install -m 0755 virtctl /usr/local/bin
-```
-
-### Verify kubevirt components
-
-```bash
-kubectl get kubevirt.kubevirt.io/kubevirt -n kubevirt -o=jsonpath="{.status.phase}"
-```
-
-Check the components
-
-```bash
-kubectl get all -n kubevirtkubectl get all -n kubevirt
 ```
 
 ### Containerized Data Importer (CDI)
@@ -126,7 +134,18 @@ And then:
 
 ```bash
 helm registry login ghcr.io
-helm install vitistack-kubevirt-operator oci://ghcr.io/vitistack/helm/kubevirt-operator
+helm install vitistack-kubevirt-operator oci://ghcr.io/vitistack/helm/kubevirt-operator \
+  --namespace vitistack \
+  --create-namespace
+```
+
+### Upgrade to latest version
+
+```bash
+helm install vitistack-kubevirt-operator oci://ghcr.io/vitistack/helm/kubevirt-operator \
+  --namespace vitistack \
+  --create-namespace \
+  --reuse-values
 ```
 
 ### Kubevirt-operator helm values

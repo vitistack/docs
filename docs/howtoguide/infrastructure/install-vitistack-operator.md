@@ -6,7 +6,18 @@ Install the vitistack operator by:
 
 ```bash
 helm registry login ghcr.io
-helm install vitistack-operator oci://ghcr.io/vitistack/helm/vitistack-operator
+helm install vitistack-operator oci://ghcr.io/vitistack/helm/vitistack-operator \
+  --namespace vitistack \
+  --create-namespace
+```
+
+## Upgrade to latest version
+
+```bash
+helm install vitistack-operator oci://ghcr.io/vitistack/helm/vitistack-operator \
+  --namespace vitistack \
+  --create-namespace \
+  --reuse-values
 ```
 
 Values.yaml from helm chart:
