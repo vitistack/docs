@@ -2,6 +2,44 @@
 
 To run and install the aks-operator, you need to use or create a service principal in Azure.
 
+## Login to Azure via azurecli
+
+(Install azurecli: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+
+```bash
+az login
+```
+
+Then pick the subscription you have access to, or select the relevant subscription if you have access to many subscriptions
+
+## Get AppId and TentantId from existing Service Principal
+
+```bash
+az ad sp list --display-name "vitistack-sp" --query "[].{appId:appId, tenant:appOwnerOrganizationId}"
+[
+  {
+    "appId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "tenant": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  }
+]
+```
+
+:exclamation: If you want to create a new secret (only if you have access to this):
+
+```bash
+az ad sp credential reset --id "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" --query "{appId:appId, password:password, tenant:tenant}"
+```
+
+Output:
+
+```bash
+{
+  "appId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "password": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "tenant": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+```
+
 ## Create Service Principal in Azure
 
 ```bash
@@ -10,23 +48,23 @@ SUBSCRIPTION_ID=$(az account show --query id -o tsv)
 
 # Create service principal with Contributor role
 az ad sp create-for-rbac \
-  --name "vitistadk-sp" \
+  --name "vitistack-sp" \
   --role Contributor \
   --scopes /subscriptions/$SUBSCRIPTION_ID
 ```
 
-Output:
+Output
 
 ```json
 {
   "appId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "displayName": "vitistadk-sp",
+  "displayName": "vitistack-sp",
   "password": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
   "tenant": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 }
 ```
 
-**Share these with the user:**
+## Environment Variables
 
 | Output Field   | Environment Variable    | Description                      |
 | -------------- | ----------------------- | -------------------------------- |
@@ -60,6 +98,17 @@ data:
 
 ```bash
 kubectl apply -f vitistack-aks-credentials.yaml -n vitistack
+```
+
+or via terminal:
+
+```bash
+kubectl create secret generic vitistack-aks-credentials \
+  --from-literal=AZURE_SUBSCRIPTION_ID=<your azure subscription id> \
+  --from-literal=AZURE_TENANT_ID=<your tenant id here> \
+  --from-literal=AZURE_CLIENT_ID=<your client id here> \
+  --from-literal=AZURE_CLIENT_SECRET='<you secret here>' \
+  -n vitistack
 ```
 
 ## Install the operator
