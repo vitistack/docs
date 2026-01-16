@@ -162,7 +162,7 @@ replicaCount: 1
 
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: ghcr.io/vitistack/kubevirt-operator
+  repository: ghcr.io/vitistack/viti-kubevirt-operator
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
@@ -195,6 +195,9 @@ podLabels: {}
 
 podSecurityContext:
   fsGroup: 2000
+  runAsGroup: 2000
+  runAsUser: 1000
+  runAsNonRoot: true
 
 securityContext:
   allowPrivilegeEscalation: false
@@ -204,6 +207,7 @@ securityContext:
   readOnlyRootFilesystem: true
   runAsNonRoot: true
   runAsUser: 1000
+  runAsGroup: 2000
   seccompProfile:
     type: RuntimeDefault
 
@@ -214,13 +218,31 @@ service:
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
   port: 80
 
+# This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
+ingress:
+  enabled: false
+  className: ""
+  annotations:
+    {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
 resources:
   limits:
-    cpu: 100m
-    memory: 128Mi
+    cpu: 500m
+    memory: 512Mi
   requests:
     cpu: 100m
-    memory: 128Mi
+    memory: 256Mi
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
@@ -275,11 +297,17 @@ nadCniVersion: "1.0.0"
 # Where to fetch public IPs from: "vmi" (default, from KubeVirt VMI) or "networkconfiguration"
 ipSource: "vmi"
 # Enable Containerized Data Importer (CDI) support
-kubevirtSupportCDI: false
+kubevirtSupportCDI: true
 # Name of the MachineProvider
 machineProviderName: "kubevirt-provider"
 # PVC volume mode: "Block" (default) or "Filesystem"
 pvcVolumeMode: "Block"
+# PVC access mode for DataVolumes: "ReadWriteOnce" (default), "ReadWriteMany", "ReadOnlyMany"
+# Use "ReadWriteOnce" for local-path, Ceph RBD; "ReadWriteMany" for CephFS, NFS
+pvcAccessMode: "ReadWriteOnce"
+# Storage class name for PVCs. If empty (default), uses the cluster's default storage class.
+# Set this to a specific storage class name to override the default (e.g., "local-path", "ceph-rbd")
+storageClassName: ""
 # Optional prefix for VM names
 vmNamePrefix: ""
 # Vitistack name (optional)
