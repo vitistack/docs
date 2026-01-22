@@ -59,7 +59,7 @@ customEndpoint: ""
 bootImageSource: "pxe"
 
 # Boot image URL (only used when bootImageSource is "bootimage")
-bootImage: "https://factory.talos.dev/image/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515/v1.12.1/metal-amd64.iso"
+bootImage: "https://factory.talos.dev/image/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515/v1.12.2/metal-amd64.iso"
 
 # Log configuration
 logLevel: "info"
@@ -82,12 +82,12 @@ tenant:
 
 # Talos configuration
 talos:
-  version: "v1.12.1"
+  version: "v1.12.2"
   defaultKubernetesVersion: "1.35.0"
   predictableNetworkNames: true
   vmInstallImage:
-    kubevirt: "factory.talos.dev/metal-installer/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515:v1.12.1"
-    default: "factory.talos.dev/metal-installer/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515:v1.12.1"
+    kubevirt: "factory.talos.dev/metal-installer/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515:v1.12.2"
+    default: "factory.talos.dev/metal-installer/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515:v1.12.2"
 
 # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
 serviceAccount:
@@ -133,8 +133,7 @@ service:
 ingress:
   enabled: false
   className: ""
-  annotations:
-    {}
+  annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
