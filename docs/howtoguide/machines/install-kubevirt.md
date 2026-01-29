@@ -222,8 +222,7 @@ service:
 ingress:
   enabled: false
   className: ""
-  annotations:
-    {}
+  annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
@@ -302,9 +301,9 @@ kubevirtSupportCDI: true
 machineProviderName: "kubevirt-provider"
 # PVC volume mode: "Block" (default) or "Filesystem"
 pvcVolumeMode: "Block"
-# PVC access mode for DataVolumes: "ReadWriteOnce" (default), "ReadWriteMany", "ReadOnlyMany"
+# PVC access mode for DataVolumes: "ReadWriteMany" (default), "ReadWriteOnce", "ReadOnlyMany"
 # Use "ReadWriteOnce" for local-path, Ceph RBD; "ReadWriteMany" for CephFS, NFS
-pvcAccessMode: "ReadWriteOnce"
+pvcAccessMode: "ReadWriteMany"
 # Storage class name for PVCs. If empty (default), uses the cluster's default storage class.
 # Set this to a specific storage class name to override the default (e.g., "local-path", "ceph-rbd")
 storageClassName: ""
