@@ -1,0 +1,2872 @@
+<!DOCTYPE html><html class="no-js" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<link href="../../../images/viti.png" rel="icon">
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator">
+<title>Kea Operator - vitistack docs</title>
+<link href="../../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet">
+<link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet">
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../css/viti.css" rel="stylesheet">
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+<body data-md-color-accent="green" data-md-color-primary="blue" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox">
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox">
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#kea-operator">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="vitistack docs" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="vitistack docs">
+<img alt="logo" src="../../../images/viti.png">
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            vitistack docs
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Kea Operator
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="green" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio">
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="green" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio">
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text">
+<label class="md-search__icon md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/vitistack/docs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</div>
+<div class="md-source__repository">
+    vitistack/docs
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tutorials/">
+          
+  
+  
+    
+  
+  Tutorials
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../howtoguide/setup-vitistack/">
+          
+  
+  
+    
+  
+  How-to-guides
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../explanation/">
+          
+  
+  
+    
+  
+  Explanation
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../release_notes/">
+          
+  
+  
+    
+  
+  Release Notes
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="vitistack docs" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="vitistack docs">
+<img alt="logo" src="../../../images/viti.png">
+</a>
+    vitistack docs
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/vitistack/docs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</div>
+<div class="md-source__repository">
+    vitistack/docs
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../tutorials/">
+<span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tutorials/how/">
+<span class="md-ellipsis">
+    
+  
+    How Vitistack works
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox">
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    How-to-guides
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    How-to-guides
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/setup-vitistack/">
+<span class="md-ellipsis">
+    
+  
+    How to setup vitistack
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../howtoguide/infrastructure/">
+<span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/infrastructure/vitistack-crds/">
+<span class="md-ellipsis">
+    
+  
+    Install Vitistack CRDs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/infrastructure/install-machineclasses/">
+<span class="md-ellipsis">
+    
+  
+    Install Machine Classes
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/infrastructure/install-keadhcp/">
+<span class="md-ellipsis">
+    
+  
+    Install Kea DHCP and operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/infrastructure/install-network-operator/">
+<span class="md-ellipsis">
+    
+  
+    Install Network operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/infrastructure/install-vitistack-operator/">
+<span class="md-ellipsis">
+    
+  
+    Install Vitistack operator
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../howtoguide/machines/">
+<span class="md-ellipsis">
+    
+  
+    Machines
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Machines
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/machines/install-kubevirt/">
+<span class="md-ellipsis">
+    
+  
+    Install Kubevirt and operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/machines/install-proxmox/">
+<span class="md-ellipsis">
+    
+  
+    Install Proxmox and operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/machines/install-physical-operator/">
+<span class="md-ellipsis">
+    
+  
+    Install Physical operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/machines/example-machines/">
+<span class="md-ellipsis">
+    
+  
+    Example Machines
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../howtoguide/clusters/">
+<span class="md-ellipsis">
+    
+  
+    Clusters
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Clusters
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/clusters/install-talos/">
+<span class="md-ellipsis">
+    
+  
+    Install Talos Operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/clusters/install-aks/">
+<span class="md-ellipsis">
+    
+  
+    Install AKS Operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/clusters/example-kubernetesclusters/">
+<span class="md-ellipsis">
+    
+  
+    Example KubernetesClusters
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../howtoguide/applications/">
+<span class="md-ellipsis">
+    
+  
+    Applications / Configuration
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Applications / Configuration
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../howtoguide/applications/argocd_ipam-api/">
+<span class="md-ellipsis">
+    
+  
+    Deploy IPAM-API w/ Argo CD
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../opensourcesoftware/">
+<span class="md-ellipsis">
+    
+  
+    Open Source Software
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../repository/">
+<span class="md-ellipsis">
+    
+  
+    Repository
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dns/">
+<span class="md-ellipsis">
+    
+  
+    DNS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_5" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../configuration/">
+<span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../configuration/clusterdiscovery/">
+<span class="md-ellipsis">
+    
+  
+    Cluster Discovery
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_6" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Operators
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../proxmox-operator/">
+<span class="md-ellipsis">
+    
+  
+    Proxmox Operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../vitistack-operator/">
+<span class="md-ellipsis">
+    
+  
+    Vitistack Operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../talos-operator/">
+<span class="md-ellipsis">
+    
+  
+    Talos Operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../kubevirt-operator/">
+<span class="md-ellipsis">
+    
+  
+    KubeVirt Operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../physical-operator/">
+<span class="md-ellipsis">
+    
+  
+    Physical Operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../kea-operator/">
+<span class="md-ellipsis">
+    
+  
+    Kea Operator
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ipam-operator/">
+<span class="md-ellipsis">
+    
+  
+    IPAM Operator
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_7" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../crd/">
+<span class="md-ellipsis">
+    
+  
+    CRDs
+  
+
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    CRDs
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_8" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../api/">
+<span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_8">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../api/ipam-api/">
+<span class="md-ellipsis">
+    
+  
+    IPAM API
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../explanation/">
+<span class="md-ellipsis">
+    
+  
+    Explanation
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Explanation
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../explanation/architecture/">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox">
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../release_notes/">
+<span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Release Notes
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/v1.0.x/v1_0_x/">
+<span class="md-ellipsis">
+    
+  
+    Release notes - Viti v1.0.x
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+<nav aria-label="Overview" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#key-capabilities">
+<span class="md-ellipsis">
+      
+        Key Capabilities
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#architecture">
+<span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+</a>
+<nav aria-label="Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-components">
+<span class="md-ellipsis">
+      
+        Core Components
+      
+    </span>
+</a>
+<nav aria-label="Core Components" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-controller-manager-cmd">
+<span class="md-ellipsis">
+      
+        1. Controller Manager (cmd/)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-kea-service-wrapper-internalserviceskea">
+<span class="md-ellipsis">
+      
+        2. Kea Service Wrapper (internal/services/kea/)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-kea-http-client-pkgclientskeaclient">
+<span class="md-ellipsis">
+      
+        3. Kea HTTP Client (pkg/clients/keaclient/)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-it-works">
+<span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+</a>
+<nav aria-label="How It Works" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-detailed-architecture-overview">
+<span class="md-ellipsis">
+      
+        1. Detailed Architecture Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-networkconfiguration-processing-flow">
+<span class="md-ellipsis">
+      
+        2. NetworkConfiguration Processing Flow
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-dhcp-reservation-process">
+<span class="md-ellipsis">
+      
+        2. DHCP Reservation Process
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-detailed-component-architecture">
+<span class="md-ellipsis">
+      
+        3. Detailed Component Architecture
+      
+    </span>
+</a>
+<nav aria-label="3. Detailed Component Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#controller-layer-internalcontrollerv1alpha1">
+<span class="md-ellipsis">
+      
+        Controller Layer (internal/controller/v1alpha1/)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#service-layer-internalserviceskea">
+<span class="md-ellipsis">
+      
+        Service Layer (internal/services/kea/)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#http-client-layer-pkgclientskeaclient">
+<span class="md-ellipsis">
+      
+        HTTP Client Layer (pkg/clients/keaclient/)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-kea-rest-api-integration-details">
+<span class="md-ellipsis">
+      
+        4. Kea REST API Integration Details
+      
+    </span>
+</a>
+<nav aria-label="4. Kea REST API Integration Details" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#api-command-structure">
+<span class="md-ellipsis">
+      
+        API Command Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-api-operations">
+<span class="md-ellipsis">
+      
+        Core API Operations
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#error-handling-and-response-processing">
+<span class="md-ellipsis">
+      
+        Error Handling and Response Processing
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration">
+<span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+</a>
+<nav aria-label="Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#environment-variables">
+<span class="md-ellipsis">
+      
+        Environment Variables
+      
+    </span>
+</a>
+<nav aria-label="Environment Variables" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kea-server-connection">
+<span class="md-ellipsis">
+      
+        Kea Server Connection
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#authentication-options">
+<span class="md-ellipsis">
+      
+        Authentication Options
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tls-configuration">
+<span class="md-ellipsis">
+      
+        TLS Configuration
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usage-examples">
+<span class="md-ellipsis">
+      
+        Usage Examples
+      
+    </span>
+</a>
+<nav aria-label="Usage Examples" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-networknamespace-setup">
+<span class="md-ellipsis">
+      
+        1. NetworkNamespace Setup
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-networkconfiguration-for-dhcp-reservations">
+<span class="md-ellipsis">
+      
+        2. NetworkConfiguration for DHCP Reservations
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-multiple-network-interfaces">
+<span class="md-ellipsis">
+      
+        3. Multiple Network Interfaces
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-and-deployment">
+<span class="md-ellipsis">
+      
+        Installation and Deployment
+      
+    </span>
+</a>
+<nav aria-label="Installation and Deployment" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#local-development-setup">
+<span class="md-ellipsis">
+      
+        Local Development Setup
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cluster-deployment">
+<span class="md-ellipsis">
+      
+        Cluster Deployment
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#helm-installation">
+<span class="md-ellipsis">
+      
+        Helm Installation
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#operational-features">
+<span class="md-ellipsis">
+      
+        Operational Features
+      
+    </span>
+</a>
+<nav aria-label="Operational Features" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mac-address-normalization">
+<span class="md-ellipsis">
+      
+        MAC Address Normalization
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lease-discovery-requirements">
+<span class="md-ellipsis">
+      
+        Lease Discovery Requirements
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#advanced-processing-logic">
+<span class="md-ellipsis">
+      
+        Advanced Processing Logic
+      
+    </span>
+</a>
+<nav aria-label="Advanced Processing Logic" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mac-address-normalization-pipeline">
+<span class="md-ellipsis">
+      
+        MAC Address Normalization Pipeline
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#subnet-matching-algorithm">
+<span class="md-ellipsis">
+      
+        Subnet Matching Algorithm
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lease-discovery-and-validation">
+<span class="md-ellipsis">
+      
+        Lease Discovery and Validation
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#high-availability-and-failover">
+<span class="md-ellipsis">
+      
+        High Availability and Failover
+      
+    </span>
+</a>
+<nav aria-label="High Availability and Failover" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dual-server-configuration">
+<span class="md-ellipsis">
+      
+        Dual-Server Configuration
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#health-check-implementation">
+<span class="md-ellipsis">
+      
+        Health Check Implementation
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#state-synchronization">
+<span class="md-ellipsis">
+      
+        State Synchronization
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comprehensive-error-handling-and-recovery">
+<span class="md-ellipsis">
+      
+        Comprehensive Error Handling and Recovery
+      
+    </span>
+</a>
+<nav aria-label="Comprehensive Error Handling and Recovery" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#retry-mechanism-implementation">
+<span class="md-ellipsis">
+      
+        Retry Mechanism Implementation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#error-classification-and-handling">
+<span class="md-ellipsis">
+      
+        Error Classification and Handling
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#circuit-breaker-pattern">
+<span class="md-ellipsis">
+      
+        Circuit Breaker Pattern
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comprehensive-logging-and-metrics">
+<span class="md-ellipsis">
+      
+        Comprehensive Logging and Metrics
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#graceful-degradation-strategies">
+<span class="md-ellipsis">
+      
+        Graceful Degradation Strategies
+      
+    </span>
+</a>
+<nav aria-label="Graceful Degradation Strategies" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#command-availability-detection">
+<span class="md-ellipsis">
+      
+        Command Availability Detection
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fallback-mechanisms">
+<span class="md-ellipsis">
+      
+        Fallback Mechanisms
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#troubleshooting">
+<span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+</a>
+<nav aria-label="Troubleshooting" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#common-issues">
+<span class="md-ellipsis">
+      
+        Common Issues
+      
+    </span>
+</a>
+<nav aria-label="Common Issues" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#no-lease-found-error">
+<span class="md-ellipsis">
+      
+        "No Lease Found" Error
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#unsupported-kea-command-error">
+<span class="md-ellipsis">
+      
+        "Unsupported Kea Command" Error
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connection-issues">
+<span class="md-ellipsis">
+      
+        Connection Issues
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#debug-commands">
+<span class="md-ellipsis">
+      
+        Debug Commands
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rest-api-testing">
+<span class="md-ellipsis">
+      
+        REST API Testing
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#integration-with-viti-stack">
+<span class="md-ellipsis">
+      
+        Integration with Viti Stack
+      
+    </span>
+</a>
+<nav aria-label="Integration with Viti Stack" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#network-management">
+<span class="md-ellipsis">
+      
+        Network Management
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#declarative-configuration">
+<span class="md-ellipsis">
+      
+        Declarative Configuration
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enterprise-features">
+<span class="md-ellipsis">
+      
+        Enterprise Features
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-optimization-and-monitoring">
+<span class="md-ellipsis">
+      
+        Performance Optimization and Monitoring
+      
+    </span>
+</a>
+<nav aria-label="Performance Optimization and Monitoring" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#concurrency-and-scaling">
+<span class="md-ellipsis">
+      
+        Concurrency and Scaling
+      
+    </span>
+</a>
+<nav aria-label="Concurrency and Scaling" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parallel-mac-processing">
+<span class="md-ellipsis">
+      
+        Parallel MAC Processing
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connection-pool-optimization">
+<span class="md-ellipsis">
+      
+        Connection Pool Optimization
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#caching-and-performance">
+<span class="md-ellipsis">
+      
+        Caching and Performance
+      
+    </span>
+</a>
+<nav aria-label="Caching and Performance" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#subnet-cache-implementation">
+<span class="md-ellipsis">
+      
+        Subnet Cache Implementation
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#monitoring-and-observability">
+<span class="md-ellipsis">
+      
+        Monitoring and Observability
+      
+    </span>
+</a>
+<nav aria-label="Monitoring and Observability" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prometheus-metrics">
+<span class="md-ellipsis">
+      
+        Prometheus Metrics
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#health-check-endpoints">
+<span class="md-ellipsis">
+      
+        Health Check Endpoints
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-tuning-guidelines">
+<span class="md-ellipsis">
+      
+        Performance Tuning Guidelines
+      
+    </span>
+</a>
+<nav aria-label="Performance Tuning Guidelines" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reconciliation-optimization">
+<span class="md-ellipsis">
+      
+        Reconciliation Optimization
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#batch-processing-optimization">
+<span class="md-ellipsis">
+      
+        Batch Processing Optimization
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#best-practices">
+<span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+</a>
+<nav aria-label="Best Practices" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mac-address-management">
+<span class="md-ellipsis">
+      
+        MAC Address Management
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#network-design">
+<span class="md-ellipsis">
+      
+        Network Design
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#operational-excellence">
+<span class="md-ellipsis">
+      
+        Operational Excellence
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/vitistack/docs/edit/main/docs/reference/operators/kea-operator1.md" rel="edit" title="Edit this page">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
+</a>
+<h1 id="kea-operator">Kea Operator</h1>
+<div class="admonition warning">
+<p class="admonition-title">Work in progress!</p>
+</div>
+<p>The Kea Operator is a specialized Kubernetes operator that manages ISC Kea DHCP server reservations based on Viti network configurations. It automatically ensures that devices with known MAC addresses receive consistent IP addresses by creating and managing DHCP reservations in Kea DHCP servers.</p>
+<h2 id="overview">Overview</h2>
+<p>ISC Kea is a modern, high-performance DHCP server developed by the Internet Systems Consortium (ISC). The Kea Operator bridges the gap between Kubernetes-native network configuration and traditional DHCP infrastructure, enabling declarative management of IP address reservations through Viti CRDs.</p>
+<h3 id="key-capabilities">Key Capabilities</h3>
+<ul>
+<li><strong>Automatic DHCP Reservations</strong>: Creates IP reservations based on NetworkConfiguration CRDs</li>
+<li><strong>Lease Discovery</strong>: Discovers existing DHCP leases for devices</li>
+<li><strong>Subnet Resolution</strong>: Automatically finds appropriate Kea subnets for reservations</li>
+<li><strong>High Availability Support</strong>: Supports secondary Kea servers for failover scenarios</li>
+<li><strong>Secure Communication</strong>: TLS support with client certificates and basic authentication</li>
+</ul>
+<h2 id="architecture">Architecture</h2>
+<h3 id="core-components">Core Components</h3>
+<h4 id="1-controller-manager-cmd">1. <strong>Controller Manager</strong> (<code>cmd/</code>)</h4>
+<ul>
+<li><strong>NetworkConfiguration Controller</strong>: Watches for NetworkConfiguration CRD changes</li>
+<li><strong>Event Processing</strong>: Handles create, update, and delete operations</li>
+<li><strong>Reconciliation Engine</strong>: Ensures desired DHCP reservations match actual state</li>
+</ul>
+<h4 id="2-kea-service-wrapper-internalserviceskea">2. <strong>Kea Service Wrapper</strong> (<code>internal/services/kea/</code>)</h4>
+<ul>
+<li><strong>Subnet Management</strong>: Queries Kea for available subnets</li>
+<li><strong>Lease Operations</strong>: Retrieves existing leases by MAC address</li>
+<li><strong>Reservation Management</strong>: Creates, updates, and removes DHCP reservations</li>
+</ul>
+<h4 id="3-kea-http-client-pkgclientskeaclient">3. <strong>Kea HTTP Client</strong> (<code>pkg/clients/keaclient/</code>)</h4>
+<ul>
+<li><strong>REST API Integration</strong>: Communicates with Kea's REST API</li>
+<li><strong>Authentication Support</strong>: Basic auth and mTLS client certificates</li>
+<li><strong>Connection Management</strong>: Timeout handling and keep-alive configuration</li>
+<li><strong>High Availability</strong>: Primary and secondary server support</li>
+</ul>
+<h2 id="how-it-works">How It Works</h2>
+<h3 id="1-detailed-architecture-overview">1. <strong>Detailed Architecture Overview</strong></h3>
+<div class="mermaid">graph TB
+    subgraph "Kubernetes Cluster"
+        NC[NetworkConfiguration CRD]
+        NN[NetworkNamespace CRD]
+        KO[Kea Operator Pod]
+
+        subgraph "Operator Components"
+            CTL[NetworkConfiguration Controller]
+            KS[Kea Service Layer]
+            KC[Kea HTTP Client]
+            IC[Initial Checks Service]
+            UC[Unstructured Converter]
+        end
+    end
+
+    subgraph "External Kea Infrastructure"
+        KP[Primary Kea Server]
+        KS2[Secondary Kea Server]
+        DB[(Kea Lease Database)]
+    end
+
+    NC --&gt; CTL
+    NN --&gt; CTL
+    CTL --&gt; KS
+    KS --&gt; KC
+    KC --&gt; KP
+    KC -.-&gt;|Failover| KS2
+    KP --&gt; DB
+    KS2 --&gt; DB
+
+    CTL --&gt; IC
+    CTL --&gt; UC</div>
+<h3 id="2-networkconfiguration-processing-flow">2. <strong>NetworkConfiguration Processing Flow</strong></h3>
+<div class="mermaid">sequenceDiagram
+    participant K8s as Kubernetes API
+    participant Ctrl as NetworkConfiguration Controller
+    participant KS as Kea Service
+    participant KC as Kea Client
+    participant Kea as Kea DHCP Server
+
+    K8s-&gt;&gt;Ctrl: Watch: NetworkConfiguration Created/Updated
+    Ctrl-&gt;&gt;Ctrl: Extract MAC Addresses from Spec
+    Ctrl-&gt;&gt;K8s: Fetch NetworkNamespace Status
+    K8s--&gt;&gt;Ctrl: IPv4 Prefix (e.g., 10.100.1.0/24)
+
+    Ctrl-&gt;&gt;KS: Process MAC Addresses
+    KS-&gt;&gt;KC: subnet4-list
+    KC-&gt;&gt;Kea: HTTP POST /subnet4-list
+    Kea--&gt;&gt;KC: Available Subnets
+    KC--&gt;&gt;KS: Subnet Information
+
+    loop For Each MAC Address
+        KS-&gt;&gt;KC: lease4-get-by-hw-address
+        KC-&gt;&gt;Kea: HTTP POST /lease4-get-by-hw-address
+        Kea--&gt;&gt;KC: Lease Information or Empty
+        KC--&gt;&gt;KS: Current Lease Data
+
+        alt Lease Exists
+            KS-&gt;&gt;KC: reservation-add
+            KC-&gt;&gt;Kea: HTTP POST /reservation-add
+            Kea--&gt;&gt;KC: Reservation Result
+            KC--&gt;&gt;KS: Success/Failure
+        else No Lease Found
+            KS-&gt;&gt;Ctrl: Log Warning - Device needs DHCP lease
+        end
+    end
+
+    Ctrl-&gt;&gt;K8s: Update NetworkConfiguration Status</div>
+<h3 id="2-dhcp-reservation-process">2. <strong>DHCP Reservation Process</strong></h3>
+<p>The operator follows this sequence to manage reservations:</p>
+<ol>
+<li><strong>Watch NetworkConfiguration</strong>: Detects changes to network interface configurations</li>
+<li><strong>Extract MAC Addresses</strong>: Reads MAC addresses from <code>spec.networkInterfaces[].macAddress</code></li>
+<li><strong>Get Network Prefix</strong>: Retrieves IPv4 prefix from <code>NetworkNamespace.status.ipv4Prefix</code></li>
+<li><strong>Resolve Subnet</strong>: Uses Kea's <code>subnet4-list</code> command to find matching subnet</li>
+<li><strong>Check Current Lease</strong>: Queries existing lease with <code>lease4-get-by-hw-address</code></li>
+<li><strong>Create Reservation</strong>: Uses <code>reservation-add</code> to ensure IP reservation for the MAC</li>
+<li><strong>Handle Deletion</strong>: Removes reservations when NetworkConfiguration is deleted</li>
+</ol>
+<h3 id="3-detailed-component-architecture">3. <strong>Detailed Component Architecture</strong></h3>
+<h4 id="controller-layer-internalcontrollerv1alpha1"><strong>Controller Layer</strong> (<code>internal/controller/v1alpha1/</code>)</h4>
+<p><strong>NetworkConfiguration Controller</strong> (<code>networkconfiguration_controller.go</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">NetworkConfigurationReconciler</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">client</span><span class="p">.</span><span class="nx">Client</span>
+<span class="w">    </span><span class="nx">Scheme</span><span class="w">           </span><span class="o">*</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">Scheme</span>
+<span class="w">    </span><span class="nx">KeaService</span><span class="w">      </span><span class="nx">KeaServiceInterface</span>
+<span class="w">    </span><span class="nx">InitialChecks</span><span class="w">   </span><span class="nx">InitialChecksInterface</span>
+<span class="p">}</span>
+
+<span class="c1">// Reconcile implements the main reconciliation loop</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">NetworkConfigurationReconciler</span><span class="p">)</span><span class="w"> </span><span class="nx">Reconcile</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">Result</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. Fetch NetworkConfiguration resource</span>
+<span class="w">    </span><span class="c1">// 2. Validate resource requirements</span>
+<span class="w">    </span><span class="c1">// 3. Extract MAC addresses from networkInterfaces</span>
+<span class="w">    </span><span class="c1">// 4. Get NetworkNamespace IPv4 prefix</span>
+<span class="w">    </span><span class="c1">// 5. Process each MAC through Kea service</span>
+<span class="w">    </span><span class="c1">// 6. Update resource status with results</span>
+<span class="w">    </span><span class="c1">// 7. Handle cleanup on deletion</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Key Controller Features</strong>:</p>
+<ul>
+<li><strong>Event-Driven Processing</strong>: Responds to NetworkConfiguration create/update/delete events</li>
+<li><strong>Finalizer Management</strong>: Ensures proper cleanup of DHCP reservations on deletion</li>
+<li><strong>Status Reporting</strong>: Updates resource status with reservation results</li>
+<li><strong>Error Handling</strong>: Graceful handling of Kea connectivity issues</li>
+<li><strong>Concurrent Processing</strong>: Handles multiple NetworkConfiguration resources simultaneously</li>
+</ul>
+<h4 id="service-layer-internalserviceskea"><strong>Service Layer</strong> (<code>internal/services/kea/</code>)</h4>
+<p><strong>Kea Service Implementation</strong>:
+</p><div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">KeaService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">client</span><span class="w">      </span><span class="nx">KeaClientInterface</span>
+<span class="w">    </span><span class="nx">logger</span><span class="w">      </span><span class="nx">logr</span><span class="p">.</span><span class="nx">Logger</span>
+<span class="p">}</span>
+
+<span class="c1">// Core methods for DHCP management</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaService</span><span class="p">)</span><span class="w"> </span><span class="nx">ProcessMACAddresses</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">macs</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">ipv4Prefix</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaService</span><span class="p">)</span><span class="w"> </span><span class="nx">CreateReservation</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="p">,</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">subnetID</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaService</span><span class="p">)</span><span class="w"> </span><span class="nx">RemoveReservation</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">subnetID</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaService</span><span class="p">)</span><span class="w"> </span><span class="nx">FindSubnetForPrefix</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">ipv4Prefix</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">Subnet</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaService</span><span class="p">)</span><span class="w"> </span><span class="nx">GetLeaseForMAC</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">Lease</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+</code></pre></div><p></p>
+<p><strong>Service Responsibilities</strong>:</p>
+<ul>
+<li><strong>MAC Address Processing</strong>: Normalize and validate MAC addresses</li>
+<li><strong>Subnet Resolution</strong>: Match IPv4 prefixes to Kea subnet configurations</li>
+<li><strong>Lease Discovery</strong>: Query existing DHCP leases for devices</li>
+<li><strong>Reservation Management</strong>: Create, update, and remove IP reservations</li>
+<li><strong>Error Aggregation</strong>: Collect and report errors across multiple operations</li>
+</ul>
+<h4 id="http-client-layer-pkgclientskeaclient"><strong>HTTP Client Layer</strong> (<code>pkg/clients/keaclient/</code>)</h4>
+<p><strong>Kea HTTP Client Implementation</strong>:
+</p><div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">KeaClient</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">httpClient</span><span class="w">     </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span>
+<span class="w">    </span><span class="nx">primaryURL</span><span class="w">     </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">secondaryURL</span><span class="w">   </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">timeout</span><span class="w">        </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span>
+<span class="w">    </span><span class="nx">authentication</span><span class="w"> </span><span class="nx">AuthConfig</span>
+<span class="w">    </span><span class="nx">tlsConfig</span><span class="w">     </span><span class="o">*</span><span class="nx">tls</span><span class="p">.</span><span class="nx">Config</span>
+<span class="p">}</span>
+
+<span class="c1">// Core Kea API methods</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaClient</span><span class="p">)</span><span class="w"> </span><span class="nx">ListSubnets</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">([]</span><span class="nx">Subnet</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaClient</span><span class="p">)</span><span class="w"> </span><span class="nx">GetLeaseByHWAddress</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">Lease</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaClient</span><span class="p">)</span><span class="w"> </span><span class="nx">AddReservation</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">reservation</span><span class="w"> </span><span class="o">*</span><span class="nx">Reservation</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaClient</span><span class="p">)</span><span class="w"> </span><span class="nx">DeleteReservation</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">subnetID</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaClient</span><span class="p">)</span><span class="w"> </span><span class="nx">ListCommands</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+</code></pre></div><p></p>
+<p><strong>Client Features</strong>:</p>
+<ul>
+<li><strong>High Availability</strong>: Automatic failover between primary and secondary servers</li>
+<li><strong>Authentication</strong>: Support for basic auth and mTLS client certificates</li>
+<li><strong>Connection Pooling</strong>: Efficient HTTP connection reuse</li>
+<li><strong>Timeout Management</strong>: Configurable request timeouts</li>
+<li><strong>TLS Security</strong>: Full TLS configuration with certificate validation</li>
+<li><strong>Retry Logic</strong>: Automatic retry for transient network failures</li>
+</ul>
+<h3 id="4-kea-rest-api-integration-details">4. <strong>Kea REST API Integration Details</strong></h3>
+<h4 id="api-command-structure"><strong>API Command Structure</strong></h4>
+<p>All Kea API calls follow this JSON structure:
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"command-name"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"dhcp4"</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Command-specific parameters</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h4 id="core-api-operations"><strong>Core API Operations</strong></h4>
+<p><strong>Subnet Discovery</strong> (<code>subnet4-list</code>):
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subnet4-list"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"dhcp4"</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+Response provides subnet configuration including:<p></p>
+<ul>
+<li>Subnet ID numbers</li>
+<li>CIDR blocks (e.g., "10.100.1.0/24")</li>
+<li>Pool ranges and reservations</li>
+<li>Subnet-specific options</li>
+</ul>
+<p><strong>Lease Query</strong> (<code>lease4-get-by-hw-address</code>):
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lease4-get-by-hw-address"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"dhcp4"</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"hw-address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aa:bb:cc:dd:ee:ff"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+Returns current lease information:<p></p>
+<ul>
+<li>Assigned IP address</li>
+<li>Lease expiration time</li>
+<li>Subnet ID</li>
+<li>Client identifier</li>
+<li>Hardware address</li>
+</ul>
+<p><strong>Reservation Management</strong> (<code>reservation-add</code>):
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reservation-add"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"dhcp4"</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"reservation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"subnet-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"hw-address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aa:bb:cc:dd:ee:ff"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ip-address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.1.100"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Reservation Removal</strong> (<code>reservation-del</code>):
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reservation-del"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"dhcp4"</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"subnet-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"identifier-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hw-address"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aa:bb:cc:dd:ee:ff"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h4 id="error-handling-and-response-processing"><strong>Error Handling and Response Processing</strong></h4>
+<p><strong>Successful Response Format</strong>:
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation successful"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Response data</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Error Response Format</strong>:
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error description"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Common Error Codes</strong>:</p>
+<ul>
+<li><code>0</code>: Success</li>
+<li><code>1</code>: Generic error</li>
+<li><code>2</code>: Malformed command</li>
+<li><code>3</code>: Unsupported command</li>
+<li><code>4</code>: Empty command</li>
+</ul>
+<h2 id="configuration">Configuration</h2>
+<h3 id="environment-variables">Environment Variables</h3>
+<h4 id="kea-server-connection"><strong>Kea Server Connection</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Primary connection (preferred method)</span>
+<span class="nv">KEA_URL</span><span class="o">=</span>http://kea-server:8000
+
+<span class="c1"># Alternative: separate host/port</span>
+<span class="nv">KEA_HOST</span><span class="o">=</span>kea-server
+<span class="nv">KEA_PORT</span><span class="o">=</span><span class="m">8000</span>
+
+<span class="c1"># High availability secondary server</span>
+<span class="nv">KEA_SECONDARY_URL</span><span class="o">=</span>http://kea-secondary:8000
+
+<span class="c1"># Connection settings</span>
+<span class="nv">KEA_TIMEOUT_SECONDS</span><span class="o">=</span><span class="m">10</span>
+<span class="nv">KEA_DISABLE_KEEPALIVES</span><span class="o">=</span><span class="nb">false</span>
+</code></pre></div>
+<h4 id="authentication-options"><strong>Authentication Options</strong></h4>
+<p><strong>Basic Authentication:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="nv">KEA_BASIC_AUTH_USERNAME</span><span class="o">=</span>dhcp-admin
+<span class="nv">KEA_BASIC_AUTH_PASSWORD</span><span class="o">=</span>secure-password
+</code></pre></div><p></p>
+<p><strong>mTLS Client Certificates:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="nv">KEA_TLS_CERT_FILE</span><span class="o">=</span>/etc/certs/client.crt
+<span class="nv">KEA_TLS_KEY_FILE</span><span class="o">=</span>/etc/certs/client.key
+<span class="nv">KEA_TLS_CA_FILE</span><span class="o">=</span>/etc/certs/ca.crt
+</code></pre></div><p></p>
+<h4 id="tls-configuration"><strong>TLS Configuration</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">KEA_TLS_ENABLED</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">KEA_TLS_INSECURE</span><span class="o">=</span><span class="nb">false</span>
+<span class="nv">KEA_TLS_SERVER_NAME</span><span class="o">=</span>kea-server.example.com
+</code></pre></div>
+<h2 id="usage-examples">Usage Examples</h2>
+<h3 id="1-networknamespace-setup">1. <strong>NetworkNamespace Setup</strong></h3>
+<p>First, ensure you have a NetworkNamespace with an IPv4 prefix:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vitistack.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkNamespace</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production-network</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># NetworkNamespace configuration</span>
+<span class="nt">status</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ipv4Prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"10.100.1.0/24"</span><span class="w">  </span><span class="c1"># Set by network controller</span>
+</code></pre></div>
+<h3 id="2-networkconfiguration-for-dhcp-reservations">2. <strong>NetworkConfiguration for DHCP Reservations</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vitistack.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkConfiguration</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web-servers</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production-network</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">clusterName</span><span class="p">:</span><span class="w"> </span><span class="s">"production-cluster"</span>
+<span class="w">  </span><span class="nt">datacenterName</span><span class="p">:</span><span class="w"> </span><span class="s">"dc-west-1"</span>
+<span class="w">  </span><span class="nt">supervisorName</span><span class="p">:</span><span class="w"> </span><span class="s">"production"</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">"vsphere"</span>
+<span class="w">  </span><span class="nt">networkInterfaces</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"eth0"</span>
+<span class="w">      </span><span class="nt">macAddress</span><span class="p">:</span><span class="w"> </span><span class="s">"00:50:56:12:34:56"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"eth1"</span><span class="w">  </span>
+<span class="w">      </span><span class="nt">macAddress</span><span class="p">:</span><span class="w"> </span><span class="s">"00:50:56:78:90:ab"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"eth2"</span>
+<span class="w">      </span><span class="nt">macAddress</span><span class="p">:</span><span class="w"> </span><span class="s">"1a:2b:3c:4d:5e:6f"</span><span class="w">  </span><span class="c1"># Different format - normalized automatically</span>
+</code></pre></div>
+<h3 id="3-multiple-network-interfaces">3. <strong>Multiple Network Interfaces</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vitistack.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkConfiguration</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database-cluster</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production-network</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">clusterName</span><span class="p">:</span><span class="w"> </span><span class="s">"db-cluster"</span>
+<span class="w">  </span><span class="nt">datacenterName</span><span class="p">:</span><span class="w"> </span><span class="s">"dc-west-1"</span>
+<span class="w">  </span><span class="nt">supervisorName</span><span class="p">:</span><span class="w"> </span><span class="s">"database"</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">"vmware"</span>
+<span class="w">  </span><span class="nt">networkInterfaces</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"mgmt-interface"</span>
+<span class="w">      </span><span class="nt">macAddress</span><span class="p">:</span><span class="w"> </span><span class="s">"00:02:12:34:56:78"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"data-interface"</span>
+<span class="w">      </span><span class="nt">macAddress</span><span class="p">:</span><span class="w"> </span><span class="s">"00:02:12:34:56:79"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"backup-interface"</span>
+<span class="w">      </span><span class="nt">macAddress</span><span class="p">:</span><span class="w"> </span><span class="s">"00:02:12:34:56:80"</span>
+</code></pre></div>
+<h2 id="installation-and-deployment">Installation and Deployment</h2>
+<h3 id="local-development-setup"><strong>Local Development Setup</strong></h3>
+<ol>
+<li><strong>Start Local Kea Server</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clone the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vitistack/kea-operator.git
+<span class="nb">cd</span><span class="w"> </span>kea-operator
+
+<span class="c1"># Set up Docker socket permissions (macOS)</span>
+chmod<span class="w"> </span><span class="m">750</span><span class="w"> </span>./hack/docker/sockets
+
+<span class="c1"># Start Kea with REST API</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<ol>
+<li><strong>Configure Environment</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">KEA_URL</span><span class="o">=</span>http://localhost:8000
+<span class="nb">export</span><span class="w"> </span><span class="nv">KEA_SECONDARY_URL</span><span class="o">=</span>http://localhost:8001<span class="w">  </span><span class="c1"># Optional HA setup</span>
+</code></pre></div>
+<ol>
+<li><strong>Run Operator Locally</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>run
+</code></pre></div>
+<h3 id="cluster-deployment"><strong>Cluster Deployment</strong></h3>
+<ol>
+<li><strong>Install Viti CRDs</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install NetworkConfiguration and NetworkNamespace CRDs</span>
+make<span class="w"> </span>install
+</code></pre></div>
+<ol>
+<li><strong>Deploy Operator</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Deploy to cluster</span>
+make<span class="w"> </span>deploy<span class="w"> </span><span class="nv">IMG</span><span class="o">=</span>ghcr.io/vitistack/kea-operator:latest
+</code></pre></div>
+<ol>
+<li><strong>Verify Installation</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check operator deployment</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>kea-operator-controller-manager<span class="w"> </span>-n<span class="w"> </span>kea-operator-system
+
+<span class="c1"># Verify CRDs</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>crd<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>vitistack.io
+</code></pre></div>
+<h3 id="helm-installation"><strong>Helm Installation</strong></h3>
+<p>The operator includes Helm charts (<code>charts/kea-operator/</code>) with:</p>
+<ul>
+<li><strong>CRD Management</strong>: Automatic installation of required CRDs</li>
+<li><strong>RBAC Setup</strong>: Proper service accounts and permissions</li>
+<li><strong>ConfigMap Support</strong>: Environment variable configuration</li>
+<li><strong>Secret Management</strong>: Secure handling of authentication credentials</li>
+</ul>
+<h2 id="operational-features">Operational Features</h2>
+<h3 id="mac-address-normalization"><strong>MAC Address Normalization</strong></h3>
+<p>The operator automatically normalizes MAC addresses:</p>
+<ul>
+<li><strong>Case Insensitive</strong>: <code>AA:BB:CC:DD:EE:FF</code> → <code>aa:bb:cc:dd:ee:ff</code></li>
+<li><strong>Separator Normalization</strong>: <code>aa-bb-cc-dd-ee-ff</code> → <code>aa:bb:cc:dd:ee:ff</code></li>
+<li><strong>Format Validation</strong>: Ensures proper MAC address format</li>
+</ul>
+<h3 id="lease-discovery-requirements"><strong>Lease Discovery Requirements</strong></h3>
+<ul>
+<li><strong>Existing Lease Required</strong>: Devices must have already obtained a DHCP lease</li>
+<li><strong>Automatic Discovery</strong>: Operator finds current IP assignment for MAC address</li>
+<li><strong>Reservation Creation</strong>: Creates permanent reservation for discovered IP</li>
+</ul>
+<h3 id="advanced-processing-logic"><strong>Advanced Processing Logic</strong></h3>
+<h4 id="mac-address-normalization-pipeline"><strong>MAC Address Normalization Pipeline</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NormalizeMAC</span><span class="p">(</span><span class="nx">mac</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. Convert to lowercase</span>
+<span class="w">    </span><span class="nx">mac</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">ToLower</span><span class="p">(</span><span class="nx">mac</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// 2. Replace dashes with colons</span>
+<span class="w">    </span><span class="nx">mac</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">ReplaceAll</span><span class="p">(</span><span class="nx">mac</span><span class="p">,</span><span class="w"> </span><span class="s">"-"</span><span class="p">,</span><span class="w"> </span><span class="s">":"</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// 3. Validate format using regex</span>
+<span class="w">    </span><span class="nx">macRegex</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">regexp</span><span class="p">.</span><span class="nx">MustCompile</span><span class="p">(</span><span class="s">`^([0-9a-f]{2}:){5}[0-9a-f]{2}$`</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">macRegex</span><span class="p">.</span><span class="nx">MatchString</span><span class="p">(</span><span class="nx">mac</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"invalid MAC address format: %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">mac</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Supported Input Formats</strong>:</p>
+<ul>
+<li><code>AA:BB:CC:DD:EE:FF</code> → <code>aa:bb:cc:dd:ee:ff</code></li>
+<li><code>aa-bb-cc-dd-ee-ff</code> → <code>aa:bb:cc:dd:ee:ff</code> </li>
+<li><code>aabbccddeeff</code> → Rejected (requires separators)</li>
+</ul>
+<h4 id="subnet-matching-algorithm"><strong>Subnet Matching Algorithm</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">FindMatchingSubnet</span><span class="p">(</span><span class="nx">subnets</span><span class="w"> </span><span class="p">[]</span><span class="nx">Subnet</span><span class="p">,</span><span class="w"> </span><span class="nx">ipv4Prefix</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">Subnet</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">targetNetwork</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">netip</span><span class="p">.</span><span class="nx">ParsePrefix</span><span class="p">(</span><span class="nx">ipv4Prefix</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">subnet</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">subnets</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">subnetNetwork</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">netip</span><span class="p">.</span><span class="nx">ParsePrefix</span><span class="p">(</span><span class="nx">subnet</span><span class="p">.</span><span class="nx">Subnet</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">continue</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Check if networks overlap or match</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">networksOverlap</span><span class="p">(</span><span class="nx">targetNetwork</span><span class="p">,</span><span class="w"> </span><span class="nx">subnetNetwork</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">subnet</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"no matching subnet found for prefix %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">ipv4Prefix</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="lease-discovery-and-validation"><strong>Lease Discovery and Validation</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaService</span><span class="p">)</span><span class="w"> </span><span class="nx">ProcessMACForReservation</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="p">,</span><span class="w"> </span><span class="nx">ipv4Prefix</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. Normalize MAC address</span>
+<span class="w">    </span><span class="nx">normalizedMAC</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NormalizeMAC</span><span class="p">(</span><span class="nx">mac</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"MAC normalization failed: %w"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 2. Find appropriate subnet</span>
+<span class="w">    </span><span class="nx">subnet</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">FindSubnetForPrefix</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">ipv4Prefix</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"subnet resolution failed: %w"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 3. Query existing lease</span>
+<span class="w">    </span><span class="nx">lease</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">GetLeaseForMAC</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">normalizedMAC</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"lease query failed: %w"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 4. Validate lease is in correct subnet</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">s</span><span class="p">.</span><span class="nx">IsIPInSubnet</span><span class="p">(</span><span class="nx">lease</span><span class="p">.</span><span class="nx">IPAddress</span><span class="p">,</span><span class="w"> </span><span class="nx">subnet</span><span class="p">.</span><span class="nx">Subnet</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"lease IP %s not in target subnet %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">lease</span><span class="p">.</span><span class="nx">IPAddress</span><span class="p">,</span><span class="w"> </span><span class="nx">subnet</span><span class="p">.</span><span class="nx">Subnet</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 5. Create reservation</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">CreateReservation</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">normalizedMAC</span><span class="p">,</span><span class="w"> </span><span class="nx">lease</span><span class="p">.</span><span class="nx">IPAddress</span><span class="p">,</span><span class="w"> </span><span class="nx">subnet</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="high-availability-and-failover"><strong>High Availability and Failover</strong></h3>
+<h4 id="dual-server-configuration"><strong>Dual-Server Configuration</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">KeaClient</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">primaryURL</span><span class="w">     </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">secondaryURL</span><span class="w">   </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">currentServer</span><span class="w">  </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">healthStatus</span><span class="w">   </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">bool</span>
+<span class="w">    </span><span class="nx">failoverDelay</span><span class="w">  </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaClient</span><span class="p">)</span><span class="w"> </span><span class="nx">executeWithFailover</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">command</span><span class="w"> </span><span class="nx">KeaCommand</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">KeaResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Try primary server first</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">isHealthy</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">primaryURL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">executeOnServer</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">primaryURL</span><span class="p">,</span><span class="w"> </span><span class="nx">command</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">c</span><span class="p">.</span><span class="nx">markUnhealthy</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">primaryURL</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Fallback to secondary server</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">secondaryURL</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">isHealthy</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">secondaryURL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">executeOnServer</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">secondaryURL</span><span class="p">,</span><span class="w"> </span><span class="nx">command</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">c</span><span class="p">.</span><span class="nx">markUnhealthy</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">secondaryURL</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"both primary and secondary servers unavailable"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="health-check-implementation"><strong>Health Check Implementation</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaClient</span><span class="p">)</span><span class="w"> </span><span class="nx">performHealthCheck</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">serverURL</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Use list-commands as health check</span>
+<span class="w">    </span><span class="nx">command</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">KeaCommand</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Command</span><span class="p">:</span><span class="w"> </span><span class="s">"list-commands"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Service</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"dhcp4"</span><span class="p">},</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">executeOnServer</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">serverURL</span><span class="p">,</span><span class="w"> </span><span class="nx">command</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="c1">// Periodic health monitoring</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaClient</span><span class="p">)</span><span class="w"> </span><span class="nx">startHealthMonitoring</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ticker</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">NewTicker</span><span class="p">(</span><span class="mi">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">ticker</span><span class="p">.</span><span class="nx">Stop</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ticker</span><span class="p">.</span><span class="nx">C</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">c</span><span class="p">.</span><span class="nx">healthStatus</span><span class="p">[</span><span class="nx">c</span><span class="p">.</span><span class="nx">primaryURL</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">performHealthCheck</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">primaryURL</span><span class="p">)</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">secondaryURL</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">c</span><span class="p">.</span><span class="nx">healthStatus</span><span class="p">[</span><span class="nx">c</span><span class="p">.</span><span class="nx">secondaryURL</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">performHealthCheck</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">secondaryURL</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="state-synchronization"><strong>State Synchronization</strong></h3>
+<ul>
+<li><strong>Consistent Reservations</strong>: Ensures reservations exist on both primary and secondary servers</li>
+<li><strong>Automatic Healing</strong>: Recreates missing reservations during server recovery</li>
+<li><strong>Conflict Resolution</strong>: Handles cases where servers have different reservation states</li>
+</ul>
+<h3 id="comprehensive-error-handling-and-recovery"><strong>Comprehensive Error Handling and Recovery</strong></h3>
+<h4 id="retry-mechanism-implementation"><strong>Retry Mechanism Implementation</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">RetryConfig</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">MaxAttempts</span><span class="w">     </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">InitialDelay</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span>
+<span class="w">    </span><span class="nx">BackoffFactor</span><span class="w">   </span><span class="kt">float64</span>
+<span class="w">    </span><span class="nx">MaxDelay</span><span class="w">        </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaClient</span><span class="p">)</span><span class="w"> </span><span class="nx">executeWithRetry</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">command</span><span class="w"> </span><span class="nx">KeaCommand</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="nx">RetryConfig</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">KeaResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">lastErr</span><span class="w"> </span><span class="kt">error</span>
+<span class="w">    </span><span class="nx">delay</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">InitialDelay</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">attempt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">attempt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">MaxAttempts</span><span class="p">;</span><span class="w"> </span><span class="nx">attempt</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">command</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nx">lastErr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">err</span>
+
+<span class="w">        </span><span class="c1">// Don't retry on certain errors</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">isNonRetryableError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Wait before retry (except on last attempt)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">attempt</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">MaxAttempts</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nx">After</span><span class="p">(</span><span class="nx">delay</span><span class="p">):</span>
+<span class="w">                </span><span class="c1">// Exponential backoff</span>
+<span class="w">                </span><span class="nx">delay</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nb">float64</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">BackoffFactor</span><span class="p">)</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="nx">delay</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">MaxDelay</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">delay</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">MaxDelay</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Err</span><span class="p">()</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"failed after %d attempts: %w"</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">MaxAttempts</span><span class="p">,</span><span class="w"> </span><span class="nx">lastErr</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="error-classification-and-handling"><strong>Error Classification and Handling</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">ErrorType</span><span class="w"> </span><span class="kt">int</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">ErrorTypeNetwork</span><span class="w"> </span><span class="nx">ErrorType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">iota</span>
+<span class="w">    </span><span class="nx">ErrorTypeAuthentication</span>
+<span class="w">    </span><span class="nx">ErrorTypePermission</span><span class="w">  </span>
+<span class="w">    </span><span class="nx">ErrorTypeResource</span>
+<span class="w">    </span><span class="nx">ErrorTypeValidation</span>
+<span class="w">    </span><span class="nx">ErrorTypeTimeout</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">classifyError</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="nx">ErrorType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">isNetworkError</span><span class="p">(</span><span class="nx">err</span><span class="p">):</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">ErrorTypeNetwork</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">isAuthError</span><span class="p">(</span><span class="nx">err</span><span class="p">):</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">ErrorTypeAuthentication</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">isTimeoutError</span><span class="p">(</span><span class="nx">err</span><span class="p">):</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">ErrorTypeTimeout</span>
+<span class="w">    </span><span class="k">default</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">ErrorTypeResource</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">NetworkConfigurationReconciler</span><span class="p">)</span><span class="w"> </span><span class="nx">handleError</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="nx">nc</span><span class="w"> </span><span class="o">*</span><span class="nx">NetworkConfiguration</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">Result</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">errorType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">classifyError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">errorType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">ErrorTypeNetwork</span><span class="p">,</span><span class="w"> </span><span class="nx">ErrorTypeTimeout</span><span class="p">:</span>
+<span class="w">        </span><span class="c1">// Transient errors - requeue with backoff</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">Result</span><span class="p">{</span><span class="nx">RequeueAfter</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">ErrorTypeAuthentication</span><span class="p">:</span>
+<span class="w">        </span><span class="c1">// Auth errors - longer delay, may need manual intervention</span>
+<span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">recordEvent</span><span class="p">(</span><span class="nx">nc</span><span class="p">,</span><span class="w"> </span><span class="s">"Warning"</span><span class="p">,</span><span class="w"> </span><span class="s">"AuthenticationFailed"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">Result</span><span class="p">{</span><span class="nx">RequeueAfter</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">ErrorTypeValidation</span><span class="p">:</span>
+<span class="w">        </span><span class="c1">// Configuration errors - don't requeue automatically</span>
+<span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">recordEvent</span><span class="p">(</span><span class="nx">nc</span><span class="p">,</span><span class="w"> </span><span class="s">"Warning"</span><span class="p">,</span><span class="w"> </span><span class="s">"ValidationFailed"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">Result</span><span class="p">{},</span><span class="w"> </span><span class="kc">nil</span>
+
+<span class="w">    </span><span class="k">default</span><span class="p">:</span>
+<span class="w">        </span><span class="c1">// Unknown errors - standard requeue</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">Result</span><span class="p">{</span><span class="nx">RequeueAfter</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">},</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="circuit-breaker-pattern"><strong>Circuit Breaker Pattern</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">CircuitBreaker</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">maxFailures</span><span class="w">     </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">resetTimeout</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span>
+<span class="w">    </span><span class="nx">state</span><span class="w">          </span><span class="nx">CircuitState</span>
+<span class="w">    </span><span class="nx">failures</span><span class="w">       </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">lastFailTime</span><span class="w">   </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<span class="w">    </span><span class="nx">mutex</span><span class="w">          </span><span class="nx">sync</span><span class="p">.</span><span class="nx">RWMutex</span>
+<span class="p">}</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">CircuitState</span><span class="w"> </span><span class="kt">int</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">StateClosed</span><span class="w"> </span><span class="nx">CircuitState</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">iota</span>
+<span class="w">    </span><span class="nx">StateOpen</span>
+<span class="w">    </span><span class="nx">StateHalfOpen</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">cb</span><span class="w"> </span><span class="o">*</span><span class="nx">CircuitBreaker</span><span class="p">)</span><span class="w"> </span><span class="nx">Execute</span><span class="p">(</span><span class="nx">fn</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cb</span><span class="p">.</span><span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cb</span><span class="p">.</span><span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">cb</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">StateOpen</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Since</span><span class="p">(</span><span class="nx">cb</span><span class="p">.</span><span class="nx">lastFailTime</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">cb</span><span class="p">.</span><span class="nx">resetTimeout</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">cb</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">StateHalfOpen</span>
+<span class="w">            </span><span class="nx">cb</span><span class="p">.</span><span class="nx">failures</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"circuit breaker open"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">fn</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">cb</span><span class="p">.</span><span class="nx">failures</span><span class="o">++</span>
+<span class="w">        </span><span class="nx">cb</span><span class="p">.</span><span class="nx">lastFailTime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">cb</span><span class="p">.</span><span class="nx">failures</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">cb</span><span class="p">.</span><span class="nx">maxFailures</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">cb</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">StateOpen</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Success - reset circuit breaker</span>
+<span class="w">    </span><span class="nx">cb</span><span class="p">.</span><span class="nx">failures</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="nx">cb</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">StateClosed</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="comprehensive-logging-and-metrics"><strong>Comprehensive Logging and Metrics</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">OperationMetrics</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">TotalOperations</span><span class="w">     </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">Counter</span>
+<span class="w">    </span><span class="nx">SuccessfulOperations</span><span class="w"> </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">Counter</span>
+<span class="w">    </span><span class="nx">FailedOperations</span><span class="w">    </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">Counter</span>
+<span class="w">    </span><span class="nx">OperationDuration</span><span class="w">  </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">Histogram</span>
+<span class="w">    </span><span class="nx">ActiveReservations</span><span class="w"> </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">Gauge</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaService</span><span class="p">)</span><span class="w"> </span><span class="nx">CreateReservationWithMetrics</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="p">,</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">subnetID</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">timer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">NewTimer</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">OperationDuration</span><span class="p">)</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">timer</span><span class="p">.</span><span class="nx">ObserveDuration</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">TotalOperations</span><span class="p">.</span><span class="nx">Inc</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">WithValues</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"operation"</span><span class="p">,</span><span class="w"> </span><span class="s">"create_reservation"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"mac"</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"ip"</span><span class="p">,</span><span class="w"> </span><span class="nx">ip</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"subnet_id"</span><span class="p">,</span><span class="w"> </span><span class="nx">subnetID</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">"Creating DHCP reservation"</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">createReservation</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="p">,</span><span class="w"> </span><span class="nx">ip</span><span class="p">,</span><span class="w"> </span><span class="nx">subnetID</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">FailedOperations</span><span class="p">.</span><span class="nx">Inc</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="s">"Failed to create DHCP reservation"</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">SuccessfulOperations</span><span class="p">.</span><span class="nx">Inc</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ActiveReservations</span><span class="p">.</span><span class="nx">Inc</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">"Successfully created DHCP reservation"</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="graceful-degradation-strategies"><strong>Graceful Degradation Strategies</strong></h3>
+<h4 id="command-availability-detection"><strong>Command Availability Detection</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaService</span><span class="p">)</span><span class="w"> </span><span class="nx">detectAvailableCommands</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">commands</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">ListCommands</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"failed to detect available commands: %w"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">availableCommands</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">bool</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">commands</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">availableCommands</span><span class="p">[</span><span class="nx">cmd</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Check for required commands</span>
+<span class="w">    </span><span class="nx">requiredCommands</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"subnet4-list"</span><span class="p">,</span><span class="w"> </span><span class="s">"lease4-get-by-hw-address"</span><span class="p">,</span><span class="w"> </span><span class="s">"reservation-add"</span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">required</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">requiredCommands</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">s</span><span class="p">.</span><span class="nx">availableCommands</span><span class="p">[</span><span class="nx">required</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"required command not available: %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">required</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="fallback-mechanisms"><strong>Fallback Mechanisms</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaService</span><span class="p">)</span><span class="w"> </span><span class="nx">ProcessMACWithFallback</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Try normal processing first</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">ProcessMAC</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Check if it's a command availability issue</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">isCommandUnavailableError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">"Command unavailable, skipping processing"</span><span class="p">,</span><span class="w"> </span><span class="s">"mac"</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="p">,</span><span class="w"> </span><span class="s">"error"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="c1">// Graceful degradation</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Try alternative approach if available</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">hasAlternativeMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">ProcessMACAlternative</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues"><strong>Common Issues</strong></h3>
+<h4 id="no-lease-found-error"><strong>"No Lease Found" Error</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Verify device has obtained DHCP lease</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://kea-server:8000<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">    "command": "lease4-get-by-hw-address",</span>
+<span class="s1">    "arguments": {"hw-address": "00:50:56:12:34:56"}</span>
+<span class="s1">  }'</span>
+</code></pre></div>
+<h4 id="unsupported-kea-command-error"><strong>"Unsupported Kea Command" Error</strong></h4>
+<ul>
+<li>Check Kea version and ensure REST API is enabled</li>
+<li>Verify required commands are available in your Kea build</li>
+</ul>
+<h4 id="connection-issues"><strong>Connection Issues</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Test Kea connectivity</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://kea-server:8000<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"command": "list-commands"}'</span>
+</code></pre></div>
+<h3 id="debug-commands"><strong>Debug Commands</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check operator logs</span>
+kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>kea-operator-system<span class="w"> </span>deployment/kea-operator-controller-manager
+
+<span class="c1"># Verify NetworkConfiguration status</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>networkconfigurations<span class="w"> </span>-A
+
+<span class="c1"># Check NetworkNamespace IPv4 prefixes</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>networknamespaces<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.items[*].status.ipv4Prefix}'</span>
+</code></pre></div>
+<h3 id="rest-api-testing"><strong>REST API Testing</strong></h3>
+<p>The repository includes REST API testing tools in <code>hack/rest/</code>:</p>
+<ul>
+<li><strong>Lease queries</strong>: Test lease discovery functionality</li>
+<li><strong>Reservation management</strong>: Verify reservation creation/deletion</li>
+<li><strong>Subnet operations</strong>: Test subnet discovery</li>
+</ul>
+<h2 id="integration-with-viti-stack">Integration with Viti Stack</h2>
+<h3 id="network-management"><strong>Network Management</strong></h3>
+<ul>
+<li><strong>IPAM Integration</strong>: Works with Viti IPAM operator for IP address management</li>
+<li><strong>Network Namespaces</strong>: Integrates with NetworkNamespace for subnet organization</li>
+<li><strong>Multi-Provider Support</strong>: Supports various infrastructure providers (VMware, Proxmox, etc.)</li>
+</ul>
+<h3 id="declarative-configuration"><strong>Declarative Configuration</strong></h3>
+<ul>
+<li><strong>GitOps Compatible</strong>: Network configurations stored in version control</li>
+<li><strong>Kubernetes Native</strong>: Uses standard Kubernetes resource patterns</li>
+<li><strong>Event-Driven</strong>: Responds to configuration changes automatically</li>
+</ul>
+<h3 id="enterprise-features"><strong>Enterprise Features</strong></h3>
+<ul>
+<li><strong>Security</strong>: TLS encryption and certificate-based authentication  </li>
+<li><strong>Monitoring</strong>: Comprehensive metrics and logging for operations</li>
+<li><strong>Scalability</strong>: Handles large numbers of network interfaces and reservations</li>
+</ul>
+<h2 id="performance-optimization-and-monitoring">Performance Optimization and Monitoring</h2>
+<h3 id="concurrency-and-scaling"><strong>Concurrency and Scaling</strong></h3>
+<h4 id="parallel-mac-processing"><strong>Parallel MAC Processing</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaService</span><span class="p">)</span><span class="w"> </span><span class="nx">ProcessMACAddressesConcurrently</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">macs</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">ipv4Prefix</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Create worker pool for concurrent processing</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">maxWorkers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">    </span><span class="nx">semaphore</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{},</span><span class="w"> </span><span class="nx">maxWorkers</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">wg</span><span class="w"> </span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
+<span class="w">    </span><span class="nx">errChan</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">macs</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">macs</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">mac</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">defer</span><span class="w"> </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+
+<span class="w">            </span><span class="c1">// Acquire semaphore</span>
+<span class="w">            </span><span class="nx">semaphore</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}{}</span>
+<span class="w">            </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">semaphore</span><span class="w"> </span><span class="p">}()</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">ProcessMAC</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="p">,</span><span class="w"> </span><span class="nx">ipv4Prefix</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">errChan</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"processing MAC %s: %w"</span><span class="p">,</span><span class="w"> </span><span class="nx">mac</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}(</span><span class="nx">mac</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Wait for all workers to complete</span>
+<span class="w">    </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">close</span><span class="p">(</span><span class="nx">errChan</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Collect errors</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">errors</span><span class="w"> </span><span class="p">[]</span><span class="kt">error</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">errChan</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">errors</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">errors</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">errors</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"failed to process %d MACs: %v"</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">errors</span><span class="p">),</span><span class="w"> </span><span class="nx">errors</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="connection-pool-optimization"><strong>Connection Pool Optimization</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewOptimizedKeaClient</span><span class="p">(</span><span class="nx">config</span><span class="w"> </span><span class="o">*</span><span class="nx">ClientConfig</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">KeaClient</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">transport</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Transport</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">MaxIdleConns</span><span class="p">:</span><span class="w">        </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">MaxConnsPerHost</span><span class="p">:</span><span class="w">     </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">MaxIdleConnsPerHost</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">IdleConnTimeout</span><span class="p">:</span><span class="w">     </span><span class="mi">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">KeepAlive</span><span class="p">:</span><span class="w">          </span><span class="mi">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">TLSHandshakeTimeout</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">KeaClient</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">httpClient</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">Transport</span><span class="p">:</span><span class="w"> </span><span class="nx">transport</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">Timeout</span><span class="p">:</span><span class="w">   </span><span class="nx">config</span><span class="p">.</span><span class="nx">Timeout</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="caching-and-performance"><strong>Caching and Performance</strong></h3>
+<h4 id="subnet-cache-implementation"><strong>Subnet Cache Implementation</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">SubnetCache</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cache</span><span class="w">      </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="nx">CachedSubnet</span>
+<span class="w">    </span><span class="nx">mutex</span><span class="w">      </span><span class="nx">sync</span><span class="p">.</span><span class="nx">RWMutex</span>
+<span class="w">    </span><span class="nx">ttl</span><span class="w">        </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span>
+<span class="p">}</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">CachedSubnet</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">subnet</span><span class="w">     </span><span class="o">*</span><span class="nx">Subnet</span>
+<span class="w">    </span><span class="nx">cachedAt</span><span class="w">   </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">SubnetCache</span><span class="p">)</span><span class="w"> </span><span class="nx">GetSubnet</span><span class="p">(</span><span class="nx">prefix</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">Subnet</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">mutex</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">mutex</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">cached</span><span class="p">,</span><span class="w"> </span><span class="nx">exists</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">prefix</span><span class="p">]</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">exists</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Check if cache entry is still valid</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Since</span><span class="p">(</span><span class="nx">cached</span><span class="p">.</span><span class="nx">cachedAt</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">ttl</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cached</span><span class="p">.</span><span class="nx">subnet</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">SubnetCache</span><span class="p">)</span><span class="w"> </span><span class="nx">SetSubnet</span><span class="p">(</span><span class="nx">prefix</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">subnet</span><span class="w"> </span><span class="o">*</span><span class="nx">Subnet</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">prefix</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">CachedSubnet</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">subnet</span><span class="p">:</span><span class="w">   </span><span class="nx">subnet</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">cachedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="monitoring-and-observability"><strong>Monitoring and Observability</strong></h3>
+<h4 id="prometheus-metrics"><strong>Prometheus Metrics</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">dhcpReservationsTotal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">NewCounterVec</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">CounterOpts</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"kea_operator_dhcp_reservations_total"</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">Help</span><span class="p">:</span><span class="w"> </span><span class="s">"Total number of DHCP reservations processed"</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"operation"</span><span class="p">,</span><span class="w"> </span><span class="s">"status"</span><span class="p">,</span><span class="w"> </span><span class="s">"subnet_id"</span><span class="p">},</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">dhcpOperationDuration</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">NewHistogramVec</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">HistogramOpts</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">Name</span><span class="p">:</span><span class="w">    </span><span class="s">"kea_operator_dhcp_operation_duration_seconds"</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">Help</span><span class="p">:</span><span class="w">    </span><span class="s">"Duration of DHCP operations"</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">Buckets</span><span class="p">:</span><span class="w"> </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">DefBuckets</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"operation"</span><span class="p">,</span><span class="w"> </span><span class="s">"server"</span><span class="p">},</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">keaServerHealth</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">NewGaugeVec</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">GaugeOpts</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"kea_operator_server_health"</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">Help</span><span class="p">:</span><span class="w"> </span><span class="s">"Health status of Kea servers (1=healthy, 0=unhealthy)"</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"server"</span><span class="p">,</span><span class="w"> </span><span class="s">"type"</span><span class="p">},</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">activeNetworkConfigurations</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">NewGauge</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">GaugeOpts</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"kea_operator_active_network_configurations"</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">Help</span><span class="p">:</span><span class="w"> </span><span class="s">"Number of active NetworkConfiguration resources"</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<h4 id="health-check-endpoints"><strong>Health Check Endpoints</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">NetworkConfigurationReconciler</span><span class="p">)</span><span class="w"> </span><span class="nx">SetupHealthChecks</span><span class="p">(</span><span class="nx">mgr</span><span class="w"> </span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">Manager</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Add health check endpoint</span>
+<span class="w">    </span><span class="nx">mgr</span><span class="p">.</span><span class="nx">GetWebhookServer</span><span class="p">().</span><span class="nx">Register</span><span class="p">(</span><span class="s">"/healthz"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">webhook</span><span class="p">.</span><span class="nx">Admission</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Handler</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">HealthChecker</span><span class="p">{</span><span class="nx">keaService</span><span class="p">:</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">KeaService</span><span class="p">},</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="c1">// Add readiness check</span>
+<span class="w">    </span><span class="nx">mgr</span><span class="p">.</span><span class="nx">GetWebhookServer</span><span class="p">().</span><span class="nx">Register</span><span class="p">(</span><span class="s">"/readyz"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">webhook</span><span class="p">.</span><span class="nx">Admission</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Handler</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">ReadinessChecker</span><span class="p">{</span><span class="nx">keaService</span><span class="p">:</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">KeaService</span><span class="p">},</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">HealthChecker</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">keaService</span><span class="w"> </span><span class="nx">KeaServiceInterface</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">h</span><span class="w"> </span><span class="o">*</span><span class="nx">HealthChecker</span><span class="p">)</span><span class="w"> </span><span class="nx">Handle</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="nx">webhook</span><span class="p">.</span><span class="nx">AdmissionRequest</span><span class="p">)</span><span class="w"> </span><span class="nx">webhook</span><span class="p">.</span><span class="nx">AdmissionResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Check Kea connectivity</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">h</span><span class="p">.</span><span class="nx">keaService</span><span class="p">.</span><span class="nx">HealthCheck</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">webhook</span><span class="p">.</span><span class="nx">Errored</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusServiceUnavailable</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">webhook</span><span class="p">.</span><span class="nx">Allowed</span><span class="p">(</span><span class="s">"healthy"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="performance-tuning-guidelines"><strong>Performance Tuning Guidelines</strong></h3>
+<h4 id="reconciliation-optimization"><strong>Reconciliation Optimization</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">NetworkConfigurationReconciler</span><span class="p">)</span><span class="w"> </span><span class="nx">SetupWithManager</span><span class="p">(</span><span class="nx">mgr</span><span class="w"> </span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">Manager</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ctrl</span><span class="p">.</span><span class="nx">NewControllerManagedBy</span><span class="p">(</span><span class="nx">mgr</span><span class="p">).</span>
+<span class="w">        </span><span class="nx">For</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">vitinetv1alpha1</span><span class="p">.</span><span class="nx">NetworkConfiguration</span><span class="p">{}).</span>
+<span class="w">        </span><span class="nx">WithOptions</span><span class="p">(</span><span class="nx">controller</span><span class="p">.</span><span class="nx">Options</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">MaxConcurrentReconciles</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="c1">// Limit concurrent reconciliations</span>
+<span class="w">            </span><span class="nx">RateLimiter</span><span class="p">:</span><span class="w"> </span><span class="nx">workqueue</span><span class="p">.</span><span class="nx">NewItemExponentialFailureRateLimiter</span><span class="p">(</span>
+<span class="w">                </span><span class="mi">100</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">,</span><span class="w"> </span><span class="c1">// Base delay</span>
+<span class="w">                </span><span class="mi">30</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span><span class="w">       </span><span class="c1">// Max delay</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">}).</span>
+<span class="w">        </span><span class="nx">Complete</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="batch-processing-optimization"><strong>Batch Processing Optimization</strong></h4>
+<ul>
+<li><strong>MAC Grouping</strong>: Process MACs in batches to reduce API calls</li>
+<li><strong>Subnet Caching</strong>: Cache subnet information to avoid repeated queries</li>
+<li><strong>Connection Reuse</strong>: Maintain persistent connections to Kea servers</li>
+<li><strong>Async Processing</strong>: Use goroutines for parallel reservation creation</li>
+</ul>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="mac-address-management"><strong>MAC Address Management</strong></h3>
+<ul>
+<li><strong>Consistent Format</strong>: Use standardized MAC address format across configurations</li>
+<li><strong>Unique Identifiers</strong>: Ensure MAC addresses are unique within network segments</li>
+<li><strong>Documentation</strong>: Maintain records of MAC-to-device mappings</li>
+</ul>
+<h3 id="network-design"><strong>Network Design</strong></h3>
+<ul>
+<li><strong>Subnet Planning</strong>: Plan IP ranges to avoid conflicts between environments</li>
+<li><strong>Reservation Strategy</strong>: Reserve IP ranges for static assignments vs. DHCP pools</li>
+<li><strong>Security</strong>: Implement proper network segmentation and access controls</li>
+</ul>
+<h3 id="operational-excellence"><strong>Operational Excellence</strong></h3>
+<ul>
+<li><strong>Monitoring</strong>: Monitor DHCP lease utilization and reservation status</li>
+<li><strong>Backup</strong>: Regular backups of Kea configuration and lease databases</li>
+<li><strong>Testing</strong>: Test reservation changes in development environments first</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">ISC Kea DHCP</p>
+<p>Kea is a modern, high-performance DHCP server that offers:</p>
+<ul>
+<li><strong>REST API</strong>: Full programmatic control over DHCP operations</li>
+<li><strong>High Availability</strong>: Built-in support for HA configurations</li>
+<li><strong>Performance</strong>: Designed for high-scale enterprise environments</li>
+<li><strong>Flexibility</strong>: Extensive configuration options and hooks system</li>
+<li><strong>Standards Compliance</strong>: Full DHCP protocol compliance with extensions</li>
+</ul>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/vitistack" rel="noopener" target="_blank" title="vitistack">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "content.action.edit", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../../js/accessibility.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
