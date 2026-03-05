@@ -145,7 +145,7 @@ helm install vitistack-kubevirt-operator oci://ghcr.io/vitistack/helm/kubevirt-o
 helm install vitistack-kubevirt-operator oci://ghcr.io/vitistack/helm/kubevirt-operator \
   --namespace vitistack \
   --create-namespace \
-  --reuse-values
+  --reset-then-reuse-values
 ```
 
 ### Kubevirt-operator helm values

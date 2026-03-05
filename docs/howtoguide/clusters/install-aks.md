@@ -126,7 +126,7 @@ helm install vitistack-aks-operator oci://ghcr.io/vitistack/helm/aks-operator \
 helm install vitistack-aks-operator oci://ghcr.io/vitistack/helm/aks-operator \
   --namespace vitistack \
   --create-namespace \
-  --reuse-values
+  --reset-then-reuse-values
 ```
 
 # Default values for the helm chart

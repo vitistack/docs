@@ -17,7 +17,7 @@ helm install vitistack-kea-operator oci://ghcr.io/vitistack/helm/kea-operator \
 helm install vitistack-kea-operator oci://ghcr.io/vitistack/helm/kea-operator \
   --namespace vitistack \
   --create-namespace \
-  --reuse-values
+  --reset-then-reuse-values
 ```
 
 Values.yaml from helm chart
@@ -89,8 +89,7 @@ service:
 ingress:
   enabled: false
   className: ""
-  annotations:
-    {}
+  annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:

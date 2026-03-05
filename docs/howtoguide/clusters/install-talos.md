@@ -13,7 +13,7 @@ helm install vitistack-talos-operator oci://ghcr.io/vitistack/helm/talos-operato
 helm install vitistack-talos-operator oci://ghcr.io/vitistack/helm/talos-operator \
   --namespace vitistack \
   --create-namespace \
-  --reuse-values
+  --reset-then-reuse-values
 ```
 
 Values.yaml from Helm chart

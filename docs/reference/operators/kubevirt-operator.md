@@ -641,7 +641,7 @@ helm install kubevirt-operator vitistack/kubevirt-operator \
 helm install kubevirt-operator vitistack/kubevirt-operator \
   --namespace vitistack \
   --create-namespace \
-  --reuse-values
+  --reset-then-reuse-values
 ```
 
 #### Manual Installation

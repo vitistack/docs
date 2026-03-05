@@ -17,7 +17,7 @@ helm install vitistack-operator oci://ghcr.io/vitistack/helm/vitistack-operator 
 helm install vitistack-operator oci://ghcr.io/vitistack/helm/vitistack-operator \
   --namespace vitistack \
   --create-namespace \
-  --reuse-values
+  --reset-then-reuse-values
 ```
 
 Values.yaml from helm chart:

@@ -475,7 +475,7 @@ helm install talos-operator vitistack/talos-operator \
 helm install talos-operator vitistack/talos-operator \
   --namespace vitistack \
   --create-namespace \
-  --reuse-values
+  --reset-then-reuse-values
 ```
 
 #### Direct Deployment

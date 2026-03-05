@@ -74,7 +74,7 @@ helm install vitistack-proxmox-operator oci://ghcr.io/vitistack/helm/proxmox-ope
 helm install vitistack-proxmox-operator oci://ghcr.io/vitistack/helm/proxmox-operator \
   --namespace vitistack \
   --create-namespace \
-  --reuse-values
+  --reset-then-reuse-values
 ```
 
 ### Operator helm values

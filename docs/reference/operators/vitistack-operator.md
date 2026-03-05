@@ -602,7 +602,7 @@ helm install vitistack-operator vitistack/vitistack-operator \
 helm install vitistack-operator vitistack/vitistack-operator \
   --namespace vitistack \
   --create-namespace \
-  --reuse-values
+  --reset-then-reuse-values
 ```
 
 #### Direct Deployment

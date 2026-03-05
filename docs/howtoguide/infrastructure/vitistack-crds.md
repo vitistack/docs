@@ -29,5 +29,5 @@ kubectl apply -f https://github.com/vitistack/common/releases/latest/download/cr
 helm upgrade vitistack-crds oci://ghcr.io/vitistack/helm/crds \
   --namespace vitistack \
   --create-namespace \
-  --reuse-values
+  --reset-then-reuse-values
 ```
