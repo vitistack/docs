@@ -5,19 +5,29 @@
 
 A cluster that is created or should be adopted by vitistack must have the following annotations or labels on at least one of its nodes
 
+###Cluster
+
 | Annotation/Label | Description | Example |
 |---|---|---|
+|vitistack.io/clusterid|an unique id of the cluster|t-mgmt-001-l33t|
 |vitistack.io/clustername|the name of the cluster|t-mgmt-001|
 |vitistack.io/clusterworkspace|the workspace of the cluster|nhn-l44t|
+|vitistack.io/clusterproject|the project of the cluster|some-project|
+|vitistack.io/environment|the environment of the cluster|dev,test,qa,prod,...|
 |vitistack.io/country|the country abreviation|no|
 |vitistack.io/region|the region|west|
-|vitistack.io/infrastructure|the infrastructure, if omited = prod|mgmt,test|
 |vitistack.io/az|the availability zone|az1|
-|vitistack.io/vmprovider|the provider of the machine|kubevirt|
-|vitistack.io/vmid|the name of the vm in the vm provider|t-mgmt-001-ctp01|
 |vitistack.io/kubernetesprovider|the provider of kubernetes|talos|
-|vitistack.io/clusterid|an unique id of the cluster|t-mgmt-001-l33t|
 |vitistack.io/kubernetes-endpoint-addr|the loadbalanced api endpoint|https://10.20.30.40:6443|
+
+### Pr Node
+
+| Annotation/Label | Description | Example |
+|---|---|---|
+|vitistack.io/machineprovider|the provider of the machine|kubevirt|
+|vitistack.io/machineclass|the machine class of the machine in the provider|kubevirt|
+|vitistack.io/machineid|the name of the machine in the machine provider|t-mgmt-001-ctp01|
+|vitistack.io/machineinfrastructure|the infrastructure, if omited = prod|mgmt,test|
 
 ## DNS-names (may be used)
 
