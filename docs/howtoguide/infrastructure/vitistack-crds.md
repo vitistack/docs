@@ -2,16 +2,7 @@
 
 Using Helm (recommended)
 
-First, login to GitHub Container Registry
-
-Username: your GitHub username
-
-Password: a Personal Access Token (PAT) with `read:packages` scope
-
-Create a PAT at: https://github.com/settings/tokens/new?scopes=read:packages
-
 ```bash
-helm registry login ghcr.io
 helm install vitistack-crds oci://ghcr.io/vitistack/helm/crds \
   --namespace vitistack \
   --create-namespace
