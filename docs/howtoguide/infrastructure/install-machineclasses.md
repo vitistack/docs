@@ -25,7 +25,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f machineclass-small.yaml
+kubectl apply -f https://raw.githubusercontent.com/vitistack/common/refs/heads/main/examples/machineclasses/small.yaml
 ```
 
 ### Medium
@@ -52,7 +52,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f machineclass-medium.yaml
+kubectl apply -f https://raw.githubusercontent.com/vitistack/common/refs/heads/main/examples/machineclasses/medium.yaml
 ```
 
 ### Large
@@ -78,5 +78,5 @@ spec:
 ```
 
 ```bash
-kubectl apply -f machineclass-large.yaml
+kubectl apply -f https://raw.githubusercontent.com/vitistack/common/refs/heads/main/examples/machineclasses/large.yaml
 ```
