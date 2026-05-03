@@ -140,14 +140,14 @@
   transition: all 0.2s ease;
 }
 
-.md-nav__link:hover {
+.md-nav__link:hover:not(.md-nav__container):not(label) {
   color: var(--viti-primary);
   /*background: linear-gradient(90deg, transparent 0%, var(--viti-gray-50) 100%); */
   border-left: 3px solid var(--viti-secondary);
   padding-left: 1rem;
 }
 
-.md-nav__link--active {
+.md-nav__link--active:not(.md-nav__container):not(label) {
   color: var(--viti-primary);
   /*background: linear-gradient(90deg, var(--viti-gray-50) 0%, transparent 100%); */
   border-left: 3px solid var(--viti-secondary);

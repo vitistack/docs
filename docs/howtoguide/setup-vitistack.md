@@ -18,7 +18,11 @@ Create hardware nodes an install ex Talos, K0s or other kubernetes solutions
 
 ### Locally
 
-You could use Kind (https://kind.sigs.k8s.io/docs/user/quick-start/#installation) or Talosctl (https://docs.siderolabs.com/talos/v1.11/getting-started/talosctl) to install spin up a Kubernetes cluster locally.
+Take a look at the [Talos management setup example](./mgmtcluster/talos.md)
+
+or
+
+You could use Kind (https://kind.sigs.k8s.io/docs/user/quick-start/#installation) or Talosctl (https://docs.siderolabs.com/talos/v1.13/getting-started/talosctl) to install spin up a Kubernetes cluster locally.
 
 ## Visual cluster overview
 
@@ -60,5 +64,5 @@ To make vitistack machines, we currently support
 
 To install a vitistack Kubernetes cluster, we currently support
 
-- [Talos](clusters/install-talos.md)
-- [AKS](clusters/install-aks.md)
+- [Talos](guestclusters/install-talos.md)
+- [AKS](guestclusters/install-aks.md)

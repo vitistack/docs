@@ -10,11 +10,11 @@
     "test:htmlcs": "htmlcs http://localhost:8080"
   },
   "devDependencies": {
-    "@axe-core/cli": "^4.11.1",
+    "@axe-core/cli": "^4.11.3",
     "@lhci/cli": "^0.15.1",
     "html_codesniffer": "^2.5.1",
     "pa11y": "^9.1.1",
-    "puppeteer": "^24.40.0"
+    "puppeteer": "^24.42.0"
   },
   "overrides": {
     "glob": "^10.3.10",
