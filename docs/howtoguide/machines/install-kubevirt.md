@@ -2,13 +2,10 @@
 
 ## Kubevirt in kubernetes
 
-If you are running one or more own kubevirt clusters, you have to install the vitistack crds into the kubevirt cluster(s) too: [install vitistack crds](../infrastructure/vitistack-crds.md)
-
 (docs with kind: https://kubevirt.io/quickstart_kind)
 
 ```bash
 export VERSION=$(curl -s https://storage.googleapis.com/kubevirt-prow/release/kubevirt/kubevirt/stable.txt)
-
 echo $VERSION
 kubectl create -f "https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/kubevirt-operator.yaml"
 ```
@@ -16,6 +13,8 @@ kubectl create -f "https://github.com/kubevirt/kubevirt/releases/download/${VERS
 ## Install the CRDS
 
 ```bash
+export VERSION=$(curl -s https://storage.googleapis.com/kubevirt-prow/release/kubevirt/kubevirt/stable.txt)
+echo $VERSION
 kubectl create -f "https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/kubevirt-cr.yaml"
 ```
 
@@ -49,24 +48,7 @@ If the kind cluster runs on a virtual machine consider enabling nested virtualiz
 kubectl -n kubevirt patch kubevirt kubevirt --type=merge --patch '{"spec":{"configuration":{"developerConfiguration":{"useEmulation":true}}}}'
 ```
 
-### Virtctl
-
-KubeVirt provides an additional binary called virtctl for quick access to the serial and graphical ports of a VM and also handle start/stop operations.
-
-Install
-virtctl can be retrieved from the release page of the KubeVirt github page.
-
-```bash
-VERSION=$(kubectl get kubevirt.kubevirt.io/kubevirt -n kubevirt -o=jsonpath="{.status.observedKubeVirtVersion}")
-ARCH=$(uname -s | tr A-Z a-z)-$(uname -m | sed 's/x86_64/amd64/') || windows-amd64.exe
-echo ${ARCH}
-curl -L -o virtctl https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/virtctl-${VERSION}-${ARCH}
-sudo install -m 0755 virtctl /usr/local/bin
-```
-
 ### Containerized Data Importer (CDI)
-
-Notice, this is an experimental feature from Kubevirt
 
 Docs: https://kubevirt.io/labs/kubernetes/lab2.html
 
@@ -83,11 +65,37 @@ kubectl create -f https://github.com/kubevirt/containerized-data-importer/releas
 kubectl create -f https://github.com/kubevirt/containerized-data-importer/releases/download/$VERSION/cdi-cr.yaml
 ```
 
+### Virtctl
+
+KubeVirt provides an additional binary called virtctl for quick access to the serial and graphical ports of a VM and also handle start/stop operations.
+
+Install
+virtctl can be retrieved from the release page of the KubeVirt github page.
+
+```bash
+VERSION=$(kubectl get kubevirt.kubevirt.io/kubevirt -n kubevirt -o=jsonpath="{.status.observedKubeVirtVersion}")
+ARCH=$(uname -s | tr A-Z a-z)-$(uname -m | sed 's/x86_64/amd64/') || windows-amd64.exe
+echo ${ARCH}
+curl -L -o virtctl https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/virtctl-${VERSION}-${ARCH}
+sudo install -m 0755 virtctl /usr/local/bin
+```
+
 ## Multus
 
 The Vitistack uses Multus together with Kubevirt, so please install multus.
 
 Docs: https://github.com/k8snetworkplumbingwg/multus-cni and https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/quickstart.md
+
+or one liner:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/master/deployments/multus-daemonset-thick.yml
+```
+
+If you are installing kubevirt in Talos, please check this site for more workarounds:
+
+https://docs.siderolabs.com/kubernetes-guides/cni/multus#patching-the-daemonset
+
 
 ## Kubevirt Operator
 
