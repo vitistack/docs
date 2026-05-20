@@ -25,7 +25,7 @@
   <rect width="900" height="620" rx="16" fill="#f8fafc"/>
 
   <!-- Title -->
-  <text x="450" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#1e293b">Viti Stack Operator Lifecycle</text>
+  <text x="450" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#1e293b">Vitistack Cluster Lifecycle</text>
 
   <!-- === Layer 4: Cluster Provisioning (top) === -->
   <rect x="40" y="60" width="820" height="110" rx="12" fill="url(#grad-purple)" opacity="0.12" filter="url(#shadow)"/>
