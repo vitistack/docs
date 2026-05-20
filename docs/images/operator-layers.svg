@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+    <linearGradient id="grad-purple" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="grad-orange" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#fb923c"/>
+    </linearGradient>
+    <linearGradient id="grad-green" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="grad-blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="620" rx="16" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#1e293b">Viti Stack Operator Lifecycle</text>
+
+  <!-- === Layer 4: Cluster Provisioning (top) === -->
+  <rect x="40" y="60" width="820" height="110" rx="12" fill="url(#grad-purple)" opacity="0.12" filter="url(#shadow)"/>
+  <rect x="40" y="60" width="6" height="110" rx="3" fill="url(#grad-purple)"/>
+
+  <!-- Cluster icon -->
+  <g transform="translate(70, 85)">
+    <circle cx="20" cy="14" r="6" fill="none" stroke="#7c3aed" stroke-width="2"/>
+    <circle cx="8" cy="30" r="6" fill="none" stroke="#7c3aed" stroke-width="2"/>
+    <circle cx="32" cy="30" r="6" fill="none" stroke="#7c3aed" stroke-width="2"/>
+    <line x1="16" y1="18" x2="11" y2="25" stroke="#7c3aed" stroke-width="1.5"/>
+    <line x1="24" y1="18" x2="29" y2="25" stroke="#7c3aed" stroke-width="1.5"/>
+    <line x1="14" y1="30" x2="26" y2="30" stroke="#7c3aed" stroke-width="1.5"/>
+  </g>
+
+  <text x="120" y="90" font-size="16" font-weight="700" fill="#7c3aed">Cluster Provisioning</text>
+  <text x="120" y="110" font-size="12" fill="#64748b">Orchestrates Kubernetes cluster creation from Machine resources</text>
+
+  <!-- Operator pills -->
+  <rect x="120" y="125" width="160" height="32" rx="16" fill="#7c3aed" opacity="0.9"/>
+  <text x="200" y="146" text-anchor="middle" font-size="13" font-weight="600" fill="white">talos-operator</text>
+
+  <!-- Arrow up -->
+  <g transform="translate(440, 172)">
+    <line x1="0" y1="4" x2="0" y2="26" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"/>
+    <polygon points="-5,8 0,0 5,8" fill="#94a3b8"/>
+  </g>
+  <text x="460" y="188" font-size="11" fill="#94a3b8" font-style="italic">machines running</text>
+
+  <!-- === Layer 3: Machine Provisioning === -->
+  <rect x="40" y="200" width="820" height="110" rx="12" fill="url(#grad-orange)" opacity="0.12" filter="url(#shadow)"/>
+  <rect x="40" y="200" width="6" height="110" rx="3" fill="url(#grad-orange)"/>
+
+  <!-- Server icon -->
+  <g transform="translate(70, 225)">
+    <rect x="2" y="2" width="36" height="14" rx="3" fill="none" stroke="#ea580c" stroke-width="2"/>
+    <rect x="2" y="22" width="36" height="14" rx="3" fill="none" stroke="#ea580c" stroke-width="2"/>
+    <circle cx="30" cy="9" r="2.5" fill="#ea580c"/>
+    <circle cx="30" cy="29" r="2.5" fill="#ea580c"/>
+    <line x1="8" y1="9" x2="22" y2="9" stroke="#ea580c" stroke-width="1.5"/>
+    <line x1="8" y1="29" x2="22" y2="29" stroke="#ea580c" stroke-width="1.5"/>
+  </g>
+
+  <text x="120" y="230" font-size="16" font-weight="700" fill="#ea580c">Machine Provisioning</text>
+  <text x="120" y="250" font-size="12" fill="#64748b">Creates and manages virtual machines on the hypervisor</text>
+
+  <rect x="120" y="265" width="170" height="32" rx="16" fill="#ea580c" opacity="0.9"/>
+  <text x="205" y="286" text-anchor="middle" font-size="13" font-weight="600" fill="white">kubevirt-operator</text>
+
+  <rect x="310" y="265" width="170" height="32" rx="16" fill="#ea580c" opacity="0.9"/>
+  <text x="395" y="286" text-anchor="middle" font-size="13" font-weight="600" fill="white">proxmox-operator</text>
+
+  <!-- Arrow up -->
+  <g transform="translate(440, 312)">
+    <line x1="0" y1="4" x2="0" y2="26" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"/>
+    <polygon points="-5,8 0,0 5,8" fill="#94a3b8"/>
+  </g>
+  <text x="460" y="328" font-size="11" fill="#94a3b8" font-style="italic">IP assigned</text>
+
+  <!-- === Layer 2: IP Allocation === -->
+  <rect x="40" y="340" width="820" height="110" rx="12" fill="url(#grad-green)" opacity="0.12" filter="url(#shadow)"/>
+  <rect x="40" y="340" width="6" height="110" rx="3" fill="url(#grad-green)"/>
+
+  <!-- IP icon -->
+  <g transform="translate(70, 362)">
+    <rect x="2" y="5" width="36" height="28" rx="4" fill="none" stroke="#059669" stroke-width="2"/>
+    <text x="20" y="25" text-anchor="middle" font-size="14" font-weight="700" fill="#059669">IP</text>
+  </g>
+
+  <text x="120" y="370" font-size="16" font-weight="700" fill="#059669">IP Allocation</text>
+  <text x="120" y="390" font-size="12" fill="#64748b">Assigns IP addresses to machines via static pools or DHCP</text>
+
+  <rect x="120" y="405" width="170" height="32" rx="16" fill="#059669" opacity="0.9"/>
+  <text x="205" y="426" text-anchor="middle" font-size="13" font-weight="600" fill="white">static-ip-operator</text>
+
+  <rect x="310" y="405" width="150" height="32" rx="16" fill="#059669" opacity="0.9"/>
+  <text x="385" y="426" text-anchor="middle" font-size="13" font-weight="600" fill="white">kea-operator</text>
+
+  <!-- Arrow up -->
+  <g transform="translate(440, 452)">
+    <line x1="0" y1="4" x2="0" y2="26" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"/>
+    <polygon points="-5,8 0,0 5,8" fill="#94a3b8"/>
+  </g>
+  <text x="460" y="468" font-size="11" fill="#94a3b8" font-style="italic">network ready</text>
+
+  <!-- === Layer 1: Network Provisioning (bottom) === -->
+  <rect x="40" y="480" width="820" height="120" rx="12" fill="url(#grad-blue)" opacity="0.12" filter="url(#shadow)"/>
+  <rect x="40" y="480" width="6" height="120" rx="3" fill="url(#grad-blue)"/>
+
+  <!-- Network icon -->
+  <g transform="translate(70, 502)">
+    <circle cx="20" cy="8" r="5" fill="none" stroke="#0284c7" stroke-width="2"/>
+    <circle cx="6" cy="30" r="5" fill="none" stroke="#0284c7" stroke-width="2"/>
+    <circle cx="34" cy="30" r="5" fill="none" stroke="#0284c7" stroke-width="2"/>
+    <line x1="16" y1="12" x2="9" y2="26" stroke="#0284c7" stroke-width="1.5"/>
+    <line x1="24" y1="12" x2="31" y2="26" stroke="#0284c7" stroke-width="1.5"/>
+  </g>
+
+  <text x="120" y="510" font-size="16" font-weight="700" fill="#0284c7">Network Provisioning</text>
+  <text x="120" y="530" font-size="12" fill="#64748b">Provisions network segments with IP prefixes and VLANs</text>
+
+  <rect x="120" y="548" width="155" height="32" rx="16" fill="#0284c7" opacity="0.9"/>
+  <text x="197" y="569" text-anchor="middle" font-size="13" font-weight="600" fill="white">nms-operator</text>
+
+  <rect x="295" y="548" width="290" height="32" rx="16" fill="#0284c7" opacity="0.9"/>
+  <text x="440" y="569" text-anchor="middle" font-size="13" font-weight="600" fill="white">manual-ip-provisioning-operator</text>
+</svg>
