@@ -5,7 +5,6 @@ Viti Stack is composed of independent operators that each own a specific stage o
 ## Operator Lifecycle
 
 ![Operator Layers](../../images/operator-layers.svg)
-```
 
 ## Layers
 
