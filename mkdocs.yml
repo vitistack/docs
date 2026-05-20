@@ -115,8 +115,21 @@ nav:
           - reference/operators/physical-operator.md
           - reference/operators/kea-operator.md
           - reference/operators/ipam-operator.md
+          - reference/operators/manual-ip-provisioning-operator.md
       - CRDs:
           - reference/crd/index.md
+          - reference/crd/vitistack.md
+          - reference/crd/machine.md
+          - reference/crd/machineclass.md
+          - reference/crd/networkconfiguration.md
+          - reference/crd/networknamespace.md
+          - reference/crd/ipallocation.md
+          - reference/crd/machineprovider.md
+          - reference/crd/kubernetesprovider.md
+          - reference/crd/kubernetescluster.md
+          - reference/crd/etcdbackup.md
+          - reference/crd/kubevirtconfig.md
+          - reference/crd/proxmoxconfig.md
       - API:
           - reference/api/index.md
           - reference/api/ipam-api.md
