@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 690" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
   <defs>
     <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
       <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.15"/>
@@ -22,7 +22,7 @@
   </defs>
 
   <!-- Background -->
-  <rect width="900" height="620" rx="16" fill="#f8fafc"/>
+  <rect width="900" height="690" rx="16" fill="#f8fafc"/>
 
   <!-- Title -->
   <text x="450" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#1e293b">Vitistack Cluster Lifecycle</text>
@@ -32,7 +32,7 @@
   <rect x="40" y="60" width="6" height="110" rx="3" fill="url(#grad-purple)"/>
 
   <!-- Cluster icon -->
-  <g transform="translate(70, 85)">
+  <g transform="translate(70, 78)">
     <circle cx="20" cy="14" r="6" fill="none" stroke="#7c3aed" stroke-width="2"/>
     <circle cx="8" cy="30" r="6" fill="none" stroke="#7c3aed" stroke-width="2"/>
     <circle cx="32" cy="30" r="6" fill="none" stroke="#7c3aed" stroke-width="2"/>
@@ -41,26 +41,30 @@
     <line x1="14" y1="30" x2="26" y2="30" stroke="#7c3aed" stroke-width="1.5"/>
   </g>
 
-  <text x="120" y="90" font-size="16" font-weight="700" fill="#7c3aed">Cluster Provisioning</text>
-  <text x="120" y="110" font-size="12" fill="#64748b">Orchestrates Kubernetes cluster creation from Machine resources</text>
+  <text x="120" y="86" font-size="16" font-weight="700" fill="#7c3aed">Cluster Provisioning</text>
+  <text x="120" y="104" font-size="12" fill="#64748b">Orchestrates Kubernetes cluster creation from Machine resources</text>
 
-  <!-- Operator pills -->
-  <rect x="120" y="125" width="160" height="32" rx="16" fill="#7c3aed" opacity="0.9"/>
-  <text x="200" y="146" text-anchor="middle" font-size="13" font-weight="600" fill="white">talos-operator</text>
+  <!-- Operator pill -->
+  <rect x="120" y="118" width="180" height="30" rx="15" fill="#7c3aed" opacity="0.9"/>
+  <text x="210" y="138" text-anchor="middle" font-size="13" font-weight="600" fill="white">talos-operator</text>
+
+  <!-- CRD pill -->
+  <rect x="620" y="118" width="180" height="30" rx="15" fill="#7c3aed" opacity="0.15"/>
+  <text x="710" y="138" text-anchor="middle" font-size="13" fill="#7c3aed">KubernetesCluster</text>
 
   <!-- Arrow up -->
   <g transform="translate(440, 172)">
     <line x1="0" y1="4" x2="0" y2="26" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"/>
     <polygon points="-5,8 0,0 5,8" fill="#94a3b8"/>
   </g>
-  <text x="460" y="188" font-size="11" fill="#94a3b8" font-style="italic">machines running</text>
+  <text x="460" y="190" font-size="11" fill="#94a3b8" font-style="italic">machines running</text>
 
   <!-- === Layer 3: Machine Provisioning === -->
-  <rect x="40" y="200" width="820" height="110" rx="12" fill="url(#grad-orange)" opacity="0.12" filter="url(#shadow)"/>
-  <rect x="40" y="200" width="6" height="110" rx="3" fill="url(#grad-orange)"/>
+  <rect x="40" y="205" width="820" height="110" rx="12" fill="url(#grad-orange)" opacity="0.12" filter="url(#shadow)"/>
+  <rect x="40" y="205" width="6" height="110" rx="3" fill="url(#grad-orange)"/>
 
   <!-- Server icon -->
-  <g transform="translate(70, 225)">
+  <g transform="translate(70, 223)">
     <rect x="2" y="2" width="36" height="14" rx="3" fill="none" stroke="#ea580c" stroke-width="2"/>
     <rect x="2" y="22" width="36" height="14" rx="3" fill="none" stroke="#ea580c" stroke-width="2"/>
     <circle cx="30" cy="9" r="2.5" fill="#ea580c"/>
@@ -69,54 +73,64 @@
     <line x1="8" y1="29" x2="22" y2="29" stroke="#ea580c" stroke-width="1.5"/>
   </g>
 
-  <text x="120" y="230" font-size="16" font-weight="700" fill="#ea580c">Machine Provisioning</text>
-  <text x="120" y="250" font-size="12" fill="#64748b">Creates and manages virtual machines on the hypervisor</text>
+  <text x="120" y="231" font-size="16" font-weight="700" fill="#ea580c">Machine Provisioning</text>
+  <text x="120" y="249" font-size="12" fill="#64748b">Creates and manages virtual machines on the hypervisor</text>
 
-  <rect x="120" y="265" width="170" height="32" rx="16" fill="#ea580c" opacity="0.9"/>
-  <text x="205" y="286" text-anchor="middle" font-size="13" font-weight="600" fill="white">kubevirt-operator</text>
+  <rect x="120" y="263" width="180" height="30" rx="15" fill="#ea580c" opacity="0.9"/>
+  <text x="210" y="283" text-anchor="middle" font-size="13" font-weight="600" fill="white">kubevirt-operator</text>
 
-  <rect x="310" y="265" width="170" height="32" rx="16" fill="#ea580c" opacity="0.9"/>
-  <text x="395" y="286" text-anchor="middle" font-size="13" font-weight="600" fill="white">proxmox-operator</text>
+  <rect x="315" y="263" width="180" height="30" rx="15" fill="#ea580c" opacity="0.9"/>
+  <text x="405" y="283" text-anchor="middle" font-size="13" font-weight="600" fill="white">proxmox-operator</text>
+
+  <!-- CRD pill -->
+  <rect x="620" y="263" width="180" height="30" rx="15" fill="#ea580c" opacity="0.15"/>
+  <text x="710" y="283" text-anchor="middle" font-size="13" fill="#ea580c">Machine</text>
 
   <!-- Arrow up -->
-  <g transform="translate(440, 312)">
+  <g transform="translate(440, 317)">
     <line x1="0" y1="4" x2="0" y2="26" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"/>
     <polygon points="-5,8 0,0 5,8" fill="#94a3b8"/>
   </g>
-  <text x="460" y="328" font-size="11" fill="#94a3b8" font-style="italic">IP assigned</text>
+  <text x="460" y="335" font-size="11" fill="#94a3b8" font-style="italic">IP assigned</text>
 
   <!-- === Layer 2: IP Allocation === -->
-  <rect x="40" y="340" width="820" height="110" rx="12" fill="url(#grad-green)" opacity="0.12" filter="url(#shadow)"/>
-  <rect x="40" y="340" width="6" height="110" rx="3" fill="url(#grad-green)"/>
+  <rect x="40" y="350" width="820" height="110" rx="12" fill="url(#grad-green)" opacity="0.12" filter="url(#shadow)"/>
+  <rect x="40" y="350" width="6" height="110" rx="3" fill="url(#grad-green)"/>
 
   <!-- IP icon -->
-  <g transform="translate(70, 362)">
+  <g transform="translate(70, 368)">
     <rect x="2" y="5" width="36" height="28" rx="4" fill="none" stroke="#059669" stroke-width="2"/>
     <text x="20" y="25" text-anchor="middle" font-size="14" font-weight="700" fill="#059669">IP</text>
   </g>
 
-  <text x="120" y="370" font-size="16" font-weight="700" fill="#059669">IP Allocation</text>
-  <text x="120" y="390" font-size="12" fill="#64748b">Assigns IP addresses to machines via static pools or DHCP</text>
+  <text x="120" y="376" font-size="16" font-weight="700" fill="#059669">IP Allocation</text>
+  <text x="120" y="394" font-size="12" fill="#64748b">Assigns IP addresses to machines via static pools or DHCP</text>
 
-  <rect x="120" y="405" width="170" height="32" rx="16" fill="#059669" opacity="0.9"/>
-  <text x="205" y="426" text-anchor="middle" font-size="13" font-weight="600" fill="white">static-ip-operator</text>
+  <rect x="120" y="408" width="180" height="30" rx="15" fill="#059669" opacity="0.9"/>
+  <text x="210" y="428" text-anchor="middle" font-size="13" font-weight="600" fill="white">static-ip-operator</text>
 
-  <rect x="310" y="405" width="150" height="32" rx="16" fill="#059669" opacity="0.9"/>
-  <text x="385" y="426" text-anchor="middle" font-size="13" font-weight="600" fill="white">kea-operator</text>
+  <rect x="315" y="408" width="180" height="30" rx="15" fill="#059669" opacity="0.9"/>
+  <text x="405" y="428" text-anchor="middle" font-size="13" font-weight="600" fill="white">kea-operator</text>
+
+  <!-- CRD pills -->
+  <rect x="620" y="372" width="180" height="30" rx="15" fill="#059669" opacity="0.15"/>
+  <text x="710" y="392" text-anchor="middle" font-size="13" fill="#059669">IPAllocation</text>
+  <rect x="620" y="408" width="180" height="30" rx="15" fill="#059669" opacity="0.15"/>
+  <text x="710" y="428" text-anchor="middle" font-size="13" fill="#059669">NetworkConfiguration</text>
 
   <!-- Arrow up -->
-  <g transform="translate(440, 452)">
+  <g transform="translate(440, 462)">
     <line x1="0" y1="4" x2="0" y2="26" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"/>
     <polygon points="-5,8 0,0 5,8" fill="#94a3b8"/>
   </g>
-  <text x="460" y="468" font-size="11" fill="#94a3b8" font-style="italic">network ready</text>
+  <text x="460" y="480" font-size="11" fill="#94a3b8" font-style="italic">network ready</text>
 
   <!-- === Layer 1: Network Provisioning (bottom) === -->
-  <rect x="40" y="480" width="820" height="120" rx="12" fill="url(#grad-blue)" opacity="0.12" filter="url(#shadow)"/>
-  <rect x="40" y="480" width="6" height="120" rx="3" fill="url(#grad-blue)"/>
+  <rect x="40" y="495" width="820" height="110" rx="12" fill="url(#grad-blue)" opacity="0.12" filter="url(#shadow)"/>
+  <rect x="40" y="495" width="6" height="110" rx="3" fill="url(#grad-blue)"/>
 
   <!-- Network icon -->
-  <g transform="translate(70, 502)">
+  <g transform="translate(70, 513)">
     <circle cx="20" cy="8" r="5" fill="none" stroke="#0284c7" stroke-width="2"/>
     <circle cx="6" cy="30" r="5" fill="none" stroke="#0284c7" stroke-width="2"/>
     <circle cx="34" cy="30" r="5" fill="none" stroke="#0284c7" stroke-width="2"/>
@@ -124,12 +138,29 @@
     <line x1="24" y1="12" x2="31" y2="26" stroke="#0284c7" stroke-width="1.5"/>
   </g>
 
-  <text x="120" y="510" font-size="16" font-weight="700" fill="#0284c7">Network Provisioning</text>
-  <text x="120" y="530" font-size="12" fill="#64748b">Provisions network segments with IP prefixes and VLANs</text>
+  <text x="120" y="521" font-size="16" font-weight="700" fill="#0284c7">Network Provisioning</text>
+  <text x="120" y="539" font-size="12" fill="#64748b">Provisions network segments with IP prefixes and VLANs</text>
 
-  <rect x="120" y="548" width="155" height="32" rx="16" fill="#0284c7" opacity="0.9"/>
-  <text x="197" y="569" text-anchor="middle" font-size="13" font-weight="600" fill="white">nms-operator</text>
+  <rect x="120" y="555" width="180" height="30" rx="15" fill="#0284c7" opacity="0.9"/>
+  <text x="210" y="575" text-anchor="middle" font-size="13" font-weight="600" fill="white">nms-operator</text>
 
-  <rect x="295" y="548" width="290" height="32" rx="16" fill="#0284c7" opacity="0.9"/>
-  <text x="440" y="569" text-anchor="middle" font-size="13" font-weight="600" fill="white">manual-ip-provisioning-operator</text>
+  <rect x="315" y="555" width="280" height="30" rx="15" fill="#0284c7" opacity="0.9"/>
+  <text x="455" y="575" text-anchor="middle" font-size="13" font-weight="600" fill="white">manual-ip-provisioning-operator</text>
+
+  <!-- CRD pill -->
+  <rect x="620" y="555" width="180" height="30" rx="15" fill="#0284c7" opacity="0.15"/>
+  <text x="710" y="575" text-anchor="middle" font-size="13" fill="#0284c7">NetworkNamespace</text>
+
+  <!-- Legend -->
+  <g transform="translate(220, 618)">
+    <rect x="0" y="0" width="460" height="52" rx="8" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="16" y="32" font-size="11" font-weight="600" fill="#94a3b8">LEGEND</text>
+    <rect x="80" y="13" width="100" height="26" rx="13" fill="#64748b" opacity="0.9"/>
+    <text x="130" y="31" text-anchor="middle" font-size="12" font-weight="600" fill="white">Operator</text>
+    <rect x="200" y="13" width="100" height="26" rx="13" fill="#64748b" opacity="0.15"/>
+    <text x="250" y="31" text-anchor="middle" font-size="12" fill="#64748b">CRD</text>
+    <line x1="320" y1="26" x2="350" y2="26" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"/>
+    <polygon points="345,22 353,26 345,30" fill="#94a3b8"/>
+    <text x="362" y="31" font-size="12" fill="#94a3b8">Lifecycle flow</text>
+  </g>
 </svg>
