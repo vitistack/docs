@@ -529,6 +529,16 @@ select:focus {
   --md-default-fg-color--lighter: #94a3b8;
 }
 
+/* Re-assert the dark-mode fg colors on .md-typeset itself. The light-mode */
+/* block sets these on .md-typeset unconditionally, and because .md-typeset */
+/* is a closer ancestor than the slate <body>, its light values (#334155 …) */
+/* would otherwise leak into dark mode for all content elements. */
+[data-md-color-scheme="slate"] .md-typeset {
+  --md-default-fg-color: #e2e8f0;
+  --md-default-fg-color--light: #cbd5e1;
+  --md-default-fg-color--lighter: #94a3b8;
+}
+
 [data-md-color-scheme="slate"] .md-typeset a {
   color: #60a5fa;
 }
@@ -608,4 +618,45 @@ select:focus {
 
 [data-md_color-scheme="slate"] .md-typeset .highlight .o {
   color: #f48fb1 !important; /* Light pink for dark mode */
+}
+
+/* Content tabs (pymdownx.tabbed, alternate_style) — dark mode only */
+/* Divider line under the tab row (Material draws it as an inset box-shadow */
+/* colored --md-default-fg-color--lightest, which is near-invisible in dark mode). */
+[data-md-color-scheme="slate"] .md-typeset .tabbed-labels {
+  box-shadow: 0 -0.05rem var(--viti-gray-500) inset;
+}
+
+/* Inactive labels: white text, distinguished from the active tab only by */
+/* weight + underline. Overrides Material's --md-default-fg-color--light, */
+/* which leaks the light-mode value (#334155) into dark mode via .md-typeset. */
+[data-md-color-scheme="slate"] .md-typeset .tabbed-labels > label {
+  color: #ffffff;
+  font-weight: 600;
+  opacity: 1;
+}
+
+/* Hover on a tab label */
+[data-md-color-scheme="slate"] .md-typeset .tabbed-labels > label:hover {
+  color: #ffffff;
+}
+
+/* Active/selected tab: pure white, bold, thick green underline. */
+/* In alternate_style the active label is matched by nth-child, NOT `+ label`. */
+/* The scheme prefix out-specifies Material's own nth-child rule (which paints */
+/* the active label --md-default-fg-color, nearly identical to inactive). */
+[data-md-color-scheme="slate"] .md-typeset .tabbed-set > input:nth-child(1):checked ~ .tabbed-labels > :nth-child(1),
+[data-md-color-scheme="slate"] .md-typeset .tabbed-set > input:nth-child(2):checked ~ .tabbed-labels > :nth-child(2),
+[data-md-color-scheme="slate"] .md-typeset .tabbed-set > input:nth-child(3):checked ~ .tabbed-labels > :nth-child(3),
+[data-md-color-scheme="slate"] .md-typeset .tabbed-set > input:nth-child(4):checked ~ .tabbed-labels > :nth-child(4),
+[data-md-color-scheme="slate"] .md-typeset .tabbed-set > input:nth-child(5):checked ~ .tabbed-labels > :nth-child(5),
+[data-md-color-scheme="slate"] .md-typeset .tabbed-set > input:nth-child(6):checked ~ .tabbed-labels > :nth-child(6),
+[data-md-color-scheme="slate"] .md-typeset .tabbed-set > input:nth-child(7):checked ~ .tabbed-labels > :nth-child(7),
+[data-md-color-scheme="slate"] .md-typeset .tabbed-set > input:nth-child(8):checked ~ .tabbed-labels > :nth-child(8),
+[data-md-color-scheme="slate"] .md-typeset .tabbed-set > input:nth-child(9):checked ~ .tabbed-labels > :nth-child(9),
+[data-md-color-scheme="slate"] .md-typeset .tabbed-set > input:nth-child(10):checked ~ .tabbed-labels > :nth-child(10) {
+  color: #ffffff;
+  font-weight: 700;
+  border-color: #ffffff;
+  border-bottom-width: 2px;
 }

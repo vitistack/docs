@@ -72,9 +72,17 @@ extra:
       name: vitistack
   generator: false
 nav:
-  - Tutorials:
-      - tutorials/index.md
-      - tutorials/how.md
+  # - Tutorials:
+  #     - tutorials/index.md
+  #     - tutorials/how.md
+  - Getting Started:
+      - getting_started/index.md
+      - getting_started/requirements.md
+      - getting_started/install-kubernetes.md
+      - getting_started/install-kubevirt.md
+      - getting_started/operators.md
+      - getting_started/examples.md
+      - getting_started/vitictl.md
   - How-to-guides:
       - howtoguide/setup-vitistack.md
       - Infrastructure:
