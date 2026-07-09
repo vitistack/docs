@@ -61,7 +61,7 @@ using `/dev/nvme0n1` on physical worker
 
 #### Create a `controlplane-patch.yaml` file
 
-Used this image setup for the proxmox vm from https://factory.talos.dev: https://factory.talos.dev/?arch=amd64&bootloader=auto&cmdline-set=true&extensions=-&extensions=siderolabs%2Fiscsi-tools&extensions=siderolabs%2Fqemu-guest-agent&extensions=siderolabs%2Futil-linux-tools&platform=nocloud&target=cloud&version=1.13.5
+Used this image setup for the proxmox vm from https://factory.talos.dev: https://factory.talos.dev/?arch=amd64&bootloader=auto&cmdline-set=true&extensions=-&extensions=siderolabs%2Fiscsi-tools&extensions=siderolabs%2Fqemu-guest-agent&extensions=siderolabs%2Futil-linux-tools&platform=nocloud&target=cloud&version=1.13.6
 
 ```yaml
 # controlplane-patch-1 file
@@ -75,7 +75,7 @@ machine:
             rotate-server-certificates: true
     install:
         disk: /dev/sda
-        image: factory.talos.dev/nocloud-installer/88d1f7a5c4f1d3aba7df787c448c1d3d008ed29cfb34af53fa0df4336a56040b:v1.13.5
+        image: factory.talos.dev/nocloud-installer/88d1f7a5c4f1d3aba7df787c448c1d3d008ed29cfb34af53fa0df4336a56040b:v1.13.6
 cluster:
     network:
         podSubnets:
@@ -97,7 +97,7 @@ cluster:
 
 The worker is a single-disk physical node (1 TB NVMe). Talos would otherwise grow `EPHEMERAL` across the whole disk, so we cap it at 100 GB and carve a `longhorn` user volume out of the rest. The user volume is automatically mounted at `/var/mnt/longhorn`.
 
-Using this image setup for the worker node: https://factory.talos.dev/?arch=amd64&platform=metal&schematic-id=613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245&target=metal&version=1.13.5 
+Using this image setup for the worker node: https://factory.talos.dev/?arch=amd64&platform=metal&schematic-id=613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245&target=metal&version=1.13.6
 
 ```yaml
 # worker-patch-1 file
@@ -111,7 +111,7 @@ machine:
             rotate-server-certificates: true
     install:
         disk: /dev/nvme0n1
-        image: factory.talos.dev/metal-installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245:v1.13.5
+        image: factory.talos.dev/metal-installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245:v1.13.6
 cluster:
     network:
         podSubnets:
