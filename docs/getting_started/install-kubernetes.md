@@ -4,21 +4,18 @@ We are using Talos on this getting started guide, but you could use whatever kub
 
 In this example we have used 
 
-- networking: Ubiquity Unify setup (:warning: setting fixed ip for vm and worker)
+- Networking: Ubiquity Unify setup (:warning: setting fixed ip for vm and worker, it is also possible to set static ip, see talos for more details)
 - Proxmox to create control plane vm
 - One physical machine for worker (ASUS NUC 15 Pro Tall Kit - Core Ultra 7 255H, with 96 GB memory, 1 TB nvme disk)
 
 
 ## Install Talos
 
-Follow talos production cluster setup: https://docs.siderolabs.com/talos/v1.13/getting-started/prodnotes
+For more details and more configuration details from talos, please have a look at the Talos production cluster setup: https://docs.siderolabs.com/talos/v1.13/getting-started/prodnotes
 
-Link from actory.talos.dev used: https://factory.talos.dev/?arch=amd64&bootloader=auto&cmdline-set=true&extensions=-&extensions=siderolabs%2Fiscsi-tools&extensions=siderolabs%2Fqemu-guest-agent&extensions=siderolabs%2Futil-linux-tools&platform=nocloud&target=cloud&version=1.13.5
+## Setup VM and hardware
 
-### VMs (control planes and workers)
-
-Control plane is a VM created in Proxmox (or another hypervisor).
-
+You need to setup a VM for the control plane, we have setup a Proxmox VM (6 GB memory, 4 cores CPU, 100 GB disk). And we have have made the ASUS NUC ready, and connected to the network. Since we have a Ubiquity Unify setup, there is set fixed ip (reservation of ip )
 
 ### Setup control plane ips:
 
@@ -26,11 +23,8 @@ Control plane is a VM created in Proxmox (or another hypervisor).
 
 ```bash
 export CONTROL_PLANE_IP=("192.168.1.130")
-
 export YOUR_ENDPOINT=192.168.1.130
-
 export YOUR_ENDPOINT_PORT=6443
-
 export CLUSTER_NAME=vitistack
 ```
 
@@ -40,17 +34,20 @@ export CLUSTER_NAME=vitistack
 
 #### Generate machine configs
 
-`talosctl gen config --with-secrets secrets.yaml $CLUSTER_NAME https://$YOUR_ENDPOINT:$YOUR_ENDPOINT_PORT`
+```bash
+talosctl gen config --with-secrets secrets.yaml $CLUSTER_NAME https://$YOUR_ENDPOINT:$YOUR_ENDPOINT_PORT
+```
 
 :warning: and remove the `hostnameconfig`, we will set this later
 
 #### Get links/network cards
 
+```bash
+talosctl get links --insecure -n 192.168.1.130
+talosctl get links --insecure -n 192.168.1.133
+```
 
-
-`talosctl get links --insecure -n 192.168.1.130`
-
-`talosctl get links --insecure -n 192.168.1.133`
+(useful to see the name of the network cards, but we are using alias right now)
 
 #### Get disks
 
@@ -63,6 +60,8 @@ using `/dev/sda` for control plane from proxmox
 using `/dev/nvme0n1` on physical worker
 
 #### Create a `controlplane-patch.yaml` file
+
+Used this image setup for the proxmox vm from https://factory.talos.dev: https://factory.talos.dev/?arch=amd64&bootloader=auto&cmdline-set=true&extensions=-&extensions=siderolabs%2Fiscsi-tools&extensions=siderolabs%2Fqemu-guest-agent&extensions=siderolabs%2Futil-linux-tools&platform=nocloud&target=cloud&version=1.13.5
 
 ```yaml
 # controlplane-patch-1 file
@@ -97,6 +96,8 @@ cluster:
 #### Create a `worker-patch.yaml` file
 
 The worker is a single-disk physical node (1 TB NVMe). Talos would otherwise grow `EPHEMERAL` across the whole disk, so we cap it at 100 GB and carve a `longhorn` user volume out of the rest. The user volume is automatically mounted at `/var/mnt/longhorn`.
+
+Using this image setup for the worker node: https://factory.talos.dev/?arch=amd64&platform=metal&schematic-id=613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245&target=metal&version=1.13.5 
 
 ```yaml
 # worker-patch-1 file
@@ -240,8 +241,3 @@ kind: HostnameConfig
 hostname: viti-wrk1
 '
 ```
-
-
-## Setup Storage
-
-## Setup Networking on the workers
