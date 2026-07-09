@@ -91,9 +91,10 @@ nav:
           - howtoguide/infrastructure/index.md
           - howtoguide/infrastructure/vitistack-crds.md
           - howtoguide/infrastructure/install-machineclasses.md
-          - howtoguide/infrastructure/install-keadhcp.md
-          - howtoguide/infrastructure/install-network-operator.md
           - howtoguide/infrastructure/install-vitistack-operator.md
+          - howtoguide/infrastructure/install-static-ip-operator.md
+          - howtoguide/infrastructure/install-manual-ip-provisioning-operator.md
+          - howtoguide/infrastructure/install-keadhcp.md
       - Machines:
           - howtoguide/machines/index.md
           - howtoguide/machines/install-kubevirt.md

@@ -38,9 +38,13 @@ It is also possible that the supervisor cluster also has Kubevirt installed, so 
 
 [Vitistack operator](infrastructure/install-vitistack-operator.md)
 
-## Network
+## Static IP operator
 
-To be continued
+[Static IP operator](./infrastructure/install-static-ip-operator.md)
+
+## Manual IP provisioner operator
+
+[Manual IP provisioner operator](./infrastructure/install-manual-ip-provisioning-operator.md)
 
 ## DHCP
 

@@ -1,6 +1,8 @@
 # Welcome to Vitistack
 
-Welcome to the **Vitistack** documentation! This site showcases a custom MkDocs theme designed around the vibrant Viti brand colors.
+## Fast and furious
+
+[Let me get started!](./getting_started/index.md)
 
 ## What is Viti?
 
